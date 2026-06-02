@@ -113,7 +113,7 @@ function AnimatedHeadline() {
   ];
   let idx = 0;
   return (
-    <h1 className="font-serif text-[clamp(2.75rem,9vw,9rem)] leading-[0.95] tracking-[-0.03em] letter-stage">
+    <h1 className="font-serif text-[clamp(2.75rem,9vw,9rem)] leading-[0.95] tracking-[-0.03em] letter-stage text-white">
       {lines.map((line, li) => (
         <span key={li} className={`block ${line.italic ? "italic text-primary" : ""}`}>
           {[...line.text].map((ch, ci) => {
@@ -133,67 +133,79 @@ function AnimatedHeadline() {
 
 function Hero() {
   return (
-    <section id="top" className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 px-5 sm:px-10 overflow-hidden">
-      <Asterisk className="hidden sm:block absolute top-32 right-10 h-16 w-16 text-primary/50 animate-[spin_18s_linear_infinite]" />
-      <Asterisk className="hidden lg:block absolute bottom-24 left-[42%] h-10 w-10 text-foreground/15" />
-      <Scribble className="hidden md:block absolute top-1/2 right-12 w-40 text-primary/30" />
-      <div className="mx-auto max-w-[1400px] relative">{/* :wrap */}
+    <section
+      id="top"
+      className="relative min-h-[100svh] flex items-center justify-center px-5 sm:px-10 overflow-hidden"
+    >
+      {/* Background video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1920&q=80&auto=format&fit=crop"
+      >
+        <source src="https://assets.mixkit.co/videos/4974/4974-720.mp4" type="video/mp4" />
+      </video>
+      {/* Dark overlay for legibility */}
+      <div className="absolute inset-0 bg-black/55" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
 
+      <Asterisk className="hidden sm:block absolute top-32 right-10 h-16 w-16 text-primary/70 animate-[spin_18s_linear_infinite]" />
+      <Scribble className="hidden md:block absolute bottom-24 left-10 w-40 text-primary/40" />
+
+      <div className="relative mx-auto max-w-[1100px] w-full text-center flex flex-col items-center">
         <AnimatedHeadline />
 
-        <div className="mt-12 sm:mt-20 grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
-          <Reveal className="lg:col-span-5" delay={800}>
-            <p className="text-base sm:text-lg text-foreground/75 leading-relaxed max-w-md">
-              Privat oder Gewerbe — wir übernehmen die Reinigung
-              zuverlässig, diskret und zu fairen Preisen. Seit Jahren vertrauen
-              uns Kunden in Monschau und der gesamten Eifelregion.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a
-                href={PHONE_HREF}
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-[14px] font-medium text-background hover:bg-primary transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg min-h-[52px]"
-              >
-                Kostenlos anfragen
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </a>
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 px-7 py-4 text-[14px] font-medium hover:border-foreground/40 hover:-translate-y-0.5 transition-all duration-300 min-h-[52px]"
-              >
-                <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:rotate-[-8deg]" /> WhatsApp
-              </a>
-            </div>
-          </Reveal>
+        <Reveal delay={800}>
+          <p className="mt-8 sm:mt-10 text-base sm:text-lg text-white/85 leading-relaxed max-w-xl mx-auto">
+            Privat oder Gewerbe — wir übernehmen die Reinigung zuverlässig,
+            diskret und zu fairen Preisen. Seit Jahren vertrauen uns Kunden in
+            Monschau und der gesamten Eifelregion.
+          </p>
+        </Reveal>
 
-          <Reveal className="lg:col-span-4 lg:col-start-9" delay={1000}>
-            <div className="space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-primary text-primary animate-[scale-in_0.5s_ease-out_both]"
-                      style={{ animationDelay: `${1200 + i * 90}ms` }}
-                    />
-                  ))}
-                </div>
-                <span className="font-serif text-2xl">5,0</span>
-                <span className="text-xs text-muted-foreground tracking-wide">
-                  Google · 3 Bewertungen
-                </span>
-              </div>
-              <blockquote className="font-serif italic text-xl sm:text-2xl leading-snug text-foreground/90">
-                „Zuverlässig, preiswert und seriös!
-                <br className="hidden sm:block" /> Nur zu empfehlen."
-              </blockquote>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                — P. Sieberg, Local Guide
-              </p>
+        <Reveal delay={1000}>
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href={PHONE_HREF}
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-[14px] font-medium text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg min-h-[52px]"
+            >
+              <Phone className="h-4 w-4" />
+              Kostenlos anfragen
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </a>
+            <a
+              href={WHATSAPP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/5 backdrop-blur-sm px-7 py-4 text-[14px] font-medium text-white hover:bg-white/15 hover:-translate-y-0.5 transition-all duration-300 min-h-[52px]"
+            >
+              <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:rotate-[-8deg]" />
+              WhatsApp
+            </a>
+          </div>
+        </Reveal>
+
+        <Reveal delay={1200}>
+          <div className="mt-10 sm:mt-14 flex items-center justify-center gap-3 text-white/90">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className="h-4 w-4 fill-primary text-primary animate-[scale-in_0.5s_ease-out_both]"
+                  style={{ animationDelay: `${1200 + i * 90}ms` }}
+                />
+              ))}
             </div>
-          </Reveal>
-        </div>
+            <span className="font-serif text-xl">5,0</span>
+            <span className="text-xs uppercase tracking-[0.2em] text-white/70">
+              Google Bewertungen
+            </span>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
