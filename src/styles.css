@@ -112,6 +112,8 @@
   --ring: oklch(0.6 0.08 145);
   --subtle: oklch(1 0 0 / 10%);
   --dark: oklch(0.12 0 0);
+  --deep-green: oklch(0.22 0.04 150);
+  --deep-green-soft: oklch(0.3 0.05 150);
 }
 
 @layer base {
