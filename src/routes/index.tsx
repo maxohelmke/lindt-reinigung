@@ -409,19 +409,23 @@ function WhyUs() {
 
           <div className="lg:col-span-6 lg:col-start-7">
             <div className="space-y-10 sm:space-y-12">
-              {points.map((p) => (
-                <div key={p.n} className="flex gap-6 sm:gap-8 pb-10 sm:pb-12 border-b border-foreground/10 last:border-0 last:pb-0">
+              {points.map((p, idx) => (
+                <Reveal
+                  key={p.n}
+                  delay={idx * 120}
+                  className="flex gap-6 sm:gap-8 pb-10 sm:pb-12 border-b border-foreground/10 last:border-0 last:pb-0"
+                >
                   <span className="font-mono text-xs tabular-nums text-muted-foreground pt-2 shrink-0">
                     {p.n}
                   </span>
                   <div className="flex-1">
-                    <h3 className="font-serif text-2xl sm:text-3xl mb-3 flex items-center gap-3">
+                    <h3 className="font-serif text-2xl sm:text-3xl mb-3 flex items-center gap-3 group">
                       {p.t}
-                      <Check className="h-5 w-5 text-primary" strokeWidth={2.5} />
+                      <Check className="h-5 w-5 text-primary transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" strokeWidth={2.5} />
                     </h3>
                     <p className="text-base text-foreground/70 leading-relaxed max-w-md">{p.d}</p>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
