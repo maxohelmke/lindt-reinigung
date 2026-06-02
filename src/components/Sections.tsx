@@ -127,26 +127,22 @@ export function Gallery() {
   return (
     <section className="py-24 sm:py-36 px-5 sm:px-10 bg-background">
       <div className="mx-auto max-w-[1400px]">
-        <div className="grid lg:grid-cols-12 gap-10 mb-14 sm:mb-20">
-          <div className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>Arbeitsproben</span>
-            </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
-              Räume, die
-              <br />
-              <span className="relative inline-block italic text-primary">
-                wieder atmen.
-                <Scribble className="absolute -bottom-3 left-0 w-full h-3 text-primary/60" />
-              </span>
-            </h2>
+        <div className="flex flex-col items-center text-center mb-14 sm:mb-20">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Arbeitsproben</span>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-              Eine kleine Auswahl aus den letzten Aufträgen — Privat­wohnungen,
-              Büros und Spezialeinsätze. Jede Reinigung übergeben wir persönlich.
-            </p>
-          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
+            Räume, die
+            <br />
+            <span className="relative inline-block italic text-primary">
+              wieder atmen.
+              <Scribble className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-full h-3 text-primary/60" />
+            </span>
+          </h2>
+          <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-2xl">
+            Eine kleine Auswahl aus den letzten Aufträgen — Privat­wohnungen,
+            Büros und Spezialeinsätze. Jede Reinigung übergeben wir persönlich.
+          </p>
         </div>
 
         <GalleryCarousel />
