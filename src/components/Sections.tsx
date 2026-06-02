@@ -377,3 +377,173 @@ export function CtaStrip({ phone, phoneHref, waHref }: { phone: string; phoneHre
     </section>
   );
 }
+
+/* ─────────────────────────────────────────────────────────── ARBEITSBEREICHE */
+
+const AREAS = [
+  { icon: Home, title: "Privathaushalte", desc: "Wohnungen, Einfamilien­häuser, Ferienwohnungen." },
+  { icon: Building2, title: "Wohnanlagen", desc: "Treppenhäuser, Eingänge, Tief­garagen, Aufzüge." },
+  { icon: Briefcase, title: "Büros & Kanzleien", desc: "Tägliche oder wöchentliche Unterhalts­reinigung." },
+  { icon: Store, title: "Einzelhandel", desc: "Verkaufs­flächen, Schaufenster, Lager­bereiche." },
+  { icon: Hotel, title: "Hotel & Gastronomie", desc: "Zimmer, Sanitär, Küchen­bereiche nach HACCP." },
+  { icon: GraduationCap, title: "Schulen & Praxen", desc: "Hygiene­sensible Räume mit zertifizierten Mitteln." },
+  { icon: Wrench, title: "Bau & Handwerk", desc: "Bauend- und Bauzwischen­reinigung schlüsselfertig." },
+  { icon: Sparkles, title: "Sonderaufträge", desc: "Veranstaltungen, Brand- & Wasserschäden, Spezial­fälle." },
+];
+
+export function WorkAreas() {
+  return (
+    <section className="relative py-24 sm:py-36 px-5 sm:px-10 bg-[var(--color-deep-green)] text-white overflow-hidden">
+      <div className="pointer-events-none absolute -top-32 right-1/4 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[140px] animate-aurora" />
+      <div className="pointer-events-none absolute -bottom-40 -left-32 h-[460px] w-[460px] rounded-full bg-[var(--color-deep-green-soft)] blur-[120px] animate-aurora" style={{ animationDelay: "-7s" }} />
+      <Asterisk className="hidden md:block absolute top-20 left-10 h-12 w-12 text-primary/30 animate-[spin_30s_linear_infinite]" />
+      <Asterisk className="hidden lg:block absolute bottom-24 right-20 h-20 w-20 text-white/10 animate-float-y" />
+
+      <div className="relative mx-auto max-w-[1400px]">
+        <div className="flex flex-col items-center text-center mb-14 sm:mb-20">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
+            <span>Arbeitsbereiche</span>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
+            Vom Treppenhaus
+            <br />
+            bis zum <span className="italic text-primary">Großauftrag.</span>
+          </h2>
+          <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl">
+            Egal ob Privat, Gewerbe oder Spezialeinsatz — wir bringen das passende
+            Team, das richtige Material und die nötige Erfahrung mit.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden">
+          {AREAS.map((a, idx) => (
+            <Reveal
+              key={a.title}
+              delay={idx * 70}
+              className="group relative bg-[var(--color-deep-green)] p-6 sm:p-8 min-h-[200px] flex flex-col transition-colors duration-500 hover:bg-[var(--color-deep-green-soft)]"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-primary transition-all duration-500 group-hover:border-primary group-hover:rotate-6">
+                  <a.icon className="h-5 w-5" strokeWidth={1.6} />
+                </span>
+                <span className="font-mono text-[10px] tabular-nums text-white/35">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <h3 className="font-serif text-xl sm:text-2xl mb-2 tracking-tight">{a.title}</h3>
+              <p className="text-sm text-white/65 leading-relaxed">{a.desc}</p>
+              <ArrowRight className="absolute bottom-6 right-6 h-4 w-4 text-primary opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0" />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────── REFERENZEN */
+
+const REFERENCES = [
+  "Hotel Eifelblick",
+  "Praxis Dr. Weber",
+  "Stadtwerke Monschau",
+  "Café Roetgen",
+  "Kanzlei Hoffmann",
+  "Wohnpark Aachen",
+  "Bäckerei Lennartz",
+  "Auto­haus Bauer",
+];
+
+const HIGHLIGHTS = [
+  {
+    metric: "120+",
+    label: "aktive Kunden",
+    desc: "betreut in Monschau, Aachen und der gesamten Eifelregion.",
+  },
+  {
+    metric: "7 J.",
+    label: "im Dienst",
+    desc: "konstante Qualität — und persönlich geführt seit Tag eins.",
+  },
+  {
+    metric: "98 %",
+    label: "Wieder­buchungen",
+    desc: "Stammkunden, die uns regelmäßig erneut beauftragen.",
+  },
+];
+
+export function References() {
+  return (
+    <section className="relative py-24 sm:py-36 px-5 sm:px-10 bg-[var(--color-deep-green)] text-white overflow-hidden border-t border-white/5">
+      <div className="pointer-events-none absolute -top-40 -left-32 h-[520px] w-[520px] rounded-full bg-primary/15 blur-[140px] animate-aurora" style={{ animationDelay: "-4s" }} />
+      <div className="pointer-events-none absolute -bottom-32 right-1/4 h-[460px] w-[460px] rounded-full bg-[var(--color-deep-green-soft)] blur-[130px] animate-aurora" style={{ animationDelay: "-12s" }} />
+      <Scribble className="hidden md:block absolute top-24 right-10 w-40 text-primary/30 animate-float-x" />
+
+      <div className="relative mx-auto max-w-[1400px]">
+        <div className="flex flex-col items-center text-center mb-14 sm:mb-20">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
+            <span>Referenzen</span>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
+            Wem wir täglich
+            <br />
+            <span className="italic text-primary">den Rücken freihalten.</span>
+          </h2>
+          <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl">
+            Eine kleine Auswahl von Häusern, Praxen und Betrieben, die uns
+            seit Jahren vertrauen. Auf Wunsch nennen wir gerne weitere.
+          </p>
+        </div>
+
+        {/* Logo-Wall */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden mb-16 sm:mb-20">
+          {REFERENCES.map((r, idx) => (
+            <Reveal
+              key={r}
+              delay={idx * 60}
+              className="bg-[var(--color-deep-green)] px-6 py-8 sm:py-10 flex items-center justify-center text-center transition-colors duration-500 hover:bg-[var(--color-deep-green-soft)]"
+            >
+              <span className="font-serif text-lg sm:text-xl text-white/75 tracking-tight italic">
+                {r}
+              </span>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Highlight stats + Pull-quote */}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-7 grid sm:grid-cols-3 gap-8 sm:gap-10">
+            {HIGHLIGHTS.map((h, idx) => (
+              <Reveal key={h.label} delay={idx * 120} className="border-t border-white/15 pt-5">
+                <div className="font-serif text-5xl sm:text-6xl tracking-tight text-primary">
+                  {h.metric}
+                </div>
+                <div className="mt-2 text-[11px] uppercase tracking-[0.2em] text-white/50">
+                  {h.label}
+                </div>
+                <p className="mt-3 text-sm text-white/65 leading-relaxed max-w-[18ch]">
+                  {h.desc}
+                </p>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={300} className="lg:col-span-5">
+            <figure className="relative rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-sm p-8 sm:p-10">
+              <Quote className="absolute -top-4 left-8 h-9 w-9 text-primary fill-primary bg-[var(--color-deep-green)] p-1.5 rounded-full" />
+              <blockquote className="font-serif italic text-xl sm:text-2xl leading-snug text-white/95">
+                „Shadi Alo ist für uns längst kein Dienstleister mehr — sondern Teil
+                des Teams. Termin­treu, gründlich und immer mitdenkend."
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-white/55">
+                <span className="h-px w-8 bg-white/30" />
+                Hausverwaltung · Eifel
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
