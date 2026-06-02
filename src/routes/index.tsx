@@ -151,9 +151,9 @@ function Hero() {
         loop
         playsInline
         preload="auto"
-        poster="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1920&q=80&auto=format&fit=crop"
+        poster="https://assets.mixkit.co/videos/13282/13282-thumb-720-0.jpg"
       >
-        <source src="https://assets.mixkit.co/videos/4974/4974-720.mp4" type="video/mp4" />
+        <source src="https://assets.mixkit.co/videos/13282/13282-720.mp4" type="video/mp4" />
       </video>
       {/* Dark overlay for legibility */}
       <div className="absolute inset-0 bg-black/55" />
