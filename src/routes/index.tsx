@@ -727,16 +727,16 @@ function Contact() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <aside className="lg:col-span-4 lg:col-start-9 space-y-8 lg:pt-12">
-            {[
-              { icon: MapPin, label: "Adresse", lines: ["Messeweg 113", "52156 Monschau"] },
-              { icon: Clock, label: "Reaktion", lines: ["Antwort innerhalb", "von 24 Stunden"] },
-              { icon: ShieldCheck, label: "Garantie", lines: ["100 % Zufriedenheit", "ohne Vertragsbindung"] },
-              { icon: MapPin, label: "Einsatzgebiet", lines: ["Monschau, Eifel,", "Aachen, Düren"] },
-            ].map((c) => (
-              <div key={c.label} className="flex gap-4 pb-6 border-b border-border last:border-0">
-                <c.icon className="h-5 w-5 text-primary shrink-0 mt-1" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {[
+            { icon: MapPin, label: "Adresse", lines: ["Messeweg 113", "52156 Monschau"] },
+            { icon: Clock, label: "Reaktion", lines: ["Antwort innerhalb", "von 24 Stunden"] },
+            { icon: ShieldCheck, label: "Garantie", lines: ["100 % Zufriedenheit", "ohne Vertragsbindung"] },
+            { icon: MapPin, label: "Einsatzgebiet", lines: ["Monschau, Eifel,", "Aachen, Düren"] },
+          ].map((c, idx) => (
+            <Reveal key={c.label} delay={idx * 100}>
+              <div className="group h-full flex gap-4 p-6 rounded-2xl border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-card)] hover:border-primary/40">
+                <c.icon className="h-5 w-5 text-primary shrink-0 mt-1 transition-transform duration-500 group-hover:scale-110" />
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
                     {c.label}
@@ -748,13 +748,13 @@ function Contact() {
                   </div>
                 </div>
               </div>
-            ))}
-          </aside>
+            </Reveal>
+          ))}
         </div>
 
         {/* Google Maps Karte */}
         <div className="mt-16 sm:mt-24">
-          <div className="flex items-end justify-between gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
             <div>
               <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
                 Standort
