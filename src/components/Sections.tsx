@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Plus, Minus, Sparkles, Leaf, Award, Clock3, MapPin, ArrowRight } from "lucide-react";
+import { Plus, Minus, Sparkles, Leaf, Award, Clock3, MapPin, ArrowRight, Home, Building2, Briefcase, Hotel, Store, GraduationCap, Wrench, Quote } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import {
   Carousel,
