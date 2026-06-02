@@ -12,6 +12,7 @@ import {
   Star,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { TrustBar, Gallery, FAQ, CtaStrip, Asterisk, Scribble } from "@/components/Sections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
