@@ -411,7 +411,7 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border py-12 px-6">
+    <footer className="border-t border-border py-10 sm:py-12 px-4 sm:px-6">
       <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between gap-6 text-sm text-muted-foreground">
         <div>
           <div className="font-serif text-xl text-foreground mb-1">Shadi Alo Reinigungsdienst</div>
