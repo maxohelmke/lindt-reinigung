@@ -461,14 +461,16 @@ function Process() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
-          {steps.map((s) => (
-            <div key={s.n} className="bg-background p-8 sm:p-10 md:p-12 min-h-[320px] flex flex-col">
-              <div className="font-serif text-7xl sm:text-8xl text-primary/90 leading-none mb-8">
-                {s.n}
+          {steps.map((s, idx) => (
+            <Reveal key={s.n} delay={idx * 180} className="bg-background">
+              <div className="group p-8 sm:p-10 md:p-12 min-h-[320px] flex flex-col h-full transition-colors duration-500 hover:bg-[#EFEBE4]">
+                <div className="font-serif text-7xl sm:text-8xl text-primary/90 leading-none mb-8 transition-transform duration-500 group-hover:-translate-y-1 group-hover:text-primary">
+                  {s.n}
+                </div>
+                <h3 className="font-serif text-2xl sm:text-3xl mb-4 tracking-tight">{s.t}</h3>
+                <p className="text-base text-foreground/65 leading-relaxed flex-1">{s.d}</p>
               </div>
-              <h3 className="font-serif text-2xl sm:text-3xl mb-4 tracking-tight">{s.t}</h3>
-              <p className="text-base text-foreground/65 leading-relaxed flex-1">{s.d}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
 
