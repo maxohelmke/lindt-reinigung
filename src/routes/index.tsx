@@ -659,20 +659,42 @@ function Contact() {
             ))}
           </aside>
         </div>
+
+        {/* Google Maps Karte */}
+        <div className="mt-16 sm:mt-24">
+          <div className="flex items-end justify-between gap-4 mb-6">
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
+                Standort
+              </div>
+              <h3 className="font-serif text-2xl sm:text-3xl tracking-tight">
+                Messeweg 113, 52156 Monschau
+              </h3>
+            </div>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Messeweg+113,+52156+Monschau"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
+            >
+              Route planen <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="relative overflow-hidden rounded-2xl border border-border aspect-[16/9] sm:aspect-[21/9] bg-muted">
+            <iframe
+              title="Standort Shadi Alo Reinigungsdienst — Messeweg 113, 52156 Monschau"
+              src="https://www.google.com/maps?q=Messeweg+113,+52156+Monschau&hl=de&z=14&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 w-full h-full grayscale-[0.3] contrast-[1.05]"
+              allowFullScreen
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
 }
-
-/* ─────────────────────────────────────────────────────────── FOOTER */
-
-function Footer() {
-  return (
-    <footer className="bg-[var(--color-dark)] text-white px-5 sm:px-10 pt-16 pb-10">
-      <div className="mx-auto max-w-[1400px]">
-        <div className="grid md:grid-cols-12 gap-10 mb-16 pb-16 border-b border-white/10">
-          <div className="md:col-span-5">
-            <div className="font-serif text-3xl sm:text-4xl mb-4">Shadi Alo</div>
             <p className="text-sm text-white/60 max-w-sm leading-relaxed">
               Premium Reinigungsdienst für Monschau und die Eifelregion. Privat, Gewerbe, Sonderaufträge — zuverlässig und diskret.
             </p>
