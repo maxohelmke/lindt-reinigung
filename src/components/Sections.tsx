@@ -124,7 +124,6 @@ export function Gallery() {
         <div className="grid lg:grid-cols-12 gap-10 mb-14 sm:mb-20">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>№ 04</span>
               <span>Arbeitsproben</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
@@ -209,7 +208,6 @@ export function FAQ() {
       <div className="mx-auto max-w-[1400px] grid lg:grid-cols-12 gap-12 lg:gap-16">
         <div className="lg:col-span-4">
           <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-            <span>№ 06</span>
             <span>Häufige Fragen</span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">

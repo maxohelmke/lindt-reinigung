@@ -296,7 +296,6 @@ function Stats() {
       <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-14 sm:py-20">
         <Reveal>
           <div className="flex items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
-            <span>№ 02</span>
             <span className="h-px flex-1 bg-white/15 origin-left animate-draw-line" />
             <span>Vertrauen in Zahlen</span>
           </div>
@@ -339,7 +338,6 @@ function Services() {
         <div className="grid lg:grid-cols-12 gap-10 mb-16 sm:mb-24">
           <div className="lg:col-span-4">
             <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>№ 03</span>
               <span>Leistungen</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
@@ -419,7 +417,6 @@ function WhyUs() {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
             <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>№ 04</span>
               <span>Warum wir</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-10 sm:mb-14">
@@ -479,7 +476,6 @@ function Process() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-24">
           <div>
             <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>№ 05</span>
               <span>Der Ablauf</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-3xl">
@@ -567,7 +563,6 @@ function Reviews() {
     <section id="bewertungen" className="bg-[var(--color-dark)] text-white py-24 sm:py-36 px-5 sm:px-10 overflow-hidden">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
-          <span>№ 06</span>
           <span>Kundenstimmen</span>
         </div>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 sm:mb-16">
@@ -690,7 +685,6 @@ function Contact() {
     <section id="kontakt" className="py-24 sm:py-36 px-5 sm:px-10">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-          <span>№ 07</span>
           <span>Kontakt</span>
         </div>
 
