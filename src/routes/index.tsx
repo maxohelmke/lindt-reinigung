@@ -99,32 +99,49 @@ function Nav() {
 
 /* ─────────────────────────────────────────────────────────── HERO */
 
+function AnimatedHeadline() {
+  const lines: { text: string; italic?: boolean }[] = [
+    { text: "Sauberkeit," },
+    { text: "die für sich", italic: true },
+    { text: "spricht." },
+  ];
+  let idx = 0;
+  return (
+    <h1 className="font-serif text-[clamp(2.75rem,9vw,9rem)] leading-[0.95] tracking-[-0.03em] letter-stage">
+      {lines.map((line, li) => (
+        <span key={li} className={`block ${line.italic ? "italic text-primary" : ""}`}>
+          {[...line.text].map((ch, ci) => {
+            const delay = idx * 22 + 120;
+            idx += 1;
+            return (
+              <span key={ci} style={{ animationDelay: `${delay}ms` }}>
+                {ch === " " ? "\u00A0" : ch}
+              </span>
+            );
+          })}
+        </span>
+      ))}
+    </h1>
+  );
+}
+
 function Hero() {
   return (
     <section id="top" className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 px-5 sm:px-10 overflow-hidden">
       <div className="mx-auto max-w-[1400px]">
-        {/* Top meta row */}
-        <div className="flex items-center justify-between mb-12 sm:mb-20 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+        <div className="flex items-center justify-between mb-12 sm:mb-20 text-[11px] uppercase tracking-[0.25em] text-muted-foreground animate-[fade-up_0.8s_ease-out_both]">
           <span>Est. Monschau · Eifel</span>
           <span className="hidden sm:inline">№ 01 — Reinigungsdienst</span>
           <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
             Verfügbar
           </span>
         </div>
 
-        {/* Headline */}
-        <h1 className="font-serif text-[clamp(2.75rem,9vw,9rem)] leading-[0.95] tracking-[-0.03em] reveal">
-          Sauberkeit,
-          <br />
-          <span className="italic text-primary">die für sich</span>
-          <br />
-          spricht.
-        </h1>
+        <AnimatedHeadline />
 
-        {/* Bottom row: lede + CTAs + social proof */}
         <div className="mt-12 sm:mt-20 grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
-          <div className="lg:col-span-5">
+          <Reveal className="lg:col-span-5" delay={800}>
             <p className="text-base sm:text-lg text-foreground/75 leading-relaxed max-w-md">
               Privat oder Gewerbe — wir übernehmen die Reinigung
               zuverlässig, diskret und zu fairen Preisen. Seit Jahren vertrauen
@@ -133,29 +150,32 @@ function Hero() {
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
                 href={PHONE_HREF}
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-[14px] font-medium text-background hover:bg-primary transition-colors min-h-[52px]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-[14px] font-medium text-background hover:bg-primary transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg min-h-[52px]"
               >
                 Kostenlos anfragen
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
               <a
                 href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 px-7 py-4 text-[14px] font-medium hover:border-foreground/40 transition-colors min-h-[52px]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 px-7 py-4 text-[14px] font-medium hover:border-foreground/40 hover:-translate-y-0.5 transition-all duration-300 min-h-[52px]"
               >
-                <MessageCircle className="h-4 w-4" /> WhatsApp
+                <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:rotate-[-8deg]" /> WhatsApp
               </a>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="lg:col-span-4 lg:col-start-9">
-            {/* Social proof — no card, just composition */}
+          <Reveal className="lg:col-span-4 lg:col-start-9" delay={1000}>
             <div className="space-y-5">
               <div className="flex items-center gap-3">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-primary text-primary animate-[scale-in_0.5s_ease-out_both]"
+                      style={{ animationDelay: `${1200 + i * 90}ms` }}
+                    />
                   ))}
                 </div>
                 <span className="font-serif text-2xl">5,0</span>
@@ -171,7 +191,7 @@ function Hero() {
                 — P. Sieberg, Local Guide
               </p>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
