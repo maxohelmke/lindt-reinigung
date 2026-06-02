@@ -125,27 +125,29 @@ function Nav() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/95 backdrop-blur-sm shadow-[var(--shadow-nav)]" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+        scrolled
+          ? "bg-[var(--color-deep-green)]/95 backdrop-blur-md border-white/10 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)]"
+          : "bg-[var(--color-deep-green)]/70 backdrop-blur-sm border-white/10"
       }`}
     >
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-4 sm:py-5 flex items-center justify-between gap-4">
-        <a href="#top" className="flex items-baseline gap-2 shrink-0">
-          <span className="font-serif text-xl sm:text-2xl tracking-tight">Shadi Alo</span>
-          <span className="hidden sm:inline text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-5 sm:py-7 flex items-center justify-between gap-4">
+        <a href="#top" className="flex items-baseline gap-3 shrink-0 text-white">
+          <span className="font-serif text-2xl sm:text-3xl tracking-tight">Shadi Alo</span>
+          <span className="hidden sm:inline text-[10px] uppercase tracking-[0.25em] text-white/60">
             Reinigungsdienst
           </span>
         </a>
-        <nav className="hidden md:flex items-center gap-10 text-[13px] tracking-wide">
-          <a href="#leistungen" className="link-underline">Leistungen</a>
-          <a href="#ueber" className="link-underline">Über uns</a>
-          <a href="#bewertungen" className="link-underline">Bewertungen</a>
-          <a href="#kontakt" className="link-underline">Kontakt</a>
+        <nav className="hidden md:flex items-center gap-10 text-[13px] tracking-wide text-white/85">
+          <a href="#leistungen" className="link-underline hover:text-white transition-colors">Leistungen</a>
+          <a href="#ueber" className="link-underline hover:text-white transition-colors">Über uns</a>
+          <a href="#bewertungen" className="link-underline hover:text-white transition-colors">Bewertungen</a>
+          <a href="#kontakt" className="link-underline hover:text-white transition-colors">Kontakt</a>
         </nav>
         <a
           href={PHONE_HREF}
           aria-label="Jetzt anrufen"
-          className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 sm:px-5 py-2.5 text-[13px] font-medium text-background hover:bg-primary transition-colors min-h-[44px]"
+          className="inline-flex items-center gap-2 rounded-full bg-primary px-5 sm:px-6 py-2.5 sm:py-3 text-[13px] font-medium text-primary-foreground hover:bg-white hover:text-foreground transition-colors min-h-[44px]"
         >
           <Phone className="h-4 w-4 sm:hidden" />
           <span className="hidden sm:inline">Anfrage stellen</span>
@@ -195,7 +197,7 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[100svh] flex items-center justify-center px-5 sm:px-10 overflow-hidden"
+      className="relative min-h-[100svh] flex items-start sm:items-center justify-center px-5 sm:px-10 pt-40 sm:pt-48 pb-16 overflow-hidden"
     >
       {/* Background video with parallax + slow zoom */}
       <div
@@ -288,11 +290,6 @@ function Hero() {
         </Reveal>
       </div>
 
-      {/* Scroll cue */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/55 text-[10px] uppercase tracking-[0.3em] animate-float-y">
-        <span>Scrollen</span>
-        <span className="h-8 w-px bg-white/40" />
-      </div>
     </section>
   );
 }
