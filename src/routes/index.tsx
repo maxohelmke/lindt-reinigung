@@ -73,8 +73,8 @@ function Nav() {
         scrolled ? "bg-white shadow-[var(--shadow-nav)]" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-        <a href="#top" className="font-serif text-2xl tracking-tight">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
+        <a href="#top" className="font-serif text-xl sm:text-2xl tracking-tight shrink-0">
           Shadi Alo
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm">
@@ -85,9 +85,12 @@ function Nav() {
         </nav>
         <a
           href={PHONE_HREF}
-          className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:translate-y-[-1px]"
+          aria-label="Jetzt anrufen"
+          className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 sm:px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:translate-y-[-1px] min-h-[44px]"
         >
-          Kostenlos anfragen <ArrowRight className="h-4 w-4" />
+          <Phone className="h-4 w-4 sm:hidden" />
+          <span className="hidden sm:inline">Kostenlos anfragen</span>
+          <ArrowRight className="h-4 w-4 hidden sm:inline-block" />
         </a>
       </div>
     </header>
