@@ -12,6 +12,8 @@ import {
   Star,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { Magnetic } from "@/components/Magnetic";
+import { useScrollY } from "@/hooks/use-scroll-y";
 import { TrustBar, Gallery, FAQ, CtaStrip, Asterisk, Scribble, WorkAreas, References } from "@/components/Sections";
 import {
   Carousel,
