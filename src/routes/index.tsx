@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Star,
 } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
