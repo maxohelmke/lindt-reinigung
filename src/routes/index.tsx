@@ -680,45 +680,43 @@ function Contact() {
   return (
     <section id="kontakt" className="py-24 sm:py-36 px-5 sm:px-10">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-          <span>Kontakt</span>
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Kontakt</span>
+          </div>
+          <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.03em] mb-6">
+            Jetzt
+            <br />
+            <span className="italic text-primary">unverbindlich</span>
+            <br />
+            anfragen.
+          </h2>
+          <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-xl mb-10">
+            Kein Formular, kein Aufwand — einfach anrufen oder per WhatsApp
+            schreiben. Wir antworten innerhalb von 24 Stunden.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 max-w-xl">
+            <a
+              href={PHONE_HREF}
+              className="group flex-1 inline-flex items-center justify-between gap-3 rounded-full bg-foreground px-7 py-5 text-base font-medium text-background hover:bg-primary transition-colors min-h-[60px]"
+            >
+              <span className="flex items-center gap-3">
+                <Phone className="h-5 w-5" /> {PHONE}
+              </span>
+              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href={WHATSAPP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-foreground/20 px-7 py-5 text-base font-medium hover:border-foreground/50 transition-colors min-h-[60px]"
+            >
+              <MessageCircle className="h-5 w-5" /> WhatsApp
+            </a>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-7">
-            <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.03em] mb-8">
-              Jetzt
-              <br />
-              <span className="italic text-primary">unverbindlich</span>
-              <br />
-              anfragen.
-            </h2>
-            <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-lg mb-10">
-              Kein Formular, kein Aufwand — einfach anrufen oder per WhatsApp
-              schreiben. Wir antworten innerhalb von 24 Stunden.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-xl">
-              <a
-                href={PHONE_HREF}
-                className="group flex-1 inline-flex items-center justify-between gap-3 rounded-full bg-foreground px-7 py-5 text-base font-medium text-background hover:bg-primary transition-colors min-h-[60px]"
-              >
-                <span className="flex items-center gap-3">
-                  <Phone className="h-5 w-5" /> {PHONE}
-                </span>
-                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 rounded-full border border-foreground/20 px-7 py-5 text-base font-medium hover:border-foreground/50 transition-colors min-h-[60px]"
-              >
-                <MessageCircle className="h-5 w-5" /> WhatsApp
-              </a>
-            </div>
-          </div>
-
-          <aside className="lg:col-span-4 lg:col-start-9 space-y-8 lg:pt-12">
             {[
               { icon: MapPin, label: "Adresse", lines: ["Messeweg 113", "52156 Monschau"] },
               { icon: Clock, label: "Reaktion", lines: ["Antwort innerhalb", "von 24 Stunden"] },
