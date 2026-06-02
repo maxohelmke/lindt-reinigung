@@ -208,7 +208,9 @@ function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          aria-hidden="true"
+          tabIndex={-1}
           poster="https://assets.mixkit.co/videos/13282/13282-thumb-720-0.jpg"
         >
           <source src="https://assets.mixkit.co/videos/13282/13282-720.mp4" type="video/mp4" />
