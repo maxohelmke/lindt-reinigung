@@ -695,6 +695,16 @@ function Contact() {
     </section>
   );
 }
+
+/* ─────────────────────────────────────────────────────────── FOOTER */
+
+function Footer() {
+  return (
+    <footer className="bg-[var(--color-dark)] text-white px-5 sm:px-10 pt-16 pb-10">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid md:grid-cols-12 gap-10 mb-16 pb-16 border-b border-white/10">
+          <div className="md:col-span-5">
+            <div className="font-serif text-3xl sm:text-4xl mb-4">Shadi Alo</div>
             <p className="text-sm text-white/60 max-w-sm leading-relaxed">
               Premium Reinigungsdienst für Monschau und die Eifelregion. Privat, Gewerbe, Sonderaufträge — zuverlässig und diskret.
             </p>
