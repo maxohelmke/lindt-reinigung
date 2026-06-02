@@ -242,26 +242,26 @@ function WhyUs() {
     { t: "Diskret", d: "Vertrauensvoller Umgang mit Ihrer Wohnung oder Ihren Geschäftsräumen — selbstverständlich." },
   ];
   return (
-    <section id="ueber" className="py-28 px-6 bg-card/50">
-      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16">
+    <section id="ueber" className="py-20 sm:py-28 px-4 sm:px-6 bg-card/50">
+      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16">
         <div>
           <p className="overline mb-4">Warum wir</p>
-          <h2 className="font-serif text-4xl md:text-5xl mb-12">Vertrauen, das man spürt.</h2>
-          <blockquote className="font-serif italic text-2xl md:text-3xl text-primary leading-snug border-l-2 border-primary pl-6">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-8 sm:mb-12">Vertrauen, das man spürt.</h2>
+          <blockquote className="font-serif italic text-xl sm:text-2xl md:text-3xl text-primary leading-snug border-l-2 border-primary pl-5 sm:pl-6">
             „Ein Reinigungsdienst, bei dem man sich keine Gedanken machen muss."
           </blockquote>
-          <p className="text-sm text-muted-foreground mt-4 pl-6">
+          <p className="text-sm text-muted-foreground mt-4 pl-5 sm:pl-6">
             Das ist unser Anspruch bei jedem Auftrag.
           </p>
         </div>
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {points.map((p) => (
-            <div key={p.t} className="flex gap-5">
+            <div key={p.t} className="flex gap-4 sm:gap-5">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
                 <Check className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h3 className="font-serif text-xl mb-2">{p.t}</h3>
+                <h3 className="font-serif text-lg sm:text-xl mb-2">{p.t}</h3>
                 <p className="text-muted-foreground leading-relaxed">{p.d}</p>
               </div>
             </div>
