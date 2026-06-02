@@ -558,11 +558,11 @@ function Reviews() {
   return (
     <section id="bewertungen" className="bg-[var(--color-dark)] text-white py-24 sm:py-36 px-5 sm:px-10 overflow-hidden">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
-          <span>Kundenstimmen</span>
-        </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 sm:mb-16">
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-3xl">
+        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
+            <span>Kundenstimmen</span>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-8">
             Was unsere Kunden{" "}
             <span className="italic text-primary">sagen.</span>
           </h2>
