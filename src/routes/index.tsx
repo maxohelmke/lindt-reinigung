@@ -138,14 +138,6 @@ function Hero() {
       <Asterisk className="hidden lg:block absolute bottom-24 left-[42%] h-10 w-10 text-foreground/15" />
       <Scribble className="hidden md:block absolute top-1/2 right-12 w-40 text-primary/30" />
       <div className="mx-auto max-w-[1400px] relative">{/* :wrap */}
-        <div className="flex items-center justify-between mb-12 sm:mb-20 text-[11px] uppercase tracking-[0.25em] text-muted-foreground animate-[fade-up_0.8s_ease-out_both]">
-          <span>Est. Monschau · Eifel</span>
-          <span className="hidden sm:inline">№ 01 — Reinigungsdienst</span>
-          <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-            Verfügbar
-          </span>
-        </div>
 
         <AnimatedHeadline />
 
