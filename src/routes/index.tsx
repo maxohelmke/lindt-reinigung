@@ -160,7 +160,9 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
 
       <Asterisk className="hidden sm:block absolute top-32 right-10 h-16 w-16 text-primary/70 animate-[spin_18s_linear_infinite]" />
-      <Scribble className="hidden md:block absolute bottom-24 left-10 w-40 text-primary/40" />
+      <Asterisk className="hidden lg:block absolute bottom-32 right-24 h-10 w-10 text-white/40 animate-float-y" />
+      <div className="hidden md:block absolute top-1/3 left-12 h-32 w-32 rounded-full bg-primary/30 blur-[60px] animate-glow-pulse" />
+      <Scribble className="hidden md:block absolute bottom-24 left-10 w-40 text-primary/40 animate-float-x" />
 
       <div className="relative mx-auto max-w-[1100px] w-full text-center flex flex-col items-center">
         <AnimatedHeadline />
