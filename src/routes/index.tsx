@@ -453,6 +453,9 @@ function Services() {
                         src={s.img}
                         alt={s.title}
                         loading="lazy"
+                        decoding="async"
+                        width={600}
+                        height={600}
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                     </div>
