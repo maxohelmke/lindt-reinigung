@@ -12,7 +12,7 @@ import {
   Star,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { TrustBar, Gallery, FAQ, CtaStrip, Asterisk, Scribble } from "@/components/Sections";
+import { TrustBar, Gallery, FAQ, CtaStrip, Asterisk, Scribble, WorkAreas, References } from "@/components/Sections";
 import {
   Carousel,
   CarouselContent,
