@@ -306,7 +306,7 @@ function Marquee() {
   ];
   const row = [...items, ...items];
   return (
-    <div className="border-y border-border py-6 overflow-hidden bg-background marquee-fade group">
+    <div className="border-y border-border py-6 overflow-hidden bg-background marquee-fade group" aria-hidden="true">
       <div className="flex gap-12 animate-marquee whitespace-nowrap font-serif text-2xl sm:text-3xl text-foreground/40 [animation-play-state:running] group-hover:[animation-play-state:paused]">
         {row.map((t, i) => (
           <span key={i} className="flex items-center gap-12 transition-colors duration-300 hover:text-primary">
