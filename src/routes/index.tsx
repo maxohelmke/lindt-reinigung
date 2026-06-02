@@ -99,22 +99,22 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="pt-32 pb-24 px-6">
-      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+    <section id="top" className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <div>
-          <p className="overline mb-6">Reinigungsdienst · Monschau & Eifel-Region</p>
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-8">
-            Sauberkeit,<br />die für sich spricht.
+          <p className="overline mb-4 sm:mb-6">Reinigungsdienst · Monschau & Eifel</p>
+          <h1 className="font-serif text-[2.5rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05] mb-6 sm:mb-8">
+            Sauberkeit, die für sich spricht.
           </h1>
-          <p className="text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-xl mb-8 sm:mb-10 leading-relaxed">
             Privat oder Gewerbe — wir übernehmen die Reinigung zuverlässig, diskret und
             zu fairen Preisen. Seit Jahren vertrauen uns Kunden in Monschau und der
             gesamten Eifelregion.
           </p>
-          <div className="flex flex-wrap gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-10">
             <a
               href={PHONE_HREF}
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-all hover:translate-y-[-2px]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 sm:px-7 py-4 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-all hover:translate-y-[-2px] min-h-[52px]"
             >
               Jetzt kostenlos anfragen <ArrowRight className="h-5 w-5" />
             </a>
@@ -122,12 +122,12 @@ function Hero() {
               href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-foreground/20 px-7 py-4 text-base font-medium hover:bg-foreground/5 transition-all"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-foreground/20 px-6 sm:px-7 py-4 text-base font-medium hover:bg-foreground/5 transition-all min-h-[52px]"
             >
               <MessageCircle className="h-5 w-5" /> WhatsApp schreiben
             </a>
           </div>
-          <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-8 gap-y-2 sm:gap-y-3 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Kostenlose Anfrage</span>
             <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Antwort in 24h</span>
             <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Keine Vertragsbindung</span>
