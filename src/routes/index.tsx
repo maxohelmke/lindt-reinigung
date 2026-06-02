@@ -339,32 +339,34 @@ function Services() {
           </div>
         </div>
 
-        {/* Index-style list, hairline rules, hover-row treatment */}
         <div className="border-t border-border">
-          {services.map((s) => (
-            <a
-              key={s.n}
-              href="#kontakt"
-              className="group block border-b border-border py-7 sm:py-9 hover:bg-foreground/[0.02] -mx-3 sm:-mx-6 px-3 sm:px-6 transition-colors"
-            >
-              <div className="grid grid-cols-12 gap-4 sm:gap-8 items-baseline">
-                <div className="col-span-2 sm:col-span-1 font-mono text-xs sm:text-sm text-muted-foreground tabular-nums pt-1">
-                  {s.n}
+          {services.map((s, idx) => (
+            <Reveal key={s.n} delay={idx * 80}>
+              <a
+                href="#kontakt"
+                className="group block border-b border-border py-7 sm:py-9 hover:bg-foreground/[0.03] -mx-3 sm:-mx-6 px-3 sm:px-6 transition-colors duration-300 relative overflow-hidden"
+              >
+                {/* sliding accent bar */}
+                <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-primary scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500" />
+                <div className="grid grid-cols-12 gap-4 sm:gap-8 items-baseline">
+                  <div className="col-span-2 sm:col-span-1 font-mono text-xs sm:text-sm text-muted-foreground tabular-nums pt-1 group-hover:text-primary transition-colors">
+                    {s.n}
+                  </div>
+                  <h3 className="col-span-10 sm:col-span-4 font-serif text-2xl sm:text-3xl md:text-4xl tracking-tight transition-transform duration-500 group-hover:translate-x-2">
+                    {s.title}
+                  </h3>
+                  <p className="col-span-12 sm:col-span-5 text-sm sm:text-base text-foreground/65 leading-relaxed">
+                    {s.desc}
+                  </p>
+                  <div className="col-span-12 sm:col-span-2 sm:text-right">
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-all duration-300 group-hover:gap-3">
+                      Anfragen
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </span>
+                  </div>
                 </div>
-                <h3 className="col-span-10 sm:col-span-4 font-serif text-2xl sm:text-3xl md:text-4xl tracking-tight">
-                  {s.title}
-                </h3>
-                <p className="col-span-12 sm:col-span-5 text-sm sm:text-base text-foreground/65 leading-relaxed">
-                  {s.desc}
-                </p>
-                <div className="col-span-12 sm:col-span-2 sm:text-right">
-                  <span className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
-                    Anfragen
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </div>
-              </div>
-            </a>
+              </a>
+            </Reveal>
           ))}
         </div>
       </div>
