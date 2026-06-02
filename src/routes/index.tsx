@@ -134,7 +134,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 lg:p-10">
+        <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-6 sm:p-8 lg:p-10">
           <div className="flex items-center gap-4 mb-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted font-serif text-xl">G</div>
             <div>
