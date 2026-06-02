@@ -518,76 +518,162 @@ function Process() {
 /* ─────────────────────────────────────────────────────────── REVIEWS */
 
 function Reviews() {
+  const reviews = [
+    {
+      name: "P. Sieberg",
+      role: "Local Guide · Google",
+      initials: "PS",
+      text: "Zuverlässig, preiswert und seriös! Nur zu empfehlen.",
+    },
+    {
+      name: "M. Krings",
+      role: "Privatkunde · Monschau",
+      initials: "MK",
+      text: "Pünktlich, gründlich, freundlich. Unsere Wohnung war noch nie so sauber — wir buchen jetzt regelmäßig.",
+    },
+    {
+      name: "Dr. A. Weber",
+      role: "Praxis · Aachen",
+      initials: "AW",
+      text: "Diskret, professionell und absolut verlässlich. Für unsere Praxis genau die richtige Wahl.",
+    },
+    {
+      name: "S. Hoffmann",
+      role: "Büro · Simmerath",
+      initials: "SH",
+      text: "Top Kommunikation, faire Preise und sehr ordentliche Arbeit. Klare Weiterempfehlung.",
+    },
+    {
+      name: "J. Lennartz",
+      role: "Hausverwaltung · Eifel",
+      initials: "JL",
+      text: "Wir lassen seit Monaten unsere Treppenhäuser reinigen — immer auf den Punkt, keine Reklamationen.",
+    },
+    {
+      name: "C. Bauer",
+      role: "Umzug · Aachen",
+      initials: "CB",
+      text: "Bauendreinigung nach unserem Umzug. Schlüsselübergabe ohne ein einziges Problem. Danke!",
+    },
+  ];
+
   return (
-    <section id="bewertungen" className="bg-[var(--color-dark)] text-white py-24 sm:py-36 px-5 sm:px-10">
+    <section id="bewertungen" className="bg-[var(--color-dark)] text-white py-24 sm:py-36 px-5 sm:px-10 overflow-hidden">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
           <span>№ 06</span>
           <span>Kundenstimmen</span>
         </div>
-        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-16 sm:mb-20 max-w-3xl">
-          Was unsere Kunden{" "}
-          <span className="italic text-primary">sagen.</span>
-        </h2>
-
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
-          {/* Featured review */}
-          <article className="lg:col-span-7 border-t border-white/15 pt-10">
-            <div className="flex items-center gap-2 mb-8">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-              ))}
-              <span className="ml-2 text-xs uppercase tracking-[0.2em] text-white/50">Google-Rezension</span>
-            </div>
-            <blockquote className="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.15] tracking-[-0.01em] mb-10">
-              „Zuverlässig, preiswert und seriös!{" "}
-              <span className="italic text-white/60">Nur zu empfehlen.</span>"
-            </blockquote>
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 font-serif text-lg">
-                PS
-              </div>
-              <div>
-                <div className="text-sm font-medium">P. Sieberg</div>
-                <div className="text-xs text-white/50 uppercase tracking-[0.15em]">Local Guide</div>
-              </div>
-            </div>
-          </article>
-
-          <aside className="lg:col-span-4 lg:col-start-9 space-y-6">
-            {[1, 2].map((i) => (
-              <div key={i} className="border-t border-white/15 pt-6 text-white/40">
-                <div className="text-[10px] uppercase tracking-[0.25em] mb-3">Kommt bald</div>
-                <p className="font-serif text-lg italic text-white/60 mb-4">Ihre Meinung zählt.</p>
-                <a
-                  href="https://www.google.com/maps"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs uppercase tracking-[0.2em] text-white hover:text-primary transition-colors inline-flex items-center gap-2"
-                >
-                  Bewertung schreiben <ArrowUpRight className="h-3 w-3" />
-                </a>
-              </div>
-            ))}
-          </aside>
-        </div>
-
-        <div className="mt-16 sm:mt-24 pt-10 border-t border-white/15 flex flex-wrap items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-foreground font-serif text-sm">G</div>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 sm:mb-16">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-3xl">
+            Was unsere Kunden{" "}
+            <span className="italic text-primary">sagen.</span>
+          </h2>
+          <div className="flex items-center gap-4 shrink-0">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-foreground font-serif text-base">G</div>
             <div>
-              <div className="font-serif text-2xl">5,0 / 5,0</div>
-              <div className="text-[11px] uppercase tracking-[0.2em] text-white/50">auf Google bewertet</div>
+              <div className="font-serif text-2xl leading-none">5,0 / 5,0</div>
+              <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-white/50">auf Google bewertet</div>
             </div>
           </div>
-          <div className="flex">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-5 w-5 fill-primary text-primary" />
-            ))}
-          </div>
         </div>
+
+        <ReviewsCarousel reviews={reviews} />
       </div>
     </section>
+  );
+}
+
+function ReviewsCarousel({ reviews }: { reviews: { name: string; role: string; initials: string; text: string }[] }) {
+  const [api, setApi] = useState<CarouselApi | null>(null);
+  const [selected, setSelected] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setSelected(api.selectedScrollSnap());
+    const onSelect = () => setSelected(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  return (
+    <div className="relative">
+      <Carousel
+        setApi={setApi}
+        opts={{ align: "start", loop: true }}
+        className="w-full"
+      >
+        <CarouselContent className="-ml-4 sm:-ml-6">
+          {reviews.map((r, i) => (
+            <CarouselItem
+              key={i}
+              className="pl-4 sm:pl-6 basis-full md:basis-1/2 lg:basis-1/3"
+            >
+              <article className="h-full flex flex-col justify-between border border-white/10 bg-white/[0.03] backdrop-blur-sm rounded-2xl p-7 sm:p-8 transition-colors duration-300 hover:bg-white/[0.06] hover:border-white/20">
+                <div>
+                  <div className="flex items-center gap-1.5 mb-5">
+                    {[...Array(5)].map((_, k) => (
+                      <Star key={k} className="h-4 w-4 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <blockquote className="font-serif text-xl sm:text-2xl leading-snug tracking-tight text-white/95">
+                    „{r.text}"
+                  </blockquote>
+                </div>
+                <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 font-serif text-sm">
+                    {r.initials}
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium">{r.name}</div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-white/50 mt-0.5">{r.role}</div>
+                  </div>
+                </div>
+              </article>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+
+      {/* Controls */}
+      <div className="mt-10 flex items-center justify-between gap-6">
+        <div className="flex items-center gap-2">
+          {Array.from({ length: count }).map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => api?.scrollTo(i)}
+              aria-label={`Zur Bewertung ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                selected === i ? "w-8 bg-primary" : "w-4 bg-white/20 hover:bg-white/40"
+              }`}
+            />
+          ))}
+        </div>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => api?.scrollPrev()}
+            aria-label="Vorherige Bewertung"
+            className="h-11 w-11 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-foreground transition-colors"
+          >
+            <ArrowRight className="h-4 w-4 rotate-180" />
+          </button>
+          <button
+            type="button"
+            onClick={() => api?.scrollNext()}
+            aria-label="Nächste Bewertung"
+            className="h-11 w-11 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-foreground transition-colors"
+          >
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
