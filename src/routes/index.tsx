@@ -179,12 +179,12 @@ function Stats() {
     { k: "0 €", l: "Anfrage-Kosten" },
   ];
   return (
-    <section className="bg-[var(--color-dark)] text-white py-16 px-6">
-      <div className="mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-4 gap-10">
+    <section className="bg-[var(--color-dark)] text-white py-12 sm:py-16 px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
         {items.map((i) => (
           <div key={i.l} className="text-center md:text-left">
-            <div className="font-serif text-4xl md:text-5xl mb-2">{i.k}</div>
-            <div className="text-sm text-white/60">{i.l}</div>
+            <div className="font-serif text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2">{i.k}</div>
+            <div className="text-xs sm:text-sm text-white/60">{i.l}</div>
           </div>
         ))}
       </div>
