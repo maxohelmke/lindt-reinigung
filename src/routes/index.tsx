@@ -197,7 +197,7 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[100svh] flex items-center justify-center px-5 sm:px-10 overflow-hidden"
+      className="relative min-h-[100svh] flex items-start sm:items-center justify-center px-5 sm:px-10 pt-40 sm:pt-48 pb-16 overflow-hidden"
     >
       {/* Background video with parallax + slow zoom */}
       <div
