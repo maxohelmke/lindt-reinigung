@@ -37,6 +37,41 @@ export const Route = createFileRoute("/")({
         content:
           "Sauberkeit, die für sich spricht. Privat oder Gewerbe — zuverlässig, diskret, faire Preise.",
       },
+      { property: "og:url", content: "/" },
+      { name: "twitter:title", content: "Shadi Alo Reinigungsdienst — Monschau & Eifel" },
+      {
+        name: "twitter:description",
+        content:
+          "Sauberkeit, die für sich spricht. Privat oder Gewerbe — zuverlässig, diskret, faire Preise.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Shadi Alo Reinigungsdienst",
+          image: "https://assets.mixkit.co/videos/13282/13282-thumb-720-0.jpg",
+          telephone: "+4915560171646",
+          email: "",
+          priceRange: "€€",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Messeweg 113",
+            postalCode: "52156",
+            addressLocality: "Monschau",
+            addressCountry: "DE",
+          },
+          areaServed: ["Monschau", "Aachen", "Düren", "Eifel", "Simmerath", "Roetgen"],
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "5.0",
+            reviewCount: "12",
+          },
+        }),
+      },
     ],
   }),
   component: Index,
