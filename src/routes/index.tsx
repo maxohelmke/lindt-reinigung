@@ -140,33 +140,55 @@ function AnimatedHeadline() {
 }
 
 function Hero() {
+  const scrollY = useScrollY();
+  // Parallax: video moves slower, content drifts up and fades
+  const videoY = Math.min(scrollY * 0.35, 240);
+  const contentY = Math.min(scrollY * 0.18, 120);
+  const contentOpacity = Math.max(1 - scrollY / 600, 0);
+  const overlayOpacity = Math.min(0.55 + scrollY / 1400, 0.85);
+
   return (
     <section
       id="top"
       className="relative min-h-[100svh] flex items-center justify-center px-5 sm:px-10 overflow-hidden"
     >
-      {/* Background video */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster="https://assets.mixkit.co/videos/13282/13282-thumb-720-0.jpg"
+      {/* Background video with parallax + slow zoom */}
+      <div
+        className="absolute inset-0 will-change-transform"
+        style={{ transform: `translate3d(0, ${videoY}px, 0)` }}
       >
-        <source src="https://assets.mixkit.co/videos/13282/13282-720.mp4" type="video/mp4" />
-      </video>
+        <video
+          className="absolute inset-0 w-full h-full object-cover animate-slow-zoom"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="https://assets.mixkit.co/videos/13282/13282-thumb-720-0.jpg"
+        >
+          <source src="https://assets.mixkit.co/videos/13282/13282-720.mp4" type="video/mp4" />
+        </video>
+      </div>
       {/* Dark overlay for legibility */}
-      <div className="absolute inset-0 bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+      <div
+        className="absolute inset-0 bg-black transition-opacity"
+        style={{ opacity: overlayOpacity }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_60%,transparent_0%,rgba(0,0,0,0.45)_75%)]" />
 
       <Asterisk className="hidden sm:block absolute top-32 right-10 h-16 w-16 text-primary/70 animate-[spin_18s_linear_infinite]" />
       <Asterisk className="hidden lg:block absolute bottom-32 right-24 h-10 w-10 text-white/40 animate-float-y" />
       <div className="hidden md:block absolute top-1/3 left-12 h-32 w-32 rounded-full bg-primary/30 blur-[60px] animate-glow-pulse" />
       <Scribble className="hidden md:block absolute bottom-24 left-10 w-40 text-primary/40 animate-float-x" />
 
-      <div className="relative mx-auto max-w-[1100px] w-full text-center flex flex-col items-center">
+      <div
+        className="relative mx-auto max-w-[1100px] w-full text-center flex flex-col items-center will-change-transform"
+        style={{
+          transform: `translate3d(0, ${-contentY}px, 0)`,
+          opacity: contentOpacity,
+        }}
+      >
         <AnimatedHeadline />
 
         <Reveal delay={800}>
@@ -179,23 +201,24 @@ function Hero() {
 
         <Reveal delay={1000}>
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-            <a
+            <Magnetic
               href={PHONE_HREF}
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-[14px] font-medium text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg min-h-[52px]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-[14px] font-medium text-primary-foreground hover:bg-primary/90 transition-colors min-h-[52px] shadow-[0_18px_40px_-18px_var(--color-primary)]"
             >
               <Phone className="h-4 w-4" />
               Kostenlos anfragen
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </a>
-            <a
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </Magnetic>
+            <Magnetic
               href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/5 backdrop-blur-sm px-7 py-4 text-[14px] font-medium text-white hover:bg-white/15 hover:-translate-y-0.5 transition-all duration-300 min-h-[52px]"
+              strength={0.18}
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/5 backdrop-blur-sm px-7 py-4 text-[14px] font-medium text-white hover:bg-white/15 transition-colors min-h-[52px]"
             >
-              <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:rotate-[-8deg]" />
+              <MessageCircle className="h-4 w-4 transition-transform duration-500 group-hover:rotate-[-8deg]" />
               WhatsApp
-            </a>
+            </Magnetic>
           </div>
         </Reveal>
 
@@ -217,6 +240,12 @@ function Hero() {
           </div>
         </Reveal>
       </div>
+
+      {/* Scroll cue */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/55 text-[10px] uppercase tracking-[0.3em] animate-float-y">
+        <span>Scrollen</span>
+        <span className="h-8 w-px bg-white/40" />
+      </div>
     </section>
   );
 }
@@ -230,10 +259,10 @@ function Marquee() {
   ];
   const row = [...items, ...items];
   return (
-    <div className="border-y border-border py-6 overflow-hidden bg-background">
-      <div className="flex gap-12 animate-marquee whitespace-nowrap font-serif text-2xl sm:text-3xl text-foreground/40">
+    <div className="border-y border-border py-6 overflow-hidden bg-background marquee-fade group">
+      <div className="flex gap-12 animate-marquee whitespace-nowrap font-serif text-2xl sm:text-3xl text-foreground/40 [animation-play-state:running] group-hover:[animation-play-state:paused]">
         {row.map((t, i) => (
-          <span key={i} className="flex items-center gap-12">
+          <span key={i} className="flex items-center gap-12 transition-colors duration-300 hover:text-primary">
             {t}
             <span className="text-primary">✦</span>
           </span>
@@ -242,6 +271,8 @@ function Marquee() {
     </div>
   );
 }
+
+
 
 /* ─────────────────────────────────────────────────────────── STATS */
 
