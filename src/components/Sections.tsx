@@ -1,6 +1,12 @@
-import { useState } from "react";
-import { Plus, Minus, Sparkles, Leaf, Award, Clock3, MapPin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Plus, Minus, Sparkles, Leaf, Award, Clock3, MapPin, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 /* ─────────────────────────────────────────────────────────── DECOR */
 
@@ -124,7 +130,6 @@ export function Gallery() {
         <div className="grid lg:grid-cols-12 gap-10 mb-14 sm:mb-20">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>№ 04</span>
               <span>Arbeitsproben</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
@@ -144,32 +149,96 @@ export function Gallery() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5">
-          {TILES.map((t, i) => (
-            <Reveal
-              key={t.src}
-              delay={i * 90}
-              className={`group relative overflow-hidden rounded-2xl bg-muted ${t.span}`}
-            >
-              <img
-                src={t.src}
-                alt={t.alt}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/55 via-foreground/0 to-transparent" />
-              <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-background/85 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                {t.tag}
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 font-serif text-white text-lg sm:text-xl leading-tight tracking-tight drop-shadow-sm">
-                {t.alt}
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <GalleryCarousel />
       </div>
     </section>
+  );
+}
+
+function GalleryCarousel() {
+  const [api, setApi] = useState<CarouselApi | null>(null);
+  const [selected, setSelected] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setSelected(api.selectedScrollSnap());
+    const onSelect = () => setSelected(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  return (
+    <div className="relative">
+      <Carousel
+        setApi={setApi}
+        opts={{ align: "start", loop: true }}
+        className="w-full"
+      >
+        <CarouselContent className="-ml-4 sm:-ml-5">
+          {TILES.map((t) => (
+            <CarouselItem
+              key={t.src}
+              className="pl-4 sm:pl-5 basis-[85%] sm:basis-1/2 lg:basis-1/3"
+            >
+              <figure className="group relative overflow-hidden rounded-2xl bg-muted aspect-[4/5]">
+                <img
+                  src={t.src}
+                  alt={t.alt}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/0 to-transparent" />
+                <figcaption className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-background/85 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  {t.tag}
+                </figcaption>
+                <div className="absolute bottom-4 left-4 right-4 font-serif text-white text-lg sm:text-xl leading-tight tracking-tight drop-shadow-sm">
+                  {t.alt}
+                </div>
+              </figure>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+
+      <div className="mt-8 flex items-center justify-between gap-6">
+        <div className="flex items-center gap-2">
+          {Array.from({ length: count }).map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => api?.scrollTo(i)}
+              aria-label={`Zum Bild ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                selected === i ? "w-8 bg-primary" : "w-4 bg-foreground/15 hover:bg-foreground/30"
+              }`}
+            />
+          ))}
+        </div>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => api?.scrollPrev()}
+            aria-label="Vorheriges Bild"
+            className="h-11 w-11 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
+          >
+            <ArrowRight className="h-4 w-4 rotate-180" />
+          </button>
+          <button
+            type="button"
+            onClick={() => api?.scrollNext()}
+            aria-label="Nächstes Bild"
+            className="h-11 w-11 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
+          >
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -209,7 +278,6 @@ export function FAQ() {
       <div className="mx-auto max-w-[1400px] grid lg:grid-cols-12 gap-12 lg:gap-16">
         <div className="lg:col-span-4">
           <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-            <span>№ 06</span>
             <span>Häufige Fragen</span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
