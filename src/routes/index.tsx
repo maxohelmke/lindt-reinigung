@@ -13,6 +13,12 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { TrustBar, Gallery, FAQ, CtaStrip, Asterisk, Scribble } from "@/components/Sections";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
