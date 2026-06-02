@@ -202,30 +202,28 @@ function Services() {
     { icon: Wrench, title: "Sonderreinigung", desc: "Bauendreinigung, Veranstaltungsreinigung und individuelle Sonderprojekte." },
   ];
   return (
-    <section id="leistungen" className="py-28 px-6">
+    <section id="leistungen" className="py-20 sm:py-28 px-4 sm:px-6">
       <div className="mx-auto max-w-7xl">
         <p className="overline mb-4">Leistungen</p>
-        <h2 className="font-serif text-4xl md:text-5xl mb-4 max-w-3xl">
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-4 max-w-3xl">
           Alles aus einer Hand — für jeden Bedarf.
         </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mb-14">
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mb-10 sm:mb-14">
           Ob einmalige Grundreinigung oder regelmäßige Unterhaltsreinigung — wir
           erstellen Ihnen ein individuelles Angebot.
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {services.map((s) => (
             <article
               key={s.title}
-              className={`group bg-card rounded-2xl p-8 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] transition-all hover:translate-y-[-2px] ${
-                s.big ? "lg:col-span-1 md:row-span-1" : ""
-              }`}
+              className="group bg-card rounded-2xl p-6 sm:p-8 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] transition-all hover:translate-y-[-2px]"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-muted mb-6 group-hover:bg-primary/10 transition-colors">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-muted mb-5 sm:mb-6 group-hover:bg-primary/10 transition-colors">
                 <s.icon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="font-serif text-2xl mb-3">{s.title}</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">{s.desc}</p>
-              <a href="#kontakt" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2.5 transition-all">
+              <h3 className="font-serif text-xl sm:text-2xl mb-3">{s.title}</h3>
+              <p className="text-muted-foreground mb-5 sm:mb-6 leading-relaxed">{s.desc}</p>
+              <a href="#kontakt" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2.5 transition-all min-h-[44px]">
                 Anfragen <ArrowRight className="h-4 w-4" />
               </a>
             </article>
