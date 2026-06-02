@@ -198,37 +198,104 @@ function Hero() {
   );
 }
 
+/* ─────────────────────────────────────────────────────────── MARQUEE */
+
+function Marquee() {
+  const items = [
+    "Privatreinigung", "Büro & Gewerbe", "Fensterreinigung", "Grundreinigung",
+    "Treppenhaus", "Sonderreinigung", "Bauendreinigung", "Veranstaltungsreinigung",
+  ];
+  const row = [...items, ...items];
+  return (
+    <div className="border-y border-border py-6 overflow-hidden bg-background">
+      <div className="flex gap-12 animate-marquee whitespace-nowrap font-serif text-2xl sm:text-3xl text-foreground/40">
+        {row.map((t, i) => (
+          <span key={i} className="flex items-center gap-12">
+            {t}
+            <span className="text-primary">✦</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ─────────────────────────────────────────────────────────── STATS */
+
+function StatNumber({ value, suffix }: { value: number; suffix: string }) {
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const [shown, setShown] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf = 0;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        const start = performance.now();
+        const duration = 1400;
+        const target = value;
+        const tick = (t: number) => {
+          const p = Math.min(1, (t - start) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          setShown(target * eased);
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [value]);
+
+  const display = value < 10
+    ? shown.toFixed(1).replace(".", ",")
+    : Math.round(shown).toString();
+  return (
+    <span ref={ref} className="tabular-nums">
+      {display}
+      <span className="text-2xl sm:text-3xl text-primary ml-1">{suffix}</span>
+    </span>
+  );
+}
 
 function Stats() {
   const items = [
-    { k: "5,0", s: "★★★★★", l: "Google-Bewertung" },
-    { k: "100", s: "%", l: "Zufriedenheit" },
-    { k: "24", s: "h", l: "Reaktionszeit" },
-    { k: "0", s: "€", l: "Anfrage-Kosten" },
+    { v: 5.0, s: "★", l: "Google-Bewertung" },
+    { v: 100, s: "%", l: "Zufriedenheit" },
+    { v: 24, s: "h", l: "Reaktionszeit" },
+    { v: 0, s: "€", l: "Anfrage-Kosten" },
   ];
   return (
     <section className="bg-[var(--color-dark)] text-white">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-14 sm:py-20">
-        <div className="flex items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
-          <span>№ 02</span>
-          <span className="h-px flex-1 bg-white/15" />
-          <span>Vertrauen in Zahlen</span>
-        </div>
+        <Reveal>
+          <div className="flex items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
+            <span>№ 02</span>
+            <span className="h-px flex-1 bg-white/15 origin-left animate-draw-line" />
+            <span>Vertrauen in Zahlen</span>
+          </div>
+        </Reveal>
         <div className="grid grid-cols-2 md:grid-cols-4">
           {items.map((i, idx) => (
-            <div
+            <Reveal
               key={i.l}
+              delay={idx * 120}
               className={`py-4 md:py-0 md:px-8 ${idx > 0 ? "md:border-l border-white/10" : ""}`}
             >
-              <div className="font-serif text-5xl sm:text-6xl md:text-7xl tracking-tight flex items-baseline gap-1">
-                {i.k}
-                <span className="text-2xl sm:text-3xl text-primary">{i.s}</span>
+              <div className="font-serif text-5xl sm:text-6xl md:text-7xl tracking-tight">
+                <StatNumber value={i.v} suffix={i.s} />
               </div>
               <div className="mt-2 text-[11px] uppercase tracking-[0.2em] text-white/50">
                 {i.l}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
