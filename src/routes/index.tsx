@@ -295,9 +295,9 @@ function Stats() {
     <section className="bg-[var(--color-dark)] text-white">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-14 sm:py-20">
         <Reveal>
-          <div className="flex items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
-            <span className="h-px flex-1 bg-white/15 origin-left animate-draw-line" />
+          <div className="flex flex-col items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
             <span>Vertrauen in Zahlen</span>
+            <span className="h-px w-20 bg-white/15 origin-center animate-draw-line" />
           </div>
         </Reveal>
         <div className="grid grid-cols-2 md:grid-cols-4">
