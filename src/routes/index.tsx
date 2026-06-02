@@ -563,8 +563,10 @@ function Reviews() {
   ];
 
   return (
-    <section id="bewertungen" className="bg-[var(--color-dark)] text-white py-24 sm:py-36 px-5 sm:px-10 overflow-hidden">
-      <div className="mx-auto max-w-[1400px]">
+    <section id="bewertungen" className="relative bg-[var(--color-deep-green)] text-white py-24 sm:py-36 px-5 sm:px-10 overflow-hidden">
+      <div className="pointer-events-none absolute -top-32 right-0 h-[460px] w-[460px] rounded-full bg-primary/20 blur-[140px] animate-aurora" />
+      <div className="pointer-events-none absolute -bottom-40 -left-20 h-[420px] w-[420px] rounded-full bg-[var(--color-deep-green-soft)] blur-[120px] animate-aurora" style={{ animationDelay: "-10s" }} />
+      <div className="relative mx-auto max-w-[1400px]">
         <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
           <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
             <span>Kundenstimmen</span>
