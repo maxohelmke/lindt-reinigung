@@ -4,18 +4,12 @@ import {
   Phone,
   MessageCircle,
   Check,
-  Home,
-  Building2,
-  Sparkles,
-  Wind,
-  Building,
-  Wrench,
-  Star,
-  MapPin,
-  Mail,
   ArrowRight,
+  ArrowUpRight,
+  MapPin,
   Clock,
   ShieldCheck,
+  Star,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -58,6 +52,8 @@ function Index() {
   );
 }
 
+/* ─────────────────────────────────────────────────────────── NAV */
+
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -69,100 +65,403 @@ function Nav() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-[var(--shadow-nav)]" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "bg-background/95 backdrop-blur-sm shadow-[var(--shadow-nav)]" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
-        <a href="#top" className="font-serif text-xl sm:text-2xl tracking-tight shrink-0">
-          Shadi Alo
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-4 sm:py-5 flex items-center justify-between gap-4">
+        <a href="#top" className="flex items-baseline gap-2 shrink-0">
+          <span className="font-serif text-xl sm:text-2xl tracking-tight">Shadi Alo</span>
+          <span className="hidden sm:inline text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            Reinigungsdienst
+          </span>
         </a>
-        <nav className="hidden md:flex items-center gap-8 text-sm">
-          <a href="#leistungen" className="hover:text-primary transition-colors">Leistungen</a>
-          <a href="#ueber" className="hover:text-primary transition-colors">Über uns</a>
-          <a href="#bewertungen" className="hover:text-primary transition-colors">Bewertungen</a>
-          <a href="#kontakt" className="hover:text-primary transition-colors">Kontakt</a>
+        <nav className="hidden md:flex items-center gap-10 text-[13px] tracking-wide">
+          <a href="#leistungen" className="link-underline">Leistungen</a>
+          <a href="#ueber" className="link-underline">Über uns</a>
+          <a href="#bewertungen" className="link-underline">Bewertungen</a>
+          <a href="#kontakt" className="link-underline">Kontakt</a>
         </nav>
         <a
           href={PHONE_HREF}
           aria-label="Jetzt anrufen"
-          className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 sm:px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:translate-y-[-1px] min-h-[44px]"
+          className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 sm:px-5 py-2.5 text-[13px] font-medium text-background hover:bg-primary transition-colors min-h-[44px]"
         >
           <Phone className="h-4 w-4 sm:hidden" />
-          <span className="hidden sm:inline">Kostenlos anfragen</span>
-          <ArrowRight className="h-4 w-4 hidden sm:inline-block" />
+          <span className="hidden sm:inline">Anfrage stellen</span>
+          <ArrowUpRight className="h-4 w-4 hidden sm:inline-block" />
         </a>
       </div>
     </header>
   );
 }
 
+/* ─────────────────────────────────────────────────────────── HERO */
+
 function Hero() {
   return (
-    <section id="top" className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6">
-      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div>
-          <p className="overline mb-4 sm:mb-6">Reinigungsdienst · Monschau & Eifel</p>
-          <h1 className="font-serif text-[2.5rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05] mb-6 sm:mb-8">
-            Sauberkeit, die für sich spricht.
-          </h1>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-xl mb-8 sm:mb-10 leading-relaxed">
-            Privat oder Gewerbe — wir übernehmen die Reinigung zuverlässig, diskret und
-            zu fairen Preisen. Seit Jahren vertrauen uns Kunden in Monschau und der
-            gesamten Eifelregion.
-          </p>
-          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-10">
-            <a
-              href={PHONE_HREF}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 sm:px-7 py-4 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-all hover:translate-y-[-2px] min-h-[52px]"
-            >
-              Jetzt kostenlos anfragen <ArrowRight className="h-5 w-5" />
-            </a>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-foreground/20 px-6 sm:px-7 py-4 text-base font-medium hover:bg-foreground/5 transition-all min-h-[52px]"
-            >
-              <MessageCircle className="h-5 w-5" /> WhatsApp schreiben
-            </a>
+    <section id="top" className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 px-5 sm:px-10 overflow-hidden">
+      <div className="mx-auto max-w-[1400px]">
+        {/* Top meta row */}
+        <div className="flex items-center justify-between mb-12 sm:mb-20 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          <span>Est. Monschau · Eifel</span>
+          <span className="hidden sm:inline">№ 01 — Reinigungsdienst</span>
+          <span className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+            Verfügbar
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h1 className="font-serif text-[clamp(2.75rem,9vw,9rem)] leading-[0.95] tracking-[-0.03em] reveal">
+          Sauberkeit,
+          <br />
+          <span className="italic text-primary">die für sich</span>
+          <br />
+          spricht.
+        </h1>
+
+        {/* Bottom row: lede + CTAs + social proof */}
+        <div className="mt-12 sm:mt-20 grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+          <div className="lg:col-span-5">
+            <p className="text-base sm:text-lg text-foreground/75 leading-relaxed max-w-md">
+              Privat oder Gewerbe — wir übernehmen die Reinigung
+              zuverlässig, diskret und zu fairen Preisen. Seit Jahren vertrauen
+              uns Kunden in Monschau und der gesamten Eifelregion.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <a
+                href={PHONE_HREF}
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-[14px] font-medium text-background hover:bg-primary transition-colors min-h-[52px]"
+              >
+                Kostenlos anfragen
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 px-7 py-4 text-[14px] font-medium hover:border-foreground/40 transition-colors min-h-[52px]"
+              >
+                <MessageCircle className="h-4 w-4" /> WhatsApp
+              </a>
+            </div>
           </div>
-          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-8 gap-y-2 sm:gap-y-3 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Kostenlose Anfrage</span>
-            <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Antwort in 24h</span>
-            <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Keine Vertragsbindung</span>
+
+          <div className="lg:col-span-4 lg:col-start-9">
+            {/* Social proof — no card, just composition */}
+            <div className="space-y-5">
+              <div className="flex items-center gap-3">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <span className="font-serif text-2xl">5,0</span>
+                <span className="text-xs text-muted-foreground tracking-wide">
+                  Google · 3 Bewertungen
+                </span>
+              </div>
+              <blockquote className="font-serif italic text-xl sm:text-2xl leading-snug text-foreground/90">
+                „Zuverlässig, preiswert und seriös!
+                <br className="hidden sm:block" /> Nur zu empfehlen."
+              </blockquote>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                — P. Sieberg, Local Guide
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────── STATS */
+
+function Stats() {
+  const items = [
+    { k: "5,0", s: "★★★★★", l: "Google-Bewertung" },
+    { k: "100", s: "%", l: "Zufriedenheit" },
+    { k: "24", s: "h", l: "Reaktionszeit" },
+    { k: "0", s: "€", l: "Anfrage-Kosten" },
+  ];
+  return (
+    <section className="bg-[var(--color-dark)] text-white">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-14 sm:py-20">
+        <div className="flex items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
+          <span>№ 02</span>
+          <span className="h-px flex-1 bg-white/15" />
+          <span>Vertrauen in Zahlen</span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4">
+          {items.map((i, idx) => (
+            <div
+              key={i.l}
+              className={`py-4 md:py-0 md:px-8 ${idx > 0 ? "md:border-l border-white/10" : ""}`}
+            >
+              <div className="font-serif text-5xl sm:text-6xl md:text-7xl tracking-tight flex items-baseline gap-1">
+                {i.k}
+                <span className="text-2xl sm:text-3xl text-primary">{i.s}</span>
+              </div>
+              <div className="mt-2 text-[11px] uppercase tracking-[0.2em] text-white/50">
+                {i.l}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────── SERVICES */
+
+function Services() {
+  const services = [
+    { n: "01", title: "Privatreinigung", desc: "Regelmäßige Reinigung Ihres Zuhauses — wöchentlich, zweiwöchentlich oder nach Bedarf." },
+    { n: "02", title: "Büro & Gewerbe", desc: "Professionelle Reinigung für Büros, Praxen, Kanzleien und Geschäftsräume." },
+    { n: "03", title: "Fensterreinigung", desc: "Innen und außen — streifenfrei und gründlich, bis in die letzte Ecke." },
+    { n: "04", title: "Grundreinigung", desc: "Tiefenreinigung für Umzüge, Übergaben oder besondere Anlässe." },
+    { n: "05", title: "Treppenhaus & Gemeinschaft", desc: "Regelmäßige Pflege von Treppenhäusern und Gemeinschaftsbereichen." },
+    { n: "06", title: "Sonderreinigung", desc: "Bauendreinigung, Veranstaltungsreinigung und individuelle Sonderprojekte." },
+  ];
+  return (
+    <section id="leistungen" className="py-24 sm:py-36 px-5 sm:px-10">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid lg:grid-cols-12 gap-10 mb-16 sm:mb-24">
+          <div className="lg:col-span-4">
+            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              <span>№ 03</span>
+              <span>Leistungen</span>
+            </div>
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
+              Alles aus
+              <br />
+              <span className="italic text-primary">einer Hand.</span>
+            </h2>
+          </div>
+          <div className="lg:col-span-5 lg:col-start-8 flex items-end">
+            <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
+              Ob einmalige Grundreinigung oder regelmäßige Unterhaltsreinigung — wir
+              erstellen Ihnen ein individuelles Angebot, transparent und ohne
+              Vertragsbindung.
+            </p>
           </div>
         </div>
 
-        <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-6 sm:p-8 lg:p-10">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted font-serif text-xl">G</div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-3xl font-serif">5,0</span>
-                <span className="text-amber-500 text-lg tracking-tight">★★★★★</span>
+        {/* Index-style list, hairline rules, hover-row treatment */}
+        <div className="border-t border-border">
+          {services.map((s) => (
+            <a
+              key={s.n}
+              href="#kontakt"
+              className="group block border-b border-border py-7 sm:py-9 hover:bg-foreground/[0.02] -mx-3 sm:-mx-6 px-3 sm:px-6 transition-colors"
+            >
+              <div className="grid grid-cols-12 gap-4 sm:gap-8 items-baseline">
+                <div className="col-span-2 sm:col-span-1 font-mono text-xs sm:text-sm text-muted-foreground tabular-nums pt-1">
+                  {s.n}
+                </div>
+                <h3 className="col-span-10 sm:col-span-4 font-serif text-2xl sm:text-3xl md:text-4xl tracking-tight">
+                  {s.title}
+                </h3>
+                <p className="col-span-12 sm:col-span-5 text-sm sm:text-base text-foreground/65 leading-relaxed">
+                  {s.desc}
+                </p>
+                <div className="col-span-12 sm:col-span-2 sm:text-right">
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
+                    Anfragen
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
               </div>
-              <p className="text-sm text-muted-foreground">Basierend auf 3 Google-Bewertungen</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────── WHY US */
+
+function WhyUs() {
+  const points = [
+    { n: "01", t: "Zuverlässig", d: "Pünktlich, gründlich und immer termingetreu — ohne Ausreden und ohne Nacharbeiten." },
+    { n: "02", t: "Preiswert", d: "Faire, transparente Preise. Kein versteckter Aufwand, kein unerwarteter Aufpreis." },
+    { n: "03", t: "Persönlich", d: "Direkt mit Shadi Alo — kein Callcenter, kein Weitervermitteln, kein Chaos." },
+    { n: "04", t: "Diskret", d: "Vertrauensvoller Umgang mit Ihrer Wohnung oder Ihren Geschäftsräumen — selbstverständlich." },
+  ];
+  return (
+    <section id="ueber" className="py-24 sm:py-36 px-5 sm:px-10 bg-[#EFEBE4]">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
+            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              <span>№ 04</span>
+              <span>Warum wir</span>
+            </div>
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-10 sm:mb-14">
+              Vertrauen,
+              <br />
+              das man <span className="italic text-primary">spürt.</span>
+            </h2>
+            <figure className="border-l-2 border-primary pl-6 sm:pl-8">
+              <blockquote className="font-serif italic text-2xl sm:text-3xl leading-snug text-foreground/90">
+                „Ein Reinigungsdienst, bei dem man sich keine Gedanken machen muss."
+              </blockquote>
+              <figcaption className="mt-4 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                Unser Anspruch bei jedem Auftrag
+              </figcaption>
+            </figure>
+          </div>
+
+          <div className="lg:col-span-6 lg:col-start-7">
+            <div className="space-y-10 sm:space-y-12">
+              {points.map((p) => (
+                <div key={p.n} className="flex gap-6 sm:gap-8 pb-10 sm:pb-12 border-b border-foreground/10 last:border-0 last:pb-0">
+                  <span className="font-mono text-xs tabular-nums text-muted-foreground pt-2 shrink-0">
+                    {p.n}
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="font-serif text-2xl sm:text-3xl mb-3 flex items-center gap-3">
+                      {p.t}
+                      <Check className="h-5 w-5 text-primary" strokeWidth={2.5} />
+                    </h3>
+                    <p className="text-base text-foreground/70 leading-relaxed max-w-md">{p.d}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="h-px bg-border my-6" />
-          <blockquote className="font-serif text-xl leading-snug">
-            „Zuverlässig, preiswert und seriös! Nur zu empfehlen."
-          </blockquote>
-          <p className="text-sm text-muted-foreground mt-3">— P. Sieberg, Local Guide</p>
-          <div className="h-px bg-border my-6" />
-          <div className="space-y-3">
-            {[
-              { icon: Home, label: "Privatreinigung" },
-              { icon: Building2, label: "Gewerbereinigung" },
-              { icon: Sparkles, label: "Grundreinigung" },
-            ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-3 text-sm">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted">
-                  <Icon className="h-4 w-4 text-primary" />
-                </div>
-                <span className="font-medium">{label}</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────── PROCESS */
+
+function Process() {
+  const steps = [
+    { n: "01", t: "Anfrage stellen", d: "Rufen Sie an oder schreiben Sie per WhatsApp — eine kurze Beschreibung des Auftrags reicht." },
+    { n: "02", t: "Angebot erhalten", d: "Wir melden uns innerhalb von 24 Stunden mit einem fairen, unverbindlichen Angebot." },
+    { n: "03", t: "Fertig.", d: "Wir reinigen zu Ihrem Wunschtermin — Sie müssen nichts weiter tun." },
+  ];
+  return (
+    <section className="py-24 sm:py-36 px-5 sm:px-10">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-24">
+          <div>
+            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              <span>№ 05</span>
+              <span>Der Ablauf</span>
+            </div>
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-3xl">
+              In drei Schritten zu Ihrer
+              {" "}
+              <span className="italic text-primary">sauberen Immobilie.</span>
+            </h2>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
+          {steps.map((s) => (
+            <div key={s.n} className="bg-background p-8 sm:p-10 md:p-12 min-h-[320px] flex flex-col">
+              <div className="font-serif text-7xl sm:text-8xl text-primary/90 leading-none mb-8">
+                {s.n}
               </div>
+              <h3 className="font-serif text-2xl sm:text-3xl mb-4 tracking-tight">{s.t}</h3>
+              <p className="text-base text-foreground/65 leading-relaxed flex-1">{s.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-10 border-t border-border">
+          <p className="text-sm text-muted-foreground max-w-md">
+            Bereit anzufangen? Eine kurze Nachricht reicht — wir kümmern uns um den Rest.
+          </p>
+          <a
+            href={PHONE_HREF}
+            className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-[14px] font-medium text-background hover:bg-primary transition-colors min-h-[52px]"
+          >
+            Jetzt Schritt 1 starten
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────── REVIEWS */
+
+function Reviews() {
+  return (
+    <section id="bewertungen" className="bg-[var(--color-dark)] text-white py-24 sm:py-36 px-5 sm:px-10">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
+          <span>№ 06</span>
+          <span>Kundenstimmen</span>
+        </div>
+        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-16 sm:mb-20 max-w-3xl">
+          Was unsere Kunden{" "}
+          <span className="italic text-primary">sagen.</span>
+        </h2>
+
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
+          {/* Featured review */}
+          <article className="lg:col-span-7 border-t border-white/15 pt-10">
+            <div className="flex items-center gap-2 mb-8">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+              ))}
+              <span className="ml-2 text-xs uppercase tracking-[0.2em] text-white/50">Google-Rezension</span>
+            </div>
+            <blockquote className="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.15] tracking-[-0.01em] mb-10">
+              „Zuverlässig, preiswert und seriös!{" "}
+              <span className="italic text-white/60">Nur zu empfehlen.</span>"
+            </blockquote>
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 font-serif text-lg">
+                PS
+              </div>
+              <div>
+                <div className="text-sm font-medium">P. Sieberg</div>
+                <div className="text-xs text-white/50 uppercase tracking-[0.15em]">Local Guide</div>
+              </div>
+            </div>
+          </article>
+
+          <aside className="lg:col-span-4 lg:col-start-9 space-y-6">
+            {[1, 2].map((i) => (
+              <div key={i} className="border-t border-white/15 pt-6 text-white/40">
+                <div className="text-[10px] uppercase tracking-[0.25em] mb-3">Kommt bald</div>
+                <p className="font-serif text-lg italic text-white/60 mb-4">Ihre Meinung zählt.</p>
+                <a
+                  href="https://www.google.com/maps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs uppercase tracking-[0.2em] text-white hover:text-primary transition-colors inline-flex items-center gap-2"
+                >
+                  Bewertung schreiben <ArrowUpRight className="h-3 w-3" />
+                </a>
+              </div>
+            ))}
+          </aside>
+        </div>
+
+        <div className="mt-16 sm:mt-24 pt-10 border-t border-white/15 flex flex-wrap items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-foreground font-serif text-sm">G</div>
+            <div>
+              <div className="font-serif text-2xl">5,0 / 5,0</div>
+              <div className="text-[11px] uppercase tracking-[0.2em] text-white/50">auf Google bewertet</div>
+            </div>
+          </div>
+          <div className="flex">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-5 w-5 fill-primary text-primary" />
             ))}
           </div>
         </div>
@@ -171,263 +470,118 @@ function Hero() {
   );
 }
 
-function Stats() {
-  const items = [
-    { k: "5,0 ★", l: "Google-Bewertung" },
-    { k: "100 %", l: "Zufriedenheitsgarantie" },
-    { k: "24h", l: "Reaktionszeit" },
-    { k: "0 €", l: "Anfrage-Kosten" },
-  ];
-  return (
-    <section className="bg-[var(--color-dark)] text-white py-12 sm:py-16 px-4 sm:px-6">
-      <div className="mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
-        {items.map((i) => (
-          <div key={i.l} className="text-center md:text-left">
-            <div className="font-serif text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2">{i.k}</div>
-            <div className="text-xs sm:text-sm text-white/60">{i.l}</div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Services() {
-  const services = [
-    { icon: Home, title: "Privatreinigung", desc: "Regelmäßige Reinigung Ihres Zuhauses — wöchentlich, zweiwöchentlich oder nach Bedarf.", big: true },
-    { icon: Building2, title: "Büro & Gewerbe", desc: "Professionelle Reinigung für Büros, Praxen, Kanzleien und Geschäftsräume.", big: true },
-    { icon: Wind, title: "Fensterreinigung", desc: "Innen und außen — streifenfrei und gründlich." },
-    { icon: Sparkles, title: "Grundreinigung", desc: "Tiefenreinigung für Umzüge, Übergaben oder besondere Anlässe." },
-    { icon: Building, title: "Treppenhaus & Gemeinschaft", desc: "Regelmäßige Pflege von Treppenhäusern und Gemeinschaftsbereichen." },
-    { icon: Wrench, title: "Sonderreinigung", desc: "Bauendreinigung, Veranstaltungsreinigung und individuelle Sonderprojekte." },
-  ];
-  return (
-    <section id="leistungen" className="py-20 sm:py-28 px-4 sm:px-6">
-      <div className="mx-auto max-w-7xl">
-        <p className="overline mb-4">Leistungen</p>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-4 max-w-3xl">
-          Alles aus einer Hand — für jeden Bedarf.
-        </h2>
-        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mb-10 sm:mb-14">
-          Ob einmalige Grundreinigung oder regelmäßige Unterhaltsreinigung — wir
-          erstellen Ihnen ein individuelles Angebot.
-        </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {services.map((s) => (
-            <article
-              key={s.title}
-              className="group bg-card rounded-2xl p-6 sm:p-8 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] transition-all hover:translate-y-[-2px]"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-muted mb-5 sm:mb-6 group-hover:bg-primary/10 transition-colors">
-                <s.icon className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="font-serif text-xl sm:text-2xl mb-3">{s.title}</h3>
-              <p className="text-muted-foreground mb-5 sm:mb-6 leading-relaxed">{s.desc}</p>
-              <a href="#kontakt" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2.5 transition-all min-h-[44px]">
-                Anfragen <ArrowRight className="h-4 w-4" />
-              </a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhyUs() {
-  const points = [
-    { t: "Zuverlässig", d: "Pünktlich, gründlich und immer termingetreu — ohne Ausreden und ohne Nacharbeiten." },
-    { t: "Preiswert", d: "Faire, transparente Preise. Kein versteckter Aufwand, kein unerwarteter Aufpreis." },
-    { t: "Persönlich", d: "Direkt mit Shadi Alo — kein Callcenter, kein Weitervermitteln, kein Chaos." },
-    { t: "Diskret", d: "Vertrauensvoller Umgang mit Ihrer Wohnung oder Ihren Geschäftsräumen — selbstverständlich." },
-  ];
-  return (
-    <section id="ueber" className="py-20 sm:py-28 px-4 sm:px-6 bg-card/50">
-      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16">
-        <div>
-          <p className="overline mb-4">Warum wir</p>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-8 sm:mb-12">Vertrauen, das man spürt.</h2>
-          <blockquote className="font-serif italic text-xl sm:text-2xl md:text-3xl text-primary leading-snug border-l-2 border-primary pl-5 sm:pl-6">
-            „Ein Reinigungsdienst, bei dem man sich keine Gedanken machen muss."
-          </blockquote>
-          <p className="text-sm text-muted-foreground mt-4 pl-5 sm:pl-6">
-            Das ist unser Anspruch bei jedem Auftrag.
-          </p>
-        </div>
-        <div className="space-y-6 sm:space-y-8">
-          {points.map((p) => (
-            <div key={p.t} className="flex gap-4 sm:gap-5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                <Check className="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-serif text-lg sm:text-xl mb-2">{p.t}</h3>
-                <p className="text-muted-foreground leading-relaxed">{p.d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Process() {
-  const steps = [
-    { n: "01", t: "Anfrage stellen", d: "Rufen Sie an oder schreiben Sie per WhatsApp — kurze Beschreibung des Auftrags reicht." },
-    { n: "02", t: "Angebot erhalten", d: "Wir melden uns innerhalb von 24 Stunden mit einem fairen, unverbindlichen Angebot." },
-    { n: "03", t: "Fertig ✓", d: "Wir reinigen zu Ihrem Wunschtermin — Sie müssen nichts weiter tun." },
-  ];
-  return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6">
-      <div className="mx-auto max-w-7xl">
-        <p className="overline mb-4">Der Ablauf</p>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-10 sm:mb-16 max-w-3xl">
-          In 3 Schritten zu Ihrer sauberen Immobilie.
-        </h2>
-        <div className="grid sm:grid-cols-3 gap-8 sm:gap-10 relative">
-          {steps.map((s, i) => (
-            <div key={s.n} className="relative">
-              {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-[5rem] right-[-2rem] border-t-2 border-dashed border-border" />
-              )}
-              <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-primary text-primary-foreground font-serif text-xl sm:text-2xl mb-5 sm:mb-6 relative z-10">
-                {s.n}
-              </div>
-              <h3 className="font-serif text-xl sm:text-2xl mb-3">{s.t}</h3>
-              <p className="text-muted-foreground leading-relaxed">{s.d}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-12 sm:mt-16">
-          <a
-            href={PHONE_HREF}
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-all hover:translate-y-[-2px] min-h-[52px]"
-          >
-            Jetzt Schritt 1 starten <ArrowRight className="h-5 w-5" />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Reviews() {
-  return (
-    <section id="bewertungen" className="py-20 sm:py-28 px-4 sm:px-6 bg-[var(--color-dark)] text-white">
-      <div className="mx-auto max-w-7xl">
-        <p className="overline mb-4 text-white/60">Kundenstimmen</p>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-10 sm:mb-14 text-white">Was unsere Kunden sagen.</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          <article className="bg-white text-foreground rounded-2xl p-6 sm:p-8 shadow-[var(--shadow-card)]">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-amber-500">★★★★★</span>
-              <span className="text-sm font-medium">5,0</span>
-            </div>
-            <blockquote className="font-serif text-lg sm:text-xl leading-snug mb-6">
-              „Zuverlässig, preiswert und seriös! Nur zu empfehlen."
-            </blockquote>
-            <p className="text-sm text-muted-foreground">— P. Sieberg, Local Guide · Google-Rezension</p>
-          </article>
-          {[1, 2].map((i) => (
-            <article key={i} className="border border-white/15 rounded-2xl p-6 sm:p-8 text-white/50">
-              <div className="text-xs sm:text-sm mb-4 uppercase tracking-widest">Kommt bald…</div>
-              <p className="font-serif text-lg sm:text-xl mb-6 text-white/70">Ihre Meinung zählt.</p>
-              <a
-                href="https://www.google.com/maps"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-white hover:gap-2.5 transition-all min-h-[44px]"
-              >
-                Jetzt Bewertung schreiben <ArrowRight className="h-4 w-4" />
-              </a>
-            </article>
-          ))}
-        </div>
-        <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-white/80">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-foreground font-serif">G</div>
-          <span className="font-serif text-2xl">5,0</span>
-          <span className="text-amber-400">★★★★★</span>
-          <span className="text-sm text-white/60">auf Google</span>
-        </div>
-      </div>
-    </section>
-  );
-}
+/* ─────────────────────────────────────────────────────────── CONTACT */
 
 function Contact() {
   return (
-    <section id="kontakt" className="py-20 sm:py-28 px-4 sm:px-6">
-      <div className="mx-auto max-w-4xl text-center">
-        <p className="overline mb-4">Kontakt</p>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-5 sm:mb-6">Jetzt unverbindlich anfragen.</h2>
-        <p className="text-base sm:text-lg text-muted-foreground mb-10 sm:mb-12 max-w-2xl mx-auto">
-          Kein Formular, kein Aufwand — einfach anrufen oder WhatsApp schreiben.
-          Wir antworten schnell.
-        </p>
-        <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto mb-12 sm:mb-16">
-          <a
-            href={PHONE_HREF}
-            className="inline-flex items-center justify-center gap-3 rounded-xl bg-primary px-6 sm:px-8 py-5 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-all hover:translate-y-[-2px] min-h-[56px]"
-          >
-            <Phone className="h-5 w-5" /> {PHONE}
-          </a>
-          <a
-            href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-foreground/20 px-6 sm:px-8 py-5 text-base font-medium hover:bg-foreground/5 transition-all min-h-[56px]"
-          >
-            <MessageCircle className="h-5 w-5" /> WhatsApp schreiben
-          </a>
+    <section id="kontakt" className="py-24 sm:py-36 px-5 sm:px-10">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+          <span>№ 07</span>
+          <span>Kontakt</span>
         </div>
-        <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 text-left bg-card rounded-2xl p-6 sm:p-8 shadow-[var(--shadow-soft)]">
-          <div className="flex gap-3">
-            <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-            <div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Adresse</div>
-              <div className="text-sm">Messeweg 113<br />52156 Monschau</div>
+
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="lg:col-span-7">
+            <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.03em] mb-8">
+              Jetzt
+              <br />
+              <span className="italic text-primary">unverbindlich</span>
+              <br />
+              anfragen.
+            </h2>
+            <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-lg mb-10">
+              Kein Formular, kein Aufwand — einfach anrufen oder per WhatsApp
+              schreiben. Wir antworten innerhalb von 24 Stunden.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-xl">
+              <a
+                href={PHONE_HREF}
+                className="group flex-1 inline-flex items-center justify-between gap-3 rounded-full bg-foreground px-7 py-5 text-base font-medium text-background hover:bg-primary transition-colors min-h-[60px]"
+              >
+                <span className="flex items-center gap-3">
+                  <Phone className="h-5 w-5" /> {PHONE}
+                </span>
+                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 rounded-full border border-foreground/20 px-7 py-5 text-base font-medium hover:border-foreground/50 transition-colors min-h-[60px]"
+              >
+                <MessageCircle className="h-5 w-5" /> WhatsApp
+              </a>
             </div>
           </div>
-          <div className="flex gap-3">
-            <Clock className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-            <div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Reaktion</div>
-              <div className="text-sm">Antwort innerhalb<br />von 24 Stunden</div>
-            </div>
-          </div>
-          <div className="flex gap-3">
-            <ShieldCheck className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-            <div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Garantie</div>
-              <div className="text-sm">100 % Zufriedenheit<br />ohne Vertragsbindung</div>
-            </div>
-          </div>
+
+          <aside className="lg:col-span-4 lg:col-start-9 space-y-8 lg:pt-12">
+            {[
+              { icon: MapPin, label: "Adresse", lines: ["Messeweg 113", "52156 Monschau"] },
+              { icon: Clock, label: "Reaktion", lines: ["Antwort innerhalb", "von 24 Stunden"] },
+              { icon: ShieldCheck, label: "Garantie", lines: ["100 % Zufriedenheit", "ohne Vertragsbindung"] },
+              { icon: MapPin, label: "Einsatzgebiet", lines: ["Monschau, Eifel,", "Aachen, Düren"] },
+            ].map((c) => (
+              <div key={c.label} className="flex gap-4 pb-6 border-b border-border last:border-0">
+                <c.icon className="h-5 w-5 text-primary shrink-0 mt-1" />
+                <div>
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
+                    {c.label}
+                  </div>
+                  <div className="text-sm text-foreground/85 leading-relaxed">
+                    {c.lines.map((l) => (
+                      <div key={l}>{l}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </aside>
         </div>
       </div>
     </section>
   );
 }
 
+/* ─────────────────────────────────────────────────────────── FOOTER */
+
 function Footer() {
   return (
-    <footer className="border-t border-border py-10 sm:py-12 px-4 sm:px-6">
-      <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between gap-6 text-sm text-muted-foreground">
-        <div>
-          <div className="font-serif text-xl text-foreground mb-1">Shadi Alo Reinigungsdienst</div>
-          <div>Messeweg 113, 52156 Monschau · Monschau, Eifel, Aachen, Düren</div>
+    <footer className="bg-[var(--color-dark)] text-white px-5 sm:px-10 pt-16 pb-10">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid md:grid-cols-12 gap-10 mb-16 pb-16 border-b border-white/10">
+          <div className="md:col-span-5">
+            <div className="font-serif text-3xl sm:text-4xl mb-4">Shadi Alo</div>
+            <p className="text-sm text-white/60 max-w-sm leading-relaxed">
+              Premium Reinigungsdienst für Monschau und die Eifelregion. Privat, Gewerbe, Sonderaufträge — zuverlässig und diskret.
+            </p>
+          </div>
+          <div className="md:col-span-3">
+            <div className="text-[10px] uppercase tracking-[0.25em] text-white/40 mb-4">Navigation</div>
+            <ul className="space-y-2 text-sm">
+              {[
+                ["Leistungen", "#leistungen"],
+                ["Über uns", "#ueber"],
+                ["Bewertungen", "#bewertungen"],
+                ["Kontakt", "#kontakt"],
+              ].map(([l, h]) => (
+                <li key={l}><a href={h} className="hover:text-primary transition-colors">{l}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:col-span-4">
+            <div className="text-[10px] uppercase tracking-[0.25em] text-white/40 mb-4">Kontakt</div>
+            <ul className="space-y-2 text-sm">
+              <li><a href={PHONE_HREF} className="hover:text-primary transition-colors inline-flex items-center gap-2"><Phone className="h-3.5 w-3.5" /> {PHONE}</a></li>
+              <li><a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors inline-flex items-center gap-2"><MessageCircle className="h-3.5 w-3.5" /> WhatsApp</a></li>
+              <li className="text-white/60 pt-2">Messeweg 113, 52156 Monschau</li>
+            </ul>
+          </div>
         </div>
-        <div className="flex flex-col md:items-end gap-1">
-          <a href={PHONE_HREF} className="hover:text-primary transition-colors inline-flex items-center gap-2">
-            <Phone className="h-4 w-4" /> {PHONE}
-          </a>
-          <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors inline-flex items-center gap-2">
-            <MessageCircle className="h-4 w-4" /> WhatsApp
-          </a>
+        <div className="flex flex-col sm:flex-row justify-between gap-4 text-[11px] uppercase tracking-[0.2em] text-white/40">
+          <span>© {new Date().getFullYear()} Shadi Alo Reinigungsdienst</span>
+          <span>Monschau · Eifel · Aachen · Düren</span>
         </div>
-      </div>
-      <div className="mx-auto max-w-7xl text-xs text-muted-foreground/70 mt-8">
-        © {new Date().getFullYear()} Shadi Alo Reinigungsdienst. Alle Rechte vorbehalten.
       </div>
     </footer>
   );
