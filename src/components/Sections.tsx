@@ -95,7 +95,25 @@ const TILES: Tile[] = [
     src: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=80&auto=format&fit=crop",
     alt: "Profi-Reinigungsmittel und Tücher",
     tag: "Material · Eco",
-    span: "md:col-span-5 aspect-[4/3]",
+    span: "md:col-span-4 aspect-[4/5]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80&auto=format&fit=crop",
+    alt: "Frisch gewischter Holzboden im Wohnzimmer",
+    tag: "Privat · Boden",
+    span: "md:col-span-4 aspect-[4/5]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?w=1200&q=80&auto=format&fit=crop",
+    alt: "Treppenhaus nach Grundreinigung",
+    tag: "Gemeinschaft · Treppe",
+    span: "md:col-span-4 aspect-[4/5]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=1400&q=80&auto=format&fit=crop",
+    alt: "Reinigungskraft bei der Arbeit",
+    tag: "Team · Im Einsatz",
+    span: "md:col-span-12 aspect-[21/9]",
   },
 ];
 
