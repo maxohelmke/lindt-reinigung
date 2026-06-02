@@ -326,6 +326,7 @@ export function FAQ() {
           })}
         </ul>
       </div>
+      </div>
     </section>
   );
 }
