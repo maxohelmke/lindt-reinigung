@@ -127,26 +127,22 @@ export function Gallery() {
   return (
     <section className="py-24 sm:py-36 px-5 sm:px-10 bg-background">
       <div className="mx-auto max-w-[1400px]">
-        <div className="grid lg:grid-cols-12 gap-10 mb-14 sm:mb-20">
-          <div className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>Arbeitsproben</span>
-            </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
-              Räume, die
-              <br />
-              <span className="relative inline-block italic text-primary">
-                wieder atmen.
-                <Scribble className="absolute -bottom-3 left-0 w-full h-3 text-primary/60" />
-              </span>
-            </h2>
+        <div className="flex flex-col items-center text-center mb-14 sm:mb-20">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Arbeitsproben</span>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-              Eine kleine Auswahl aus den letzten Aufträgen — Privat­wohnungen,
-              Büros und Spezialeinsätze. Jede Reinigung übergeben wir persönlich.
-            </p>
-          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
+            Räume, die
+            <br />
+            <span className="relative inline-block italic text-primary">
+              wieder atmen.
+              <Scribble className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-full h-3 text-primary/60" />
+            </span>
+          </h2>
+          <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-2xl">
+            Eine kleine Auswahl aus den letzten Aufträgen — Privat­wohnungen,
+            Büros und Spezialeinsätze. Jede Reinigung übergeben wir persönlich.
+          </p>
         </div>
 
         <GalleryCarousel />
@@ -275,23 +271,24 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section id="faq" className="py-24 sm:py-36 px-5 sm:px-10 bg-[#EFEBE4]">
-      <div className="mx-auto max-w-[1400px] grid lg:grid-cols-12 gap-12 lg:gap-16">
-        <div className="lg:col-span-4">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
           <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
             <span>Häufige Fragen</span>
           </div>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
             Antworten,
             <br />
             <span className="italic text-primary">bevor Sie fragen.</span>
           </h2>
-          <div className="mt-10 inline-flex items-center gap-3 text-sm text-foreground/70">
+          <div className="inline-flex items-center gap-3 text-sm text-foreground/70">
             <Sparkles className="h-4 w-4 text-primary" />
             <span>Noch eine Frage offen? Einfach anrufen.</span>
           </div>
         </div>
 
-        <ul className="lg:col-span-7 lg:col-start-6 border-t border-foreground/15">
+        <div className="max-w-3xl mx-auto">
+          <ul className="border-t border-foreground/15">
           {FAQS.map((item, i) => {
             const active = open === i;
             return (
@@ -328,6 +325,7 @@ export function FAQ() {
             );
           })}
         </ul>
+      </div>
       </div>
     </section>
   );

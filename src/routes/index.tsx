@@ -295,9 +295,9 @@ function Stats() {
     <section className="bg-[var(--color-dark)] text-white">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-14 sm:py-20">
         <Reveal>
-          <div className="flex items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
-            <span className="h-px flex-1 bg-white/15 origin-left animate-draw-line" />
+          <div className="flex flex-col items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
             <span>Vertrauen in Zahlen</span>
+            <span className="h-px w-20 bg-white/15 origin-center animate-draw-line" />
           </div>
         </Reveal>
         <div className="grid grid-cols-2 md:grid-cols-4">
@@ -335,24 +335,20 @@ function Services() {
   return (
     <section id="leistungen" className="py-24 sm:py-36 px-5 sm:px-10">
       <div className="mx-auto max-w-[1400px]">
-        <div className="grid lg:grid-cols-12 gap-10 mb-16 sm:mb-24">
-          <div className="lg:col-span-4">
-            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>Leistungen</span>
-            </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
-              Alles aus
-              <br />
-              <span className="italic text-primary">einer Hand.</span>
-            </h2>
+        <div className="flex flex-col items-center text-center mb-16 sm:mb-24">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Leistungen</span>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-              Ob einmalige Grundreinigung oder regelmäßige Unterhaltsreinigung — wir
-              erstellen Ihnen ein individuelles Angebot, transparent und ohne
-              Vertragsbindung.
-            </p>
-          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
+            Alles aus
+            <br />
+            <span className="italic text-primary">einer Hand.</span>
+          </h2>
+          <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-2xl">
+            Ob einmalige Grundreinigung oder regelmäßige Unterhaltsreinigung — wir
+            erstellen Ihnen ein individuelles Angebot, transparent und ohne
+            Vertragsbindung.
+          </p>
         </div>
 
         <div className="border-t border-border">
@@ -414,16 +410,18 @@ function WhyUs() {
   return (
     <section id="ueber" className="py-24 sm:py-36 px-5 sm:px-10 bg-[#EFEBE4]">
       <div className="mx-auto max-w-[1400px]">
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Warum wir</span>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
+            Vertrauen,
+            <br />
+            das man <span className="italic text-primary">spürt.</span>
+          </h2>
+        </div>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
-            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>Warum wir</span>
-            </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-10 sm:mb-14">
-              Vertrauen,
-              <br />
-              das man <span className="italic text-primary">spürt.</span>
-            </h2>
             <figure className="border-l-2 border-primary pl-6 sm:pl-8">
               <blockquote className="font-serif italic text-2xl sm:text-3xl leading-snug text-foreground/90">
                 „Ein Reinigungsdienst, bei dem man sich keine Gedanken machen muss."
@@ -473,17 +471,15 @@ function Process() {
   return (
     <section className="py-24 sm:py-36 px-5 sm:px-10">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-24">
-          <div>
-            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>Der Ablauf</span>
-            </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-3xl">
-              In drei Schritten zu Ihrer
-              {" "}
-              <span className="italic text-primary">sauberen Immobilie.</span>
-            </h2>
+        <div className="flex flex-col items-center text-center mb-16 sm:mb-24">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Der Ablauf</span>
           </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-3xl">
+            In drei Schritten zu Ihrer
+            {" "}
+            <span className="italic text-primary">sauberen Immobilie.</span>
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
@@ -562,11 +558,11 @@ function Reviews() {
   return (
     <section id="bewertungen" className="bg-[var(--color-dark)] text-white py-24 sm:py-36 px-5 sm:px-10 overflow-hidden">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
-          <span>Kundenstimmen</span>
-        </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 sm:mb-16">
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-3xl">
+        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
+            <span>Kundenstimmen</span>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-8">
             Was unsere Kunden{" "}
             <span className="italic text-primary">sagen.</span>
           </h2>
@@ -684,44 +680,43 @@ function Contact() {
   return (
     <section id="kontakt" className="py-24 sm:py-36 px-5 sm:px-10">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-          <span>Kontakt</span>
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Kontakt</span>
+          </div>
+          <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.03em] mb-6">
+            Jetzt
+            <br />
+            <span className="italic text-primary">unverbindlich</span>
+            <br />
+            anfragen.
+          </h2>
+          <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-xl mb-10">
+            Kein Formular, kein Aufwand — einfach anrufen oder per WhatsApp
+            schreiben. Wir antworten innerhalb von 24 Stunden.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 max-w-xl">
+            <a
+              href={PHONE_HREF}
+              className="group flex-1 inline-flex items-center justify-between gap-3 rounded-full bg-foreground px-7 py-5 text-base font-medium text-background hover:bg-primary transition-colors min-h-[60px]"
+            >
+              <span className="flex items-center gap-3">
+                <Phone className="h-5 w-5" /> {PHONE}
+              </span>
+              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href={WHATSAPP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-foreground/20 px-7 py-5 text-base font-medium hover:border-foreground/50 transition-colors min-h-[60px]"
+            >
+              <MessageCircle className="h-5 w-5" /> WhatsApp
+            </a>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-7">
-            <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.03em] mb-8">
-              Jetzt
-              <br />
-              <span className="italic text-primary">unverbindlich</span>
-              <br />
-              anfragen.
-            </h2>
-            <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-lg mb-10">
-              Kein Formular, kein Aufwand — einfach anrufen oder per WhatsApp
-              schreiben. Wir antworten innerhalb von 24 Stunden.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-xl">
-              <a
-                href={PHONE_HREF}
-                className="group flex-1 inline-flex items-center justify-between gap-3 rounded-full bg-foreground px-7 py-5 text-base font-medium text-background hover:bg-primary transition-colors min-h-[60px]"
-              >
-                <span className="flex items-center gap-3">
-                  <Phone className="h-5 w-5" /> {PHONE}
-                </span>
-                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 rounded-full border border-foreground/20 px-7 py-5 text-base font-medium hover:border-foreground/50 transition-colors min-h-[60px]"
-              >
-                <MessageCircle className="h-5 w-5" /> WhatsApp
-              </a>
-            </div>
-          </div>
-
           <aside className="lg:col-span-4 lg:col-start-9 space-y-8 lg:pt-12">
             {[
               { icon: MapPin, label: "Adresse", lines: ["Messeweg 113", "52156 Monschau"] },
