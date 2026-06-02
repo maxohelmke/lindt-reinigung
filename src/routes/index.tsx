@@ -320,12 +320,12 @@ function Stats() {
 
 function Services() {
   const services = [
-    { n: "01", title: "Privatreinigung", desc: "Regelmäßige Reinigung Ihres Zuhauses — wöchentlich, zweiwöchentlich oder nach Bedarf." },
-    { n: "02", title: "Büro & Gewerbe", desc: "Professionelle Reinigung für Büros, Praxen, Kanzleien und Geschäftsräume." },
-    { n: "03", title: "Fensterreinigung", desc: "Innen und außen — streifenfrei und gründlich, bis in die letzte Ecke." },
-    { n: "04", title: "Grundreinigung", desc: "Tiefenreinigung für Umzüge, Übergaben oder besondere Anlässe." },
-    { n: "05", title: "Treppenhaus & Gemeinschaft", desc: "Regelmäßige Pflege von Treppenhäusern und Gemeinschaftsbereichen." },
-    { n: "06", title: "Sonderreinigung", desc: "Bauendreinigung, Veranstaltungsreinigung und individuelle Sonderprojekte." },
+    { n: "01", title: "Privatreinigung", desc: "Regelmäßige Reinigung Ihres Zuhauses — wöchentlich, zweiwöchentlich oder nach Bedarf.", img: "https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?w=600&q=80&auto=format&fit=crop" },
+    { n: "02", title: "Büro & Gewerbe", desc: "Professionelle Reinigung für Büros, Praxen, Kanzleien und Geschäftsräume.", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop" },
+    { n: "03", title: "Fensterreinigung", desc: "Innen und außen — streifenfrei und gründlich, bis in die letzte Ecke.", img: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=600&q=80&auto=format&fit=crop" },
+    { n: "04", title: "Grundreinigung", desc: "Tiefenreinigung für Umzüge, Übergaben oder besondere Anlässe.", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&auto=format&fit=crop" },
+    { n: "05", title: "Treppenhaus & Gemeinschaft", desc: "Regelmäßige Pflege von Treppenhäusern und Gemeinschaftsbereichen.", img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format&fit=crop" },
+    { n: "06", title: "Sonderreinigung", desc: "Bauendreinigung, Veranstaltungsreinigung und individuelle Sonderprojekte.", img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80&auto=format&fit=crop" },
   ];
   return (
     <section id="leistungen" className="py-24 sm:py-36 px-5 sm:px-10">
@@ -356,26 +356,38 @@ function Services() {
             <Reveal key={s.n} delay={idx * 80}>
               <a
                 href="#kontakt"
-                className="group block border-b border-border py-7 sm:py-9 hover:bg-foreground/[0.03] -mx-3 sm:-mx-6 px-3 sm:px-6 transition-colors duration-300 relative overflow-hidden"
+                className="group block border-b border-border py-6 sm:py-7 hover:bg-foreground/[0.03] -mx-3 sm:-mx-6 px-3 sm:px-6 transition-colors duration-300 relative overflow-hidden"
               >
-                {/* sliding accent bar */}
                 <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-primary scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500" />
-                <div className="grid grid-cols-12 gap-4 sm:gap-8 items-baseline">
-                  <div className="col-span-2 sm:col-span-1 font-mono text-xs sm:text-sm text-muted-foreground tabular-nums pt-1 group-hover:text-primary transition-colors">
+                <div className="grid grid-cols-12 gap-4 sm:gap-6 items-center">
+                  <div className="col-span-2 sm:col-span-1 font-mono text-xs sm:text-sm text-muted-foreground tabular-nums group-hover:text-primary transition-colors">
                     {s.n}
                   </div>
-                  <h3 className="col-span-10 sm:col-span-4 font-serif text-2xl sm:text-3xl md:text-4xl tracking-tight transition-transform duration-500 group-hover:translate-x-2">
+                  <div className="col-span-3 sm:col-span-2">
+                    <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden rounded-xl bg-muted">
+                      <img
+                        src={s.img}
+                        alt={s.title}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="col-span-7 sm:col-span-3 font-serif text-xl sm:text-2xl md:text-3xl tracking-tight transition-transform duration-500 group-hover:translate-x-1">
                     {s.title}
                   </h3>
-                  <p className="col-span-12 sm:col-span-5 text-sm sm:text-base text-foreground/65 leading-relaxed">
+                  <p className="hidden sm:block sm:col-span-4 text-sm sm:text-base text-foreground/65 leading-relaxed">
                     {s.desc}
                   </p>
-                  <div className="col-span-12 sm:col-span-2 sm:text-right">
+                  <div className="hidden sm:flex sm:col-span-2 justify-end">
                     <span className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-all duration-300 group-hover:gap-3">
                       Anfragen
                       <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </span>
                   </div>
+                  <p className="sm:hidden col-span-12 text-sm text-foreground/65 leading-relaxed">
+                    {s.desc}
+                  </p>
                 </div>
               </a>
             </Reveal>
@@ -646,6 +658,38 @@ function Contact() {
               </div>
             ))}
           </aside>
+        </div>
+
+        {/* Google Maps Karte */}
+        <div className="mt-16 sm:mt-24">
+          <div className="flex items-end justify-between gap-4 mb-6">
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
+                Standort
+              </div>
+              <h3 className="font-serif text-2xl sm:text-3xl tracking-tight">
+                Messeweg 113, 52156 Monschau
+              </h3>
+            </div>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Messeweg+113,+52156+Monschau"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
+            >
+              Route planen <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="relative overflow-hidden rounded-2xl border border-border aspect-[16/9] sm:aspect-[21/9] bg-muted">
+            <iframe
+              title="Standort Shadi Alo Reinigungsdienst — Messeweg 113, 52156 Monschau"
+              src="https://www.google.com/maps?q=Messeweg+113,+52156+Monschau&hl=de&z=14&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 w-full h-full grayscale-[0.3] contrast-[1.05]"
+              allowFullScreen
+            />
+          </div>
         </div>
       </div>
     </section>
