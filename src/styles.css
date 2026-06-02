@@ -85,6 +85,9 @@
   --ring: oklch(0.53 0.07 145);
   --subtle: oklch(0.905 0.008 80);
   --dark: oklch(0.18 0 0);
+  /* deep forest green for dark sections */
+  --deep-green: oklch(0.28 0.045 150);
+  --deep-green-soft: oklch(0.36 0.055 150);
 }
 
 .dark {
