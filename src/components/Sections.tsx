@@ -185,6 +185,9 @@ function GalleryCarousel() {
                   src={t.src}
                   alt={t.alt}
                   loading="lazy"
+                  decoding="async"
+                  width={900}
+                  height={1125}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/0 to-transparent" />

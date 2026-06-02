@@ -37,6 +37,41 @@ export const Route = createFileRoute("/")({
         content:
           "Sauberkeit, die für sich spricht. Privat oder Gewerbe — zuverlässig, diskret, faire Preise.",
       },
+      { property: "og:url", content: "/" },
+      { name: "twitter:title", content: "Shadi Alo Reinigungsdienst — Monschau & Eifel" },
+      {
+        name: "twitter:description",
+        content:
+          "Sauberkeit, die für sich spricht. Privat oder Gewerbe — zuverlässig, diskret, faire Preise.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Shadi Alo Reinigungsdienst",
+          image: "https://assets.mixkit.co/videos/13282/13282-thumb-720-0.jpg",
+          telephone: "+4915560171646",
+          email: "",
+          priceRange: "€€",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Messeweg 113",
+            postalCode: "52156",
+            addressLocality: "Monschau",
+            addressCountry: "DE",
+          },
+          areaServed: ["Monschau", "Aachen", "Düren", "Eifel", "Simmerath", "Roetgen"],
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "5.0",
+            reviewCount: "12",
+          },
+        }),
+      },
     ],
   }),
   component: Index,
@@ -49,21 +84,29 @@ const WHATSAPP_HREF = "https://wa.me/4915560171646";
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <a
+        href="#hauptinhalt"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
+      >
+        Zum Hauptinhalt springen
+      </a>
       <Nav />
-      <Hero />
-      <Marquee />
-      <TrustBar />
-      <Stats />
-      <Services />
-      <WorkAreas />
-      <Gallery />
-      <WhyUs />
-      <Process />
-      <Reviews />
-      <References />
-      <FAQ />
-      <CtaStrip phone={PHONE} phoneHref={PHONE_HREF} waHref={WHATSAPP_HREF} />
-      <Contact />
+      <main id="hauptinhalt">
+        <Hero />
+        <Marquee />
+        <TrustBar />
+        <Stats />
+        <Services />
+        <WorkAreas />
+        <Gallery />
+        <WhyUs />
+        <Process />
+        <Reviews />
+        <References />
+        <FAQ />
+        <CtaStrip phone={PHONE} phoneHref={PHONE_HREF} waHref={WHATSAPP_HREF} />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
@@ -165,7 +208,9 @@ function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          aria-hidden="true"
+          tabIndex={-1}
           poster="https://assets.mixkit.co/videos/13282/13282-thumb-720-0.jpg"
         >
           <source src="https://assets.mixkit.co/videos/13282/13282-720.mp4" type="video/mp4" />
@@ -261,7 +306,7 @@ function Marquee() {
   ];
   const row = [...items, ...items];
   return (
-    <div className="border-y border-border py-6 overflow-hidden bg-background marquee-fade group">
+    <div className="border-y border-border py-6 overflow-hidden bg-background marquee-fade group" aria-hidden="true">
       <div className="flex gap-12 animate-marquee whitespace-nowrap font-serif text-2xl sm:text-3xl text-foreground/40 [animation-play-state:running] group-hover:[animation-play-state:paused]">
         {row.map((t, i) => (
           <span key={i} className="flex items-center gap-12 transition-colors duration-300 hover:text-primary">
@@ -408,6 +453,9 @@ function Services() {
                         src={s.img}
                         alt={s.title}
                         loading="lazy"
+                        decoding="async"
+                        width={600}
+                        height={600}
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                     </div>
