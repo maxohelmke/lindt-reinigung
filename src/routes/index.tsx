@@ -314,37 +314,37 @@ function Process() {
 
 function Reviews() {
   return (
-    <section id="bewertungen" className="py-28 px-6 bg-[var(--color-dark)] text-white">
+    <section id="bewertungen" className="py-20 sm:py-28 px-4 sm:px-6 bg-[var(--color-dark)] text-white">
       <div className="mx-auto max-w-7xl">
         <p className="overline mb-4 text-white/60">Kundenstimmen</p>
-        <h2 className="font-serif text-4xl md:text-5xl mb-14 text-white">Was unsere Kunden sagen.</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <article className="bg-white text-foreground rounded-2xl p-8 shadow-[var(--shadow-card)]">
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-10 sm:mb-14 text-white">Was unsere Kunden sagen.</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          <article className="bg-white text-foreground rounded-2xl p-6 sm:p-8 shadow-[var(--shadow-card)]">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-amber-500">★★★★★</span>
               <span className="text-sm font-medium">5,0</span>
             </div>
-            <blockquote className="font-serif text-xl leading-snug mb-6">
+            <blockquote className="font-serif text-lg sm:text-xl leading-snug mb-6">
               „Zuverlässig, preiswert und seriös! Nur zu empfehlen."
             </blockquote>
             <p className="text-sm text-muted-foreground">— P. Sieberg, Local Guide · Google-Rezension</p>
           </article>
           {[1, 2].map((i) => (
-            <article key={i} className="border border-white/15 rounded-2xl p-8 text-white/50">
-              <div className="text-sm mb-4 uppercase tracking-widest">Kommt bald…</div>
-              <p className="font-serif text-xl mb-6 text-white/70">Ihre Meinung zählt.</p>
+            <article key={i} className="border border-white/15 rounded-2xl p-6 sm:p-8 text-white/50">
+              <div className="text-xs sm:text-sm mb-4 uppercase tracking-widest">Kommt bald…</div>
+              <p className="font-serif text-lg sm:text-xl mb-6 text-white/70">Ihre Meinung zählt.</p>
               <a
                 href="https://www.google.com/maps"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-white hover:gap-2.5 transition-all"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-white hover:gap-2.5 transition-all min-h-[44px]"
               >
                 Jetzt Bewertung schreiben <ArrowRight className="h-4 w-4" />
               </a>
             </article>
           ))}
         </div>
-        <div className="mt-12 flex items-center justify-center gap-4 text-white/80">
+        <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-white/80">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-foreground font-serif">G</div>
           <span className="font-serif text-2xl">5,0</span>
           <span className="text-amber-400">★★★★★</span>
