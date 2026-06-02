@@ -160,7 +160,9 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
 
       <Asterisk className="hidden sm:block absolute top-32 right-10 h-16 w-16 text-primary/70 animate-[spin_18s_linear_infinite]" />
-      <Scribble className="hidden md:block absolute bottom-24 left-10 w-40 text-primary/40" />
+      <Asterisk className="hidden lg:block absolute bottom-32 right-24 h-10 w-10 text-white/40 animate-float-y" />
+      <div className="hidden md:block absolute top-1/3 left-12 h-32 w-32 rounded-full bg-primary/30 blur-[60px] animate-glow-pulse" />
+      <Scribble className="hidden md:block absolute bottom-24 left-10 w-40 text-primary/40 animate-float-x" />
 
       <div className="relative mx-auto max-w-[1100px] w-full text-center flex flex-col items-center">
         <AnimatedHeadline />
@@ -292,8 +294,10 @@ function Stats() {
     { v: 0, s: "€", l: "Anfrage-Kosten" },
   ];
   return (
-    <section className="bg-[var(--color-dark)] text-white">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-14 sm:py-20">
+    <section className="relative bg-[var(--color-dark)] text-white overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,var(--color-deep-green-soft)_0%,transparent_55%)] opacity-60" />
+      <div className="pointer-events-none absolute -bottom-32 right-0 h-[420px] w-[420px] rounded-full bg-primary/15 blur-[120px] animate-aurora" />
+      <div className="relative mx-auto max-w-[1400px] px-5 sm:px-10 py-14 sm:py-20">
         <Reveal>
           <div className="flex flex-col items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
             <span>Vertrauen in Zahlen</span>
@@ -408,10 +412,15 @@ function WhyUs() {
     { n: "04", t: "Diskret", d: "Vertrauensvoller Umgang mit Ihrer Wohnung oder Ihren Geschäftsräumen — selbstverständlich." },
   ];
   return (
-    <section id="ueber" className="py-24 sm:py-36 px-5 sm:px-10 bg-[#EFEBE4]">
-      <div className="mx-auto max-w-[1400px]">
+    <section id="ueber" className="relative py-24 sm:py-36 px-5 sm:px-10 bg-[var(--color-deep-green)] text-white overflow-hidden">
+      {/* Aurora ambient blobs */}
+      <div className="pointer-events-none absolute -top-32 -left-32 h-[480px] w-[480px] rounded-full bg-primary/25 blur-[120px] animate-aurora" />
+      <div className="pointer-events-none absolute -bottom-40 -right-20 h-[520px] w-[520px] rounded-full bg-[var(--color-deep-green-soft)] blur-[140px] animate-aurora" style={{ animationDelay: "-8s" }} />
+      <Asterisk className="hidden md:block absolute top-16 right-10 h-14 w-14 text-primary/40 animate-[spin_24s_linear_infinite]" />
+
+      <div className="relative mx-auto max-w-[1400px]">
         <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
-          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
             <span>Warum wir</span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
@@ -423,10 +432,10 @@ function WhyUs() {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
             <figure className="border-l-2 border-primary pl-6 sm:pl-8">
-              <blockquote className="font-serif italic text-2xl sm:text-3xl leading-snug text-foreground/90">
+              <blockquote className="font-serif italic text-2xl sm:text-3xl leading-snug text-white/95">
                 „Ein Reinigungsdienst, bei dem man sich keine Gedanken machen muss."
               </blockquote>
-              <figcaption className="mt-4 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              <figcaption className="mt-4 text-[11px] uppercase tracking-[0.2em] text-white/50">
                 Unser Anspruch bei jedem Auftrag
               </figcaption>
             </figure>
@@ -438,9 +447,9 @@ function WhyUs() {
                 <Reveal
                   key={p.n}
                   delay={idx * 120}
-                  className="flex gap-6 sm:gap-8 pb-10 sm:pb-12 border-b border-foreground/10 last:border-0 last:pb-0"
+                  className="flex gap-6 sm:gap-8 pb-10 sm:pb-12 border-b border-white/10 last:border-0 last:pb-0"
                 >
-                  <span className="font-mono text-xs tabular-nums text-muted-foreground pt-2 shrink-0">
+                  <span className="font-mono text-xs tabular-nums text-white/40 pt-2 shrink-0">
                     {p.n}
                   </span>
                   <div className="flex-1">
@@ -448,7 +457,7 @@ function WhyUs() {
                       {p.t}
                       <Check className="h-5 w-5 text-primary transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" strokeWidth={2.5} />
                     </h3>
-                    <p className="text-base text-foreground/70 leading-relaxed max-w-md">{p.d}</p>
+                    <p className="text-base text-white/70 leading-relaxed max-w-md">{p.d}</p>
                   </div>
                 </Reveal>
               ))}
@@ -556,8 +565,10 @@ function Reviews() {
   ];
 
   return (
-    <section id="bewertungen" className="bg-[var(--color-dark)] text-white py-24 sm:py-36 px-5 sm:px-10 overflow-hidden">
-      <div className="mx-auto max-w-[1400px]">
+    <section id="bewertungen" className="relative bg-[var(--color-deep-green)] text-white py-24 sm:py-36 px-5 sm:px-10 overflow-hidden">
+      <div className="pointer-events-none absolute -top-32 right-0 h-[460px] w-[460px] rounded-full bg-primary/20 blur-[140px] animate-aurora" />
+      <div className="pointer-events-none absolute -bottom-40 -left-20 h-[420px] w-[420px] rounded-full bg-[var(--color-deep-green-soft)] blur-[120px] animate-aurora" style={{ animationDelay: "-10s" }} />
+      <div className="relative mx-auto max-w-[1400px]">
         <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
           <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
             <span>Kundenstimmen</span>
@@ -716,16 +727,16 @@ function Contact() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <aside className="lg:col-span-4 lg:col-start-9 space-y-8 lg:pt-12">
-            {[
-              { icon: MapPin, label: "Adresse", lines: ["Messeweg 113", "52156 Monschau"] },
-              { icon: Clock, label: "Reaktion", lines: ["Antwort innerhalb", "von 24 Stunden"] },
-              { icon: ShieldCheck, label: "Garantie", lines: ["100 % Zufriedenheit", "ohne Vertragsbindung"] },
-              { icon: MapPin, label: "Einsatzgebiet", lines: ["Monschau, Eifel,", "Aachen, Düren"] },
-            ].map((c) => (
-              <div key={c.label} className="flex gap-4 pb-6 border-b border-border last:border-0">
-                <c.icon className="h-5 w-5 text-primary shrink-0 mt-1" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {[
+            { icon: MapPin, label: "Adresse", lines: ["Messeweg 113", "52156 Monschau"] },
+            { icon: Clock, label: "Reaktion", lines: ["Antwort innerhalb", "von 24 Stunden"] },
+            { icon: ShieldCheck, label: "Garantie", lines: ["100 % Zufriedenheit", "ohne Vertragsbindung"] },
+            { icon: MapPin, label: "Einsatzgebiet", lines: ["Monschau, Eifel,", "Aachen, Düren"] },
+          ].map((c, idx) => (
+            <Reveal key={c.label} delay={idx * 100}>
+              <div className="group h-full flex gap-4 p-6 rounded-2xl border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-card)] hover:border-primary/40">
+                <c.icon className="h-5 w-5 text-primary shrink-0 mt-1 transition-transform duration-500 group-hover:scale-110" />
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
                     {c.label}
@@ -737,13 +748,13 @@ function Contact() {
                   </div>
                 </div>
               </div>
-            ))}
-          </aside>
+            </Reveal>
+          ))}
         </div>
 
         {/* Google Maps Karte */}
         <div className="mt-16 sm:mt-24">
-          <div className="flex items-end justify-between gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
             <div>
               <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
                 Standort
@@ -756,7 +767,7 @@ function Contact() {
               href="https://www.google.com/maps/dir/?api=1&destination=Messeweg+113,+52156+Monschau"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
             >
               Route planen <ArrowUpRight className="h-4 w-4" />
             </a>

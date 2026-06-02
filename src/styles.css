@@ -50,6 +50,8 @@
   --color-ring: var(--ring);
   --color-subtle: var(--subtle);
   --color-dark: var(--dark);
+  --color-deep-green: var(--deep-green);
+  --color-deep-green-soft: var(--deep-green-soft);
 
   --shadow-soft: 0 4px 24px -8px oklch(0.2 0.02 90 / 0.08), 0 2px 8px -4px oklch(0.2 0.02 90 / 0.04);
   --shadow-card: 0 8px 32px -12px oklch(0.2 0.02 90 / 0.12), 0 4px 12px -6px oklch(0.2 0.02 90 / 0.06);
@@ -83,6 +85,9 @@
   --ring: oklch(0.53 0.07 145);
   --subtle: oklch(0.905 0.008 80);
   --dark: oklch(0.18 0 0);
+  /* deep forest green for dark sections */
+  --deep-green: oklch(0.28 0.045 150);
+  --deep-green-soft: oklch(0.36 0.055 150);
 }
 
 .dark {
@@ -107,6 +112,8 @@
   --ring: oklch(0.6 0.08 145);
   --subtle: oklch(1 0 0 / 10%);
   --dark: oklch(0.12 0 0);
+  --deep-green: oklch(0.22 0.04 150);
+  --deep-green-soft: oklch(0.3 0.05 150);
 }
 
 @layer base {
@@ -193,6 +200,53 @@
 @keyframes draw-line {
   from { transform: scaleX(0); }
   to   { transform: scaleX(1); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+@keyframes float-x {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  50%      { transform: translateX(10px) rotate(6deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%      { opacity: 0.7; transform: scale(1.08); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+@keyframes aurora {
+  0%   { transform: translate3d(-10%, -10%, 0) rotate(0deg); }
+  50%  { transform: translate3d(10%, 5%, 0) rotate(180deg); }
+  100% { transform: translate3d(-10%, -10%, 0) rotate(360deg); }
+}
+
+@utility animate-float-y {
+  animation: float-y 7s ease-in-out infinite;
+}
+@utility animate-float-x {
+  animation: float-x 9s ease-in-out infinite;
+}
+@utility animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+@utility animate-aurora {
+  animation: aurora 22s ease-in-out infinite;
+}
+@utility text-gradient-shimmer {
+  background: linear-gradient(90deg, currentColor 0%, var(--color-primary) 50%, currentColor 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 6s ease-in-out infinite;
 }
 
 @utility reveal {

@@ -336,9 +336,11 @@ export function FAQ() {
 export function CtaStrip({ phone, phoneHref, waHref }: { phone: string; phoneHref: string; waHref: string }) {
   return (
     <section className="px-5 sm:px-10">
-      <div className="mx-auto max-w-[1400px] relative overflow-hidden rounded-3xl bg-[var(--color-dark)] text-white px-8 sm:px-14 py-14 sm:py-20">
-        <Asterisk className="absolute -top-10 -right-10 h-48 w-48 text-primary/25" />
-        <Asterisk className="absolute -bottom-16 -left-8 h-56 w-56 text-white/5" />
+      <div className="mx-auto max-w-[1400px] relative overflow-hidden rounded-3xl bg-[var(--color-deep-green)] text-white px-6 sm:px-14 py-14 sm:py-20">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full bg-primary/25 blur-[100px] animate-aurora" />
+        <div className="pointer-events-none absolute -bottom-32 -left-24 h-[420px] w-[420px] rounded-full bg-[var(--color-deep-green-soft)] blur-[100px] animate-aurora" style={{ animationDelay: "-9s" }} />
+        <Asterisk className="absolute top-6 right-6 h-20 w-20 sm:h-32 sm:w-32 text-primary/30 animate-[spin_20s_linear_infinite]" />
+        <Asterisk className="absolute -bottom-12 -left-6 h-40 w-40 sm:h-56 sm:w-56 text-white/5 animate-float-y" />
         <div className="relative grid md:grid-cols-12 gap-8 items-end">
           <div className="md:col-span-8">
             <div className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-4">
