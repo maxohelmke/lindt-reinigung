@@ -357,31 +357,31 @@ function Reviews() {
 
 function Contact() {
   return (
-    <section id="kontakt" className="py-28 px-6">
+    <section id="kontakt" className="py-20 sm:py-28 px-4 sm:px-6">
       <div className="mx-auto max-w-4xl text-center">
         <p className="overline mb-4">Kontakt</p>
-        <h2 className="font-serif text-4xl md:text-5xl mb-6">Jetzt unverbindlich anfragen.</h2>
-        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-5 sm:mb-6">Jetzt unverbindlich anfragen.</h2>
+        <p className="text-base sm:text-lg text-muted-foreground mb-10 sm:mb-12 max-w-2xl mx-auto">
           Kein Formular, kein Aufwand — einfach anrufen oder WhatsApp schreiben.
           Wir antworten schnell.
         </p>
-        <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-16">
+        <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto mb-12 sm:mb-16">
           <a
             href={PHONE_HREF}
-            className="inline-flex items-center justify-center gap-3 rounded-xl bg-primary px-8 py-5 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-all hover:translate-y-[-2px]"
+            className="inline-flex items-center justify-center gap-3 rounded-xl bg-primary px-6 sm:px-8 py-5 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-all hover:translate-y-[-2px] min-h-[56px]"
           >
-            <Phone className="h-5 w-5" /> {PHONE} anrufen
+            <Phone className="h-5 w-5" /> {PHONE}
           </a>
           <a
             href={WHATSAPP_HREF}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-foreground/20 px-8 py-5 text-base font-medium hover:bg-foreground/5 transition-all"
+            className="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-foreground/20 px-6 sm:px-8 py-5 text-base font-medium hover:bg-foreground/5 transition-all min-h-[56px]"
           >
             <MessageCircle className="h-5 w-5" /> WhatsApp schreiben
           </a>
         </div>
-        <div className="grid sm:grid-cols-3 gap-8 text-left bg-card rounded-2xl p-8 shadow-[var(--shadow-soft)]">
+        <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 text-left bg-card rounded-2xl p-6 sm:p-8 shadow-[var(--shadow-soft)]">
           <div className="flex gap-3">
             <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
             <div>
