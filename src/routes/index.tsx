@@ -471,17 +471,15 @@ function Process() {
   return (
     <section className="py-24 sm:py-36 px-5 sm:px-10">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-24">
-          <div>
-            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>Der Ablauf</span>
-            </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-3xl">
-              In drei Schritten zu Ihrer
-              {" "}
-              <span className="italic text-primary">sauberen Immobilie.</span>
-            </h2>
+        <div className="flex flex-col items-center text-center mb-16 sm:mb-24">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Der Ablauf</span>
           </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-3xl">
+            In drei Schritten zu Ihrer
+            {" "}
+            <span className="italic text-primary">sauberen Immobilie.</span>
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
