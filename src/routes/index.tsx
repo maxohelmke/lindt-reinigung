@@ -335,24 +335,20 @@ function Services() {
   return (
     <section id="leistungen" className="py-24 sm:py-36 px-5 sm:px-10">
       <div className="mx-auto max-w-[1400px]">
-        <div className="grid lg:grid-cols-12 gap-10 mb-16 sm:mb-24">
-          <div className="lg:col-span-4">
-            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>Leistungen</span>
-            </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
-              Alles aus
-              <br />
-              <span className="italic text-primary">einer Hand.</span>
-            </h2>
+        <div className="flex flex-col items-center text-center mb-16 sm:mb-24">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Leistungen</span>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-              Ob einmalige Grundreinigung oder regelmäßige Unterhaltsreinigung — wir
-              erstellen Ihnen ein individuelles Angebot, transparent und ohne
-              Vertragsbindung.
-            </p>
-          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
+            Alles aus
+            <br />
+            <span className="italic text-primary">einer Hand.</span>
+          </h2>
+          <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-2xl">
+            Ob einmalige Grundreinigung oder regelmäßige Unterhaltsreinigung — wir
+            erstellen Ihnen ein individuelles Angebot, transparent und ohne
+            Vertragsbindung.
+          </p>
         </div>
 
         <div className="border-t border-border">
