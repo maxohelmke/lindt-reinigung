@@ -1,6 +1,12 @@
-import { useState } from "react";
-import { Plus, Minus, Sparkles, Leaf, Award, Clock3, MapPin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Plus, Minus, Sparkles, Leaf, Award, Clock3, MapPin, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 /* ─────────────────────────────────────────────────────────── DECOR */
 
