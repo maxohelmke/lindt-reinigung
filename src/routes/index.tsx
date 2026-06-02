@@ -134,7 +134,10 @@ function AnimatedHeadline() {
 function Hero() {
   return (
     <section id="top" className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 px-5 sm:px-10 overflow-hidden">
-      <div className="mx-auto max-w-[1400px]">
+      <Asterisk className="hidden sm:block absolute top-32 right-10 h-16 w-16 text-primary/50 animate-[spin_18s_linear_infinite]" />
+      <Asterisk className="hidden lg:block absolute bottom-24 left-[42%] h-10 w-10 text-foreground/15" />
+      <Scribble className="hidden md:block absolute top-1/2 right-12 w-40 text-primary/30" />
+      <div className="mx-auto max-w-[1400px] relative">{/* :wrap */}
         <div className="flex items-center justify-between mb-12 sm:mb-20 text-[11px] uppercase tracking-[0.25em] text-muted-foreground animate-[fade-up_0.8s_ease-out_both]">
           <span>Est. Monschau · Eifel</span>
           <span className="hidden sm:inline">№ 01 — Reinigungsdienst</span>
