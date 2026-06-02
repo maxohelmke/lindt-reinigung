@@ -288,11 +288,6 @@ function Hero() {
         </Reveal>
       </div>
 
-      {/* Scroll cue */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/55 text-[10px] uppercase tracking-[0.3em] animate-float-y">
-        <span>Scrollen</span>
-        <span className="h-8 w-px bg-white/40" />
-      </div>
     </section>
   );
 }
