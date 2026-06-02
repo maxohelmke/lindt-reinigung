@@ -717,6 +717,7 @@ function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <aside className="lg:col-span-4 lg:col-start-9 space-y-8 lg:pt-12">
             {[
               { icon: MapPin, label: "Adresse", lines: ["Messeweg 113", "52156 Monschau"] },
               { icon: Clock, label: "Reaktion", lines: ["Antwort innerhalb", "von 24 Stunden"] },
