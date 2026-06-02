@@ -53,10 +53,12 @@ function Index() {
       <TrustBar />
       <Stats />
       <Services />
+      <WorkAreas />
       <Gallery />
       <WhyUs />
       <Process />
       <Reviews />
+      <References />
       <FAQ />
       <CtaStrip phone={PHONE} phoneHref={PHONE_HREF} waHref={WHATSAPP_HREF} />
       <Contact />
