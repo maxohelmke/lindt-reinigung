@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Phone,
   MessageCircle,
@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Star,
 } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,6 +42,7 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
+      <Marquee />
       <Stats />
       <Services />
       <WhyUs />
@@ -98,32 +100,49 @@ function Nav() {
 
 /* ─────────────────────────────────────────────────────────── HERO */
 
+function AnimatedHeadline() {
+  const lines: { text: string; italic?: boolean }[] = [
+    { text: "Sauberkeit," },
+    { text: "die für sich", italic: true },
+    { text: "spricht." },
+  ];
+  let idx = 0;
+  return (
+    <h1 className="font-serif text-[clamp(2.75rem,9vw,9rem)] leading-[0.95] tracking-[-0.03em] letter-stage">
+      {lines.map((line, li) => (
+        <span key={li} className={`block ${line.italic ? "italic text-primary" : ""}`}>
+          {[...line.text].map((ch, ci) => {
+            const delay = idx * 22 + 120;
+            idx += 1;
+            return (
+              <span key={ci} style={{ animationDelay: `${delay}ms` }}>
+                {ch === " " ? "\u00A0" : ch}
+              </span>
+            );
+          })}
+        </span>
+      ))}
+    </h1>
+  );
+}
+
 function Hero() {
   return (
     <section id="top" className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 px-5 sm:px-10 overflow-hidden">
       <div className="mx-auto max-w-[1400px]">
-        {/* Top meta row */}
-        <div className="flex items-center justify-between mb-12 sm:mb-20 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+        <div className="flex items-center justify-between mb-12 sm:mb-20 text-[11px] uppercase tracking-[0.25em] text-muted-foreground animate-[fade-up_0.8s_ease-out_both]">
           <span>Est. Monschau · Eifel</span>
           <span className="hidden sm:inline">№ 01 — Reinigungsdienst</span>
           <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
             Verfügbar
           </span>
         </div>
 
-        {/* Headline */}
-        <h1 className="font-serif text-[clamp(2.75rem,9vw,9rem)] leading-[0.95] tracking-[-0.03em] reveal">
-          Sauberkeit,
-          <br />
-          <span className="italic text-primary">die für sich</span>
-          <br />
-          spricht.
-        </h1>
+        <AnimatedHeadline />
 
-        {/* Bottom row: lede + CTAs + social proof */}
         <div className="mt-12 sm:mt-20 grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
-          <div className="lg:col-span-5">
+          <Reveal className="lg:col-span-5" delay={800}>
             <p className="text-base sm:text-lg text-foreground/75 leading-relaxed max-w-md">
               Privat oder Gewerbe — wir übernehmen die Reinigung
               zuverlässig, diskret und zu fairen Preisen. Seit Jahren vertrauen
@@ -132,29 +151,32 @@ function Hero() {
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
                 href={PHONE_HREF}
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-[14px] font-medium text-background hover:bg-primary transition-colors min-h-[52px]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-[14px] font-medium text-background hover:bg-primary transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg min-h-[52px]"
               >
                 Kostenlos anfragen
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
               <a
                 href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 px-7 py-4 text-[14px] font-medium hover:border-foreground/40 transition-colors min-h-[52px]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 px-7 py-4 text-[14px] font-medium hover:border-foreground/40 hover:-translate-y-0.5 transition-all duration-300 min-h-[52px]"
               >
-                <MessageCircle className="h-4 w-4" /> WhatsApp
+                <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:rotate-[-8deg]" /> WhatsApp
               </a>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="lg:col-span-4 lg:col-start-9">
-            {/* Social proof — no card, just composition */}
+          <Reveal className="lg:col-span-4 lg:col-start-9" delay={1000}>
             <div className="space-y-5">
               <div className="flex items-center gap-3">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-primary text-primary animate-[scale-in_0.5s_ease-out_both]"
+                      style={{ animationDelay: `${1200 + i * 90}ms` }}
+                    />
                   ))}
                 </div>
                 <span className="font-serif text-2xl">5,0</span>
@@ -170,44 +192,111 @@ function Hero() {
                 — P. Sieberg, Local Guide
               </p>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
   );
 }
 
+/* ─────────────────────────────────────────────────────────── MARQUEE */
+
+function Marquee() {
+  const items = [
+    "Privatreinigung", "Büro & Gewerbe", "Fensterreinigung", "Grundreinigung",
+    "Treppenhaus", "Sonderreinigung", "Bauendreinigung", "Veranstaltungsreinigung",
+  ];
+  const row = [...items, ...items];
+  return (
+    <div className="border-y border-border py-6 overflow-hidden bg-background">
+      <div className="flex gap-12 animate-marquee whitespace-nowrap font-serif text-2xl sm:text-3xl text-foreground/40">
+        {row.map((t, i) => (
+          <span key={i} className="flex items-center gap-12">
+            {t}
+            <span className="text-primary">✦</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ─────────────────────────────────────────────────────────── STATS */
+
+function StatNumber({ value, suffix }: { value: number; suffix: string }) {
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const [shown, setShown] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf = 0;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        const start = performance.now();
+        const duration = 1400;
+        const target = value;
+        const tick = (t: number) => {
+          const p = Math.min(1, (t - start) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          setShown(target * eased);
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [value]);
+
+  const display = value < 10
+    ? shown.toFixed(1).replace(".", ",")
+    : Math.round(shown).toString();
+  return (
+    <span ref={ref} className="tabular-nums">
+      {display}
+      <span className="text-2xl sm:text-3xl text-primary ml-1">{suffix}</span>
+    </span>
+  );
+}
 
 function Stats() {
   const items = [
-    { k: "5,0", s: "★★★★★", l: "Google-Bewertung" },
-    { k: "100", s: "%", l: "Zufriedenheit" },
-    { k: "24", s: "h", l: "Reaktionszeit" },
-    { k: "0", s: "€", l: "Anfrage-Kosten" },
+    { v: 5.0, s: "★", l: "Google-Bewertung" },
+    { v: 100, s: "%", l: "Zufriedenheit" },
+    { v: 24, s: "h", l: "Reaktionszeit" },
+    { v: 0, s: "€", l: "Anfrage-Kosten" },
   ];
   return (
     <section className="bg-[var(--color-dark)] text-white">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-14 sm:py-20">
-        <div className="flex items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
-          <span>№ 02</span>
-          <span className="h-px flex-1 bg-white/15" />
-          <span>Vertrauen in Zahlen</span>
-        </div>
+        <Reveal>
+          <div className="flex items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
+            <span>№ 02</span>
+            <span className="h-px flex-1 bg-white/15 origin-left animate-draw-line" />
+            <span>Vertrauen in Zahlen</span>
+          </div>
+        </Reveal>
         <div className="grid grid-cols-2 md:grid-cols-4">
           {items.map((i, idx) => (
-            <div
+            <Reveal
               key={i.l}
+              delay={idx * 120}
               className={`py-4 md:py-0 md:px-8 ${idx > 0 ? "md:border-l border-white/10" : ""}`}
             >
-              <div className="font-serif text-5xl sm:text-6xl md:text-7xl tracking-tight flex items-baseline gap-1">
-                {i.k}
-                <span className="text-2xl sm:text-3xl text-primary">{i.s}</span>
+              <div className="font-serif text-5xl sm:text-6xl md:text-7xl tracking-tight">
+                <StatNumber value={i.v} suffix={i.s} />
               </div>
               <div className="mt-2 text-[11px] uppercase tracking-[0.2em] text-white/50">
                 {i.l}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -250,32 +339,34 @@ function Services() {
           </div>
         </div>
 
-        {/* Index-style list, hairline rules, hover-row treatment */}
         <div className="border-t border-border">
-          {services.map((s) => (
-            <a
-              key={s.n}
-              href="#kontakt"
-              className="group block border-b border-border py-7 sm:py-9 hover:bg-foreground/[0.02] -mx-3 sm:-mx-6 px-3 sm:px-6 transition-colors"
-            >
-              <div className="grid grid-cols-12 gap-4 sm:gap-8 items-baseline">
-                <div className="col-span-2 sm:col-span-1 font-mono text-xs sm:text-sm text-muted-foreground tabular-nums pt-1">
-                  {s.n}
+          {services.map((s, idx) => (
+            <Reveal key={s.n} delay={idx * 80}>
+              <a
+                href="#kontakt"
+                className="group block border-b border-border py-7 sm:py-9 hover:bg-foreground/[0.03] -mx-3 sm:-mx-6 px-3 sm:px-6 transition-colors duration-300 relative overflow-hidden"
+              >
+                {/* sliding accent bar */}
+                <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-primary scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500" />
+                <div className="grid grid-cols-12 gap-4 sm:gap-8 items-baseline">
+                  <div className="col-span-2 sm:col-span-1 font-mono text-xs sm:text-sm text-muted-foreground tabular-nums pt-1 group-hover:text-primary transition-colors">
+                    {s.n}
+                  </div>
+                  <h3 className="col-span-10 sm:col-span-4 font-serif text-2xl sm:text-3xl md:text-4xl tracking-tight transition-transform duration-500 group-hover:translate-x-2">
+                    {s.title}
+                  </h3>
+                  <p className="col-span-12 sm:col-span-5 text-sm sm:text-base text-foreground/65 leading-relaxed">
+                    {s.desc}
+                  </p>
+                  <div className="col-span-12 sm:col-span-2 sm:text-right">
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-all duration-300 group-hover:gap-3">
+                      Anfragen
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </span>
+                  </div>
                 </div>
-                <h3 className="col-span-10 sm:col-span-4 font-serif text-2xl sm:text-3xl md:text-4xl tracking-tight">
-                  {s.title}
-                </h3>
-                <p className="col-span-12 sm:col-span-5 text-sm sm:text-base text-foreground/65 leading-relaxed">
-                  {s.desc}
-                </p>
-                <div className="col-span-12 sm:col-span-2 sm:text-right">
-                  <span className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
-                    Anfragen
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </div>
-              </div>
-            </a>
+              </a>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -318,19 +409,23 @@ function WhyUs() {
 
           <div className="lg:col-span-6 lg:col-start-7">
             <div className="space-y-10 sm:space-y-12">
-              {points.map((p) => (
-                <div key={p.n} className="flex gap-6 sm:gap-8 pb-10 sm:pb-12 border-b border-foreground/10 last:border-0 last:pb-0">
+              {points.map((p, idx) => (
+                <Reveal
+                  key={p.n}
+                  delay={idx * 120}
+                  className="flex gap-6 sm:gap-8 pb-10 sm:pb-12 border-b border-foreground/10 last:border-0 last:pb-0"
+                >
                   <span className="font-mono text-xs tabular-nums text-muted-foreground pt-2 shrink-0">
                     {p.n}
                   </span>
                   <div className="flex-1">
-                    <h3 className="font-serif text-2xl sm:text-3xl mb-3 flex items-center gap-3">
+                    <h3 className="font-serif text-2xl sm:text-3xl mb-3 flex items-center gap-3 group">
                       {p.t}
-                      <Check className="h-5 w-5 text-primary" strokeWidth={2.5} />
+                      <Check className="h-5 w-5 text-primary transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" strokeWidth={2.5} />
                     </h3>
                     <p className="text-base text-foreground/70 leading-relaxed max-w-md">{p.d}</p>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -366,14 +461,16 @@ function Process() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
-          {steps.map((s) => (
-            <div key={s.n} className="bg-background p-8 sm:p-10 md:p-12 min-h-[320px] flex flex-col">
-              <div className="font-serif text-7xl sm:text-8xl text-primary/90 leading-none mb-8">
-                {s.n}
+          {steps.map((s, idx) => (
+            <Reveal key={s.n} delay={idx * 180} className="bg-background">
+              <div className="group p-8 sm:p-10 md:p-12 min-h-[320px] flex flex-col h-full transition-colors duration-500 hover:bg-[#EFEBE4]">
+                <div className="font-serif text-7xl sm:text-8xl text-primary/90 leading-none mb-8 transition-transform duration-500 group-hover:-translate-y-1 group-hover:text-primary">
+                  {s.n}
+                </div>
+                <h3 className="font-serif text-2xl sm:text-3xl mb-4 tracking-tight">{s.t}</h3>
+                <p className="text-base text-foreground/65 leading-relaxed flex-1">{s.d}</p>
               </div>
-              <h3 className="font-serif text-2xl sm:text-3xl mb-4 tracking-tight">{s.t}</h3>
-              <p className="text-base text-foreground/65 leading-relaxed flex-1">{s.d}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
 
