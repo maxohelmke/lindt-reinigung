@@ -767,7 +767,7 @@ function Contact() {
               href="https://www.google.com/maps/dir/?api=1&destination=Messeweg+113,+52156+Monschau"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
             >
               Route planen <ArrowUpRight className="h-4 w-4" />
             </a>
