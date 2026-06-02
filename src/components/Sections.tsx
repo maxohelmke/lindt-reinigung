@@ -271,23 +271,24 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section id="faq" className="py-24 sm:py-36 px-5 sm:px-10 bg-[#EFEBE4]">
-      <div className="mx-auto max-w-[1400px] grid lg:grid-cols-12 gap-12 lg:gap-16">
-        <div className="lg:col-span-4">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
           <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
             <span>Häufige Fragen</span>
           </div>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
             Antworten,
             <br />
             <span className="italic text-primary">bevor Sie fragen.</span>
           </h2>
-          <div className="mt-10 inline-flex items-center gap-3 text-sm text-foreground/70">
+          <div className="inline-flex items-center gap-3 text-sm text-foreground/70">
             <Sparkles className="h-4 w-4 text-primary" />
             <span>Noch eine Frage offen? Einfach anrufen.</span>
           </div>
         </div>
 
-        <ul className="lg:col-span-7 lg:col-start-6 border-t border-foreground/15">
+        <div className="max-w-3xl mx-auto">
+          <ul className="border-t border-foreground/15">
           {FAQS.map((item, i) => {
             const active = open === i;
             return (
