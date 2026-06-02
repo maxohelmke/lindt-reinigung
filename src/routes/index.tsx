@@ -44,11 +44,15 @@ function Index() {
       <Nav />
       <Hero />
       <Marquee />
+      <TrustBar />
       <Stats />
       <Services />
+      <Gallery />
       <WhyUs />
       <Process />
       <Reviews />
+      <FAQ />
+      <CtaStrip phone={PHONE} phoneHref={PHONE_HREF} waHref={WHATSAPP_HREF} />
       <Contact />
       <Footer />
     </div>
