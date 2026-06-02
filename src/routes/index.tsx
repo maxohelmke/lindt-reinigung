@@ -292,7 +292,9 @@ function Stats() {
     { v: 0, s: "€", l: "Anfrage-Kosten" },
   ];
   return (
-    <section className="bg-[var(--color-dark)] text-white">
+    <section className="relative bg-[var(--color-dark)] text-white overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,var(--color-deep-green-soft)_0%,transparent_55%)] opacity-60" />
+      <div className="pointer-events-none absolute -bottom-32 right-0 h-[420px] w-[420px] rounded-full bg-primary/15 blur-[120px] animate-aurora" />
       <div className="mx-auto max-w-[1400px] px-5 sm:px-10 py-14 sm:py-20">
         <Reveal>
           <div className="flex flex-col items-center gap-3 mb-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
