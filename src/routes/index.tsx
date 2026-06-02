@@ -279,30 +279,30 @@ function Process() {
     { n: "03", t: "Fertig ✓", d: "Wir reinigen zu Ihrem Wunschtermin — Sie müssen nichts weiter tun." },
   ];
   return (
-    <section className="py-28 px-6">
+    <section className="py-20 sm:py-28 px-4 sm:px-6">
       <div className="mx-auto max-w-7xl">
         <p className="overline mb-4">Der Ablauf</p>
-        <h2 className="font-serif text-4xl md:text-5xl mb-16 max-w-3xl">
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-10 sm:mb-16 max-w-3xl">
           In 3 Schritten zu Ihrer sauberen Immobilie.
         </h2>
-        <div className="grid md:grid-cols-3 gap-10 relative">
+        <div className="grid sm:grid-cols-3 gap-8 sm:gap-10 relative">
           {steps.map((s, i) => (
             <div key={s.n} className="relative">
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-8 left-[5rem] right-[-2rem] border-t-2 border-dashed border-border" />
               )}
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground font-serif text-2xl mb-6 relative z-10">
+              <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-primary text-primary-foreground font-serif text-xl sm:text-2xl mb-5 sm:mb-6 relative z-10">
                 {s.n}
               </div>
-              <h3 className="font-serif text-2xl mb-3">{s.t}</h3>
+              <h3 className="font-serif text-xl sm:text-2xl mb-3">{s.t}</h3>
               <p className="text-muted-foreground leading-relaxed">{s.d}</p>
             </div>
           ))}
         </div>
-        <div className="mt-16">
+        <div className="mt-12 sm:mt-16">
           <a
             href={PHONE_HREF}
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-all hover:translate-y-[-2px]"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-all hover:translate-y-[-2px] min-h-[52px]"
           >
             Jetzt Schritt 1 starten <ArrowRight className="h-5 w-5" />
           </a>
