@@ -410,16 +410,18 @@ function WhyUs() {
   return (
     <section id="ueber" className="py-24 sm:py-36 px-5 sm:px-10 bg-[#EFEBE4]">
       <div className="mx-auto max-w-[1400px]">
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
+          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Warum wir</span>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
+            Vertrauen,
+            <br />
+            das man <span className="italic text-primary">spürt.</span>
+          </h2>
+        </div>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
-            <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>Warum wir</span>
-            </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-10 sm:mb-14">
-              Vertrauen,
-              <br />
-              das man <span className="italic text-primary">spürt.</span>
-            </h2>
             <figure className="border-l-2 border-primary pl-6 sm:pl-8">
               <blockquote className="font-serif italic text-2xl sm:text-3xl leading-snug text-foreground/90">
                 „Ein Reinigungsdienst, bei dem man sich keine Gedanken machen muss."
