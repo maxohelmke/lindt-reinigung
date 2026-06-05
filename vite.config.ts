@@ -12,4 +12,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // NITRO_PRESET activates nitro with the given preset (e.g. vercel-edge for Vercel deploys).
+  // Undefined outside of Lovable sandbox = nitro skipped (default behaviour).
+  nitro: process.env.NITRO_PRESET ? { preset: process.env.NITRO_PRESET as string } : undefined,
 });

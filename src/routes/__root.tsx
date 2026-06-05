@@ -76,11 +76,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0f1e16" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "theme-color", content: "#1A3A5C" },
       { name: "format-detection", content: "telephone=yes" },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Shadi Alo Reinigungsdienst" },
+      { property: "og:site_name", content: "Lindt.Reinigungsfirma" },
       { property: "og:locale", content: "de_DE" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -40,24 +40,24 @@ export function Scribble({ className = "" }: { className?: string }) {
 
 export function TrustBar() {
   const items = [
-    { icon: Award, label: "Inhabergeführt", sub: "Seit 2019" },
-    { icon: Leaf, label: "Eco-Mittel", sub: "Pflanzenbasiert" },
-    { icon: Clock3, label: "24h Antwort", sub: "Mo–Sa" },
-    { icon: MapPin, label: "Eifel-Region", sub: "Monschau · Aachen" },
+    { icon: Award, label: "Inhabergeführt", sub: "Persönlich" },
+    { icon: Leaf, label: "5,0 ★ Google", sub: "2 Bewertungen" },
+    { icon: Clock3, label: "24h Antwort", sub: "Mo–Fr" },
+    { icon: MapPin, label: "Wuppertal", sub: "Bergisches Land" },
   ];
   return (
-    <section className="px-5 sm:px-10 py-8 sm:py-10 border-b border-border">
+    <section className="px-4 sm:px-10 py-6 sm:py-10 border-b border-border">
       <div className="mx-auto max-w-[1400px] grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
         {items.map((it, i) => (
           <Reveal
             key={it.label}
             delay={i * 80}
-            className="bg-background px-5 py-5 flex items-center gap-4"
+            className="bg-background px-3 sm:px-5 py-4 sm:py-5 flex items-center gap-3 sm:gap-4"
           >
             <it.icon className="h-5 w-5 text-primary shrink-0" strokeWidth={1.6} />
             <div className="min-w-0">
-              <div className="text-sm font-medium tracking-tight leading-tight">{it.label}</div>
-              <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mt-0.5">
+              <div className="text-xs sm:text-sm font-medium tracking-tight leading-tight">{it.label}</div>
+              <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-muted-foreground mt-0.5">
                 {it.sub}
               </div>
             </div>
@@ -74,13 +74,13 @@ type Tile = { src: string; alt: string; tag: string; span: string };
 
 const TILES: Tile[] = [
   {
-    src: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1200&q=80&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop",
     alt: "Helle, aufgeräumte Küche nach Reinigung",
     tag: "Privat · Küche",
     span: "md:col-span-7 md:row-span-2 aspect-[4/5] md:aspect-auto",
   },
   {
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80&auto=format&fit=crop",
     alt: "Modernes Badezimmer, streifenfrei gereinigt",
     tag: "Privat · Bad",
     span: "md:col-span-5 aspect-[4/3]",
@@ -104,13 +104,13 @@ const TILES: Tile[] = [
     span: "md:col-span-4 aspect-[4/5]",
   },
   {
-    src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80&auto=format&fit=crop",
     alt: "Frisch gewischter Holzboden im Wohnzimmer",
     tag: "Privat · Boden",
     span: "md:col-span-4 aspect-[4/5]",
   },
   {
-    src: "https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?w=1200&q=80&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1560448204-e86f66e5bbde?w=800&q=80&auto=format&fit=crop",
     alt: "Treppenhaus nach Grundreinigung",
     tag: "Gemeinschaft · Treppe",
     span: "md:col-span-4 aspect-[4/5]",
@@ -125,7 +125,7 @@ const TILES: Tile[] = [
 
 export function Gallery() {
   return (
-    <section className="py-24 sm:py-36 px-5 sm:px-10 bg-background">
+    <section className="py-16 sm:py-24 md:py-36 px-4 sm:px-10 bg-background">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col items-center text-center mb-14 sm:mb-20">
           <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -140,7 +140,7 @@ export function Gallery() {
             </span>
           </h2>
           <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-2xl">
-            Eine kleine Auswahl aus den letzten Aufträgen — Privat­wohnungen,
+            Eine kleine Auswahl aus den letzten Aufträgen: Privatwohnungen,
             Büros und Spezialeinsätze. Jede Reinigung übergeben wir persönlich.
           </p>
         </div>
@@ -195,7 +195,7 @@ function GalleryCarousel() {
                   <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                   {t.tag}
                 </figcaption>
-                <div className="absolute bottom-4 left-4 right-4 font-serif text-white text-lg sm:text-xl leading-tight tracking-tight drop-shadow-sm">
+                <div className="absolute bottom-4 left-4 right-4 font-serif text-white text-base sm:text-xl leading-tight tracking-tight drop-shadow-sm">
                   {t.alt}
                 </div>
               </figure>
@@ -246,11 +246,11 @@ function GalleryCarousel() {
 const FAQS = [
   {
     q: "Wie schnell bekomme ich ein Angebot?",
-    a: "Innerhalb von 24 Stunden — meist deutlich schneller. Eine kurze Beschreibung per Anruf oder WhatsApp reicht.",
+    a: "Innerhalb von 24 Stunden, meist deutlich schneller. Eine kurze Beschreibung per Anruf oder WhatsApp reicht.",
   },
   {
     q: "Gibt es eine Vertragsbindung?",
-    a: "Nein. Sie buchen einmalig oder regelmäßig — kündbar jederzeit, ohne Frist. Kein Kleingedrucktes.",
+    a: "Nein. Sie buchen einmalig oder regelmäßig, kündbar jederzeit, ohne Frist. Kein Kleingedrucktes.",
   },
   {
     q: "Welche Reinigungsmittel werden eingesetzt?",
@@ -258,22 +258,22 @@ const FAQS = [
   },
   {
     q: "Sind Sie versichert?",
-    a: "Ja — vollumfänglich haftpflichtversichert. Auf Anfrage senden wir Ihnen den Versicherungsnachweis.",
+    a: "Ja, vollumfänglich haftpflichtversichert. Auf Anfrage senden wir Ihnen den Versicherungsnachweis.",
   },
   {
     q: "In welchen Orten sind Sie tätig?",
-    a: "Monschau, Simmerath, Roetgen, Aachen, Stolberg, Eschweiler, Düren und das gesamte Eifel-Umland.",
+    a: "Wuppertal, Wuppertal-Vohwinkel, Solingen, Remscheid, Velbert und das gesamte Bergische Land.",
   },
   {
     q: "Bringen Sie Material und Geräte mit?",
-    a: "Selbstverständlich — wir kommen komplett ausgestattet. Sie müssen nichts bereitstellen.",
+    a: "Selbstverständlich, wir kommen komplett ausgestattet. Sie müssen nichts bereitstellen.",
   },
 ];
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="py-24 sm:py-36 px-5 sm:px-10 bg-[#EFEBE4]">
+    <section id="faq" className="py-16 sm:py-24 md:py-36 px-4 sm:px-10 bg-[#EFEBE4]">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
           <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -299,14 +299,14 @@ export function FAQ() {
                 <button
                   type="button"
                   onClick={() => setOpen(active ? null : i)}
-                  className="group w-full flex items-start justify-between gap-6 py-6 sm:py-7 text-left"
+                  className="group w-full flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-7 text-left"
                   aria-expanded={active}
                 >
                   <span className="flex items-baseline gap-5 sm:gap-7 flex-1">
                     <span className="font-mono text-xs tabular-nums text-muted-foreground pt-1">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-serif text-xl sm:text-2xl md:text-3xl tracking-tight leading-snug">
+                    <span className="font-serif text-lg sm:text-2xl md:text-3xl tracking-tight leading-snug">
                       {item.q}
                     </span>
                   </span>
@@ -319,7 +319,7 @@ export function FAQ() {
                   style={{ gridTemplateRows: active ? "1fr" : "0fr" }}
                 >
                   <div className="overflow-hidden">
-                    <p className="pl-[3.4rem] sm:pl-[4.4rem] pb-6 sm:pb-7 pr-12 text-base text-foreground/75 leading-relaxed max-w-xl">
+                    <p className="pl-[2.75rem] sm:pl-[4.4rem] pb-5 sm:pb-7 pr-4 sm:pr-12 text-sm sm:text-base text-foreground/75 leading-relaxed max-w-xl">
                       {item.a}
                     </p>
                   </div>
@@ -338,10 +338,10 @@ export function FAQ() {
 
 export function CtaStrip({ phone, phoneHref, waHref }: { phone: string; phoneHref: string; waHref: string }) {
   return (
-    <section className="px-5 sm:px-10">
-      <div className="mx-auto max-w-[1400px] relative overflow-hidden rounded-3xl bg-[var(--color-deep-green)] text-white px-6 sm:px-14 py-14 sm:py-20">
+    <section className="px-4 sm:px-10">
+      <div className="mx-auto max-w-[1400px] relative overflow-hidden rounded-2xl sm:rounded-3xl bg-[var(--color-deep-navy)] text-white px-5 sm:px-14 py-10 sm:py-20">
         <div className="pointer-events-none absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full bg-primary/25 blur-[100px] animate-aurora" />
-        <div className="pointer-events-none absolute -bottom-32 -left-24 h-[420px] w-[420px] rounded-full bg-[var(--color-deep-green-soft)] blur-[100px] animate-aurora" style={{ animationDelay: "-9s" }} />
+        <div className="pointer-events-none absolute -bottom-32 -left-24 h-[420px] w-[420px] rounded-full bg-[var(--color-deep-navy-soft)] blur-[100px] animate-aurora" style={{ animationDelay: "-9s" }} />
         <Asterisk className="absolute top-6 right-6 h-20 w-20 sm:h-32 sm:w-32 text-primary/30 animate-[spin_20s_linear_infinite]" />
         <Asterisk className="absolute -bottom-12 -left-6 h-40 w-40 sm:h-56 sm:w-56 text-white/5 animate-float-y" />
         <div className="relative grid md:grid-cols-12 gap-8 items-end">
@@ -349,8 +349,8 @@ export function CtaStrip({ phone, phoneHref, waHref }: { phone: string; phoneHre
             <div className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-4">
               Bereit für saubere Räume?
             </div>
-            <h3 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-2xl">
-              Ein Anruf — und der
+            <h3 className="font-serif text-3xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-2xl">
+              Ein Anruf, und der
               <br />
               <span className="italic text-primary">Rest ist erledigt.</span>
             </h3>
@@ -386,7 +386,7 @@ export function CtaStrip({ phone, phoneHref, waHref }: { phone: string; phoneHre
 const AREAS = [
   { icon: Home, title: "Privathaushalte", desc: "Wohnungen, Einfamilien­häuser, Ferienwohnungen." },
   { icon: Building2, title: "Wohnanlagen", desc: "Treppenhäuser, Eingänge, Tief­garagen, Aufzüge." },
-  { icon: Briefcase, title: "Büros & Kanzleien", desc: "Tägliche oder wöchentliche Unterhalts­reinigung." },
+  { icon: Briefcase, title: "Büros & Kanzleien", desc: "Tägliche oder wöchentliche Unterhaltsreinigung." },
   { icon: Store, title: "Einzelhandel", desc: "Verkaufs­flächen, Schaufenster, Lager­bereiche." },
   { icon: Hotel, title: "Hotel & Gastronomie", desc: "Zimmer, Sanitär, Küchen­bereiche nach HACCP." },
   { icon: GraduationCap, title: "Schulen & Praxen", desc: "Hygiene­sensible Räume mit zertifizierten Mitteln." },
@@ -396,9 +396,9 @@ const AREAS = [
 
 export function WorkAreas() {
   return (
-    <section className="relative py-24 sm:py-36 px-5 sm:px-10 bg-[var(--color-deep-green)] text-white overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-36 px-4 sm:px-10 bg-[var(--color-deep-navy)] text-white overflow-hidden">
       <div className="pointer-events-none absolute -top-32 right-1/4 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[140px] animate-aurora" />
-      <div className="pointer-events-none absolute -bottom-40 -left-32 h-[460px] w-[460px] rounded-full bg-[var(--color-deep-green-soft)] blur-[120px] animate-aurora" style={{ animationDelay: "-7s" }} />
+      <div className="pointer-events-none absolute -bottom-40 -left-32 h-[460px] w-[460px] rounded-full bg-[var(--color-deep-navy-soft)] blur-[120px] animate-aurora" style={{ animationDelay: "-7s" }} />
       <Asterisk className="hidden md:block absolute top-20 left-10 h-12 w-12 text-primary/30 animate-[spin_30s_linear_infinite]" />
       <Asterisk className="hidden lg:block absolute bottom-24 right-20 h-20 w-20 text-white/10 animate-float-y" />
 
@@ -410,7 +410,7 @@ export function WorkAreas() {
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
             Vom Treppenhaus
             <br />
-            bis zum <span className="italic text-primary">Großauftrag.</span>
+            bis zum <span className="italic text-white">Großauftrag.</span>
           </h2>
           <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl">
             Egal ob Privat, Gewerbe oder Spezialeinsatz — wir bringen das passende
@@ -423,11 +423,11 @@ export function WorkAreas() {
             <Reveal
               key={a.title}
               delay={idx * 70}
-              className="group relative bg-[var(--color-deep-green)] p-6 sm:p-8 min-h-[200px] flex flex-col transition-colors duration-500 hover:bg-[var(--color-deep-green-soft)]"
+              className="group relative bg-[var(--color-deep-navy)] p-5 sm:p-8 min-h-[180px] sm:min-h-[200px] flex flex-col transition-colors duration-500 hover:bg-[var(--color-deep-navy-soft)]"
             >
               <div className="flex items-center justify-between mb-6">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-primary transition-all duration-500 group-hover:border-primary group-hover:rotate-6">
-                  <a.icon className="h-5 w-5" strokeWidth={1.6} />
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition-all duration-500 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:rotate-6">
+                  <a.icon className="h-5 w-5" strokeWidth={1.8} />
                 </span>
                 <span className="font-mono text-[10px] tabular-nums text-white/35">
                   {String(idx + 1).padStart(2, "0")}
@@ -447,39 +447,39 @@ export function WorkAreas() {
 /* ─────────────────────────────────────────────────────────── REFERENZEN */
 
 const REFERENCES = [
-  "Hotel Eifelblick",
-  "Praxis Dr. Weber",
-  "Stadtwerke Monschau",
-  "Café Roetgen",
-  "Kanzlei Hoffmann",
-  "Wohnpark Aachen",
-  "Bäckerei Lennartz",
-  "Auto­haus Bauer",
+  "Hausverwaltung Vohwinkel",
+  "Praxis Wuppertal",
+  "Büro Solingen",
+  "Wohnanlage Elberfeld",
+  "Kanzlei Remscheid",
+  "Treppenhaus Barmen",
+  "Gewerbe Velbert",
+  "Mehrfamilienhaus Cronenberg",
 ];
 
 const HIGHLIGHTS = [
   {
-    metric: "120+",
-    label: "aktive Kunden",
-    desc: "betreut in Monschau, Aachen und der gesamten Eifelregion.",
+    metric: "5,0",
+    label: "Google-Bewertung",
+    desc: "2 Rezensionen, zuverlässig und professionell bewertet.",
   },
   {
-    metric: "7 J.",
-    label: "im Dienst",
-    desc: "konstante Qualität — und persönlich geführt seit Tag eins.",
+    metric: "24h",
+    label: "Reaktionszeit",
+    desc: "Schnelle Antwort auf jede Anfrage, persönlich und direkt.",
   },
   {
-    metric: "98 %",
-    label: "Wieder­buchungen",
-    desc: "Stammkunden, die uns regelmäßig erneut beauftragen.",
+    metric: "100%",
+    label: "Zufriedenheit",
+    desc: "Gründliche Arbeit ohne Vertragsbindung, fair und transparent.",
   },
 ];
 
 export function References() {
   return (
-    <section className="relative py-24 sm:py-36 px-5 sm:px-10 bg-[var(--color-deep-green)] text-white overflow-hidden border-t border-white/5">
+    <section className="relative py-16 sm:py-24 md:py-36 px-4 sm:px-10 bg-[var(--color-deep-navy)] text-white overflow-hidden border-t border-white/5">
       <div className="pointer-events-none absolute -top-40 -left-32 h-[520px] w-[520px] rounded-full bg-primary/15 blur-[140px] animate-aurora" style={{ animationDelay: "-4s" }} />
-      <div className="pointer-events-none absolute -bottom-32 right-1/4 h-[460px] w-[460px] rounded-full bg-[var(--color-deep-green-soft)] blur-[130px] animate-aurora" style={{ animationDelay: "-12s" }} />
+      <div className="pointer-events-none absolute -bottom-32 right-1/4 h-[460px] w-[460px] rounded-full bg-[var(--color-deep-navy-soft)] blur-[130px] animate-aurora" style={{ animationDelay: "-12s" }} />
       <Scribble className="hidden md:block absolute top-24 right-10 w-40 text-primary/30 animate-float-x" />
 
       <div className="relative mx-auto max-w-[1400px]">
@@ -504,9 +504,9 @@ export function References() {
             <Reveal
               key={r}
               delay={idx * 60}
-              className="bg-[var(--color-deep-green)] px-6 py-8 sm:py-10 flex items-center justify-center text-center transition-colors duration-500 hover:bg-[var(--color-deep-green-soft)]"
+              className="bg-[var(--color-deep-navy)] px-6 py-8 sm:py-10 flex items-center justify-center text-center transition-colors duration-500 hover:bg-[var(--color-deep-navy-soft)]"
             >
-              <span className="font-serif text-lg sm:text-xl text-white/75 tracking-tight italic">
+              <span className="font-serif text-base sm:text-xl text-white/75 tracking-tight italic leading-snug">
                 {r}
               </span>
             </Reveal>
@@ -524,7 +524,7 @@ export function References() {
                 <div className="mt-2 text-[11px] uppercase tracking-[0.2em] text-white/50">
                   {h.label}
                 </div>
-                <p className="mt-3 text-sm text-white/65 leading-relaxed max-w-[18ch]">
+                <p className="mt-3 text-sm text-white/65 leading-relaxed max-w-none sm:max-w-[18ch]">
                   {h.desc}
                 </p>
               </Reveal>
@@ -533,14 +533,14 @@ export function References() {
 
           <Reveal delay={300} className="lg:col-span-5">
             <figure className="relative rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-sm p-8 sm:p-10">
-              <Quote className="absolute -top-4 left-8 h-9 w-9 text-primary fill-primary bg-[var(--color-deep-green)] p-1.5 rounded-full" />
+              <Quote className="absolute -top-4 left-8 h-9 w-9 text-primary fill-primary bg-[var(--color-deep-navy)] p-1.5 rounded-full" />
               <blockquote className="font-serif italic text-xl sm:text-2xl leading-snug text-white/95">
-                „Shadi Alo ist für uns längst kein Dienstleister mehr — sondern Teil
-                des Teams. Termin­treu, gründlich und immer mitdenkend."
+                „Zuverlässig und professionell. Gerne wieder! Pünktlich,
+                gründlich und immer erreichbar."
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-white/55">
                 <span className="h-px w-8 bg-white/30" />
-                Hausverwaltung · Eifel
+                Google Bewertung · Wuppertal
               </figcaption>
             </figure>
           </Reveal>
