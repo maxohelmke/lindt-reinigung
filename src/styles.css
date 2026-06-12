@@ -5,23 +5,23 @@
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
-  font-family: "Playfair Display";
+  font-family: "Source Serif 4";
   font-style: normal;
-  font-weight: 400 900;
+  font-weight: 500 700;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtPK-F2qO0isEw.woff2") format("woff2");
+  src: url("https://fonts.gstatic.com/s/sourceserif4/v8/vEFy2_tTDB4M7-auWDNzeqTQNQePw.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "Source Sans 3";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400 700;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2") format("woff2");
+  src: url("https://fonts.gstatic.com/s/sourcesans3/v15/nwpBtKy2OAdR1K-IwhWudF-R9QMylBJAdRs64Dh8bk6htcI.woff2") format("woff2");
 }
 
 @theme inline {
-  --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -52,6 +52,7 @@
   --color-dark: var(--dark);
   --color-deep-navy: var(--deep-navy);
   --color-deep-navy-soft: var(--deep-navy-soft);
+  --color-brand-bar: var(--brand-bar);
   --color-primary-hover: var(--primary-hover);
 
   --shadow-soft: 0 4px 24px -8px oklch(0.2 0.02 90 / 0.08), 0 2px 8px -4px oklch(0.2 0.02 90 / 0.04);
@@ -60,7 +61,7 @@
 }
 
 :root {
-  --radius: 0.875rem;
+  --radius: 0.5rem;
   /* #F7F5F2 warm off-white */
   --background: oklch(0.967 0.005 80);
   /* #1A1A1A anthracite */
@@ -91,6 +92,8 @@
   /* deep navy for dark sections */
   --deep-navy: oklch(0.26 0.045 252);
   --deep-navy-soft: oklch(0.34 0.05 252);
+  /* Helleres Navy für Header/Footer — bessere Logo-Sichtbarkeit */
+  --brand-bar: oklch(0.44 0.065 252);
 }
 
 .dark {
@@ -141,8 +144,69 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    letter-spacing: -0.015em;
   }
+}
+
+@utility section-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 3.8vw, 2.75rem);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+@utility section-lead {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: color-mix(in oklch, var(--color-foreground) 72%, transparent);
+  max-width: 42rem;
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  padding: 0.875rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary-foreground);
+  min-height: 3rem;
+  transition: background-color 0.2s ease;
+}
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+}
+
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklch, var(--color-foreground) 22%, transparent);
+  padding: 0.875rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  min-height: 3rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.btn-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 @utility overline {
@@ -355,10 +419,179 @@
   bottom: max(0px, env(safe-area-inset-bottom));
 }
 
-/* Soft scroll on supported browsers */
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
+/* ── Dunkle Sektionen: mehrschichtiger Verlauf + Dot-Grid ─────────── */
+.dark-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(60rem 34rem at 85% -12%, oklch(0.46 0.1 252 / 0.4), transparent 62%),
+    radial-gradient(52rem 30rem at -12% 112%, oklch(0.42 0.11 215 / 0.32), transparent 60%),
+    linear-gradient(180deg, oklch(0.27 0.05 252), oklch(0.24 0.045 252));
+}
+.dark-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgb(255 255 255 / 0.055) 1px, transparent 1.5px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 25%, transparent 78%);
+}
+
+/* Weiche, driftende Farb-Blobs für dunkle Sektionen */
+.aurora-blob {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(90px);
+  z-index: -1;
+}
+
+/* ── Maus-Spotlight auf Karten (folgt dem Cursor) ─────────────────── */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    rgb(255 255 255 / 0.1),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* ── Karten-Hover: Lift, Glow, Border-Farbwechsel ─────────────────── */
+.card-dark {
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(255 255 255 / 0.04);
+  border-radius: var(--radius-lg);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease,
+    background-color 0.45s ease;
+}
+.card-dark:hover {
+  transform: translateY(-4px);
+  background: rgb(255 255 255 / 0.07);
+  border-color: oklch(0.6 0.09 252 / 0.55);
+  box-shadow:
+    0 24px 50px -22px rgb(0 0 0 / 0.55),
+    0 0 0 1px oklch(0.6 0.09 252 / 0.25),
+    0 0 40px -12px oklch(0.55 0.11 252 / 0.45);
+}
+
+/* Icon-Kachel mit Verlauf + sanfter Bewegung beim Hover */
+.icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: calc(var(--radius) + 2px);
+  color: #fff;
+  background: linear-gradient(140deg, oklch(0.52 0.1 252), oklch(0.36 0.07 252));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.3),
+    0 10px 22px -10px rgb(0 0 0 / 0.55);
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s ease,
+    background 0.5s ease;
+}
+.group:hover .icon-tile {
+  transform: translateY(-3px) scale(1.08) rotate(-4deg);
+  background: linear-gradient(140deg, oklch(0.58 0.11 252), oklch(0.42 0.09 252));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    0 14px 30px -10px rgb(0 0 0 / 0.6),
+    0 0 24px -6px oklch(0.6 0.12 252 / 0.6);
+}
+
+/* Metrik-Zahlen mit Licht-Verlauf */
+.metric-gradient {
+  background: linear-gradient(125deg, #fff 20%, oklch(0.78 0.08 252) 60%, oklch(0.62 0.1 252));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* CTA-Panel: langsam wandernder Farbverlauf */
+.cta-panel {
+  background: linear-gradient(
+    120deg,
+    oklch(0.26 0.05 252),
+    oklch(0.4 0.09 250),
+    oklch(0.3 0.06 235),
+    oklch(0.26 0.05 252)
+  );
+  background-size: 280% 280%;
+  animation: gradient-shift 14s ease-in-out infinite;
+}
+
+/* Shine-Sweep über Buttons beim Hover */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 32%, rgb(255 255 255 / 0.22) 50%, transparent 68%);
+  transform: translateX(-110%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+.btn-primary:hover::after {
+  transform: translateX(110%);
+}
+
+/* Bild-Hover in Galerie/Sektionen */
+.img-hover {
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+}
+.group:hover .img-hover {
+  transform: scale(1.06);
+  filter: saturate(1.08) brightness(1.03);
+}
+
+/* Leichter Schatten hinter dem Logo auf der Brand-Bar */
+.logo-wrap {
+  padding: 0.2rem 0.35rem;
+  background: rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.12);
+}
+
+.legal-prose a {
+  word-break: break-word;
+}
+
+.legal-prose ul {
+  margin-top: 0.5rem;
+}
+
+/* Below-the-fold lazy placeholders */
+.section-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 12rem;
+}
+
+/* Defer paint for non-critical sections */
+.section-lazy {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 24rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -366,6 +599,38 @@ html { scroll-behavior: smooth; }
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: clamp(1.55rem, 7vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .section-lead {
+    font-size: 0.99rem;
+    line-height: 1.58;
+  }
+
+  .aurora-blob {
+    display: none;
+  }
+
+  .dark-panel::before {
+    opacity: 0.45;
+    background-size: 22px 22px;
+  }
+
+  .spotlight::before {
+    display: none;
+  }
+
+  .card-dark:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: rgb(255 255 255 / 0.12);
+    background: rgb(255 255 255 / 0.04);
   }
 }
 

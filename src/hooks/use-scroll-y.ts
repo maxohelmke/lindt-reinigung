@@ -8,7 +8,8 @@ export function useScrollY() {
     const onScroll = () => {
       if (raf) return;
       raf = requestAnimationFrame(() => {
-        setY(window.scrollY);
+        const next = window.scrollY;
+        setY((prev) => (prev === next ? prev : next));
         raf = 0;
       });
     };

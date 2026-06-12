@@ -1,4 +1,4 @@
-import { useRef, type ReactNode, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from "react";
 
 interface MagneticProps {
   children: ReactNode;
@@ -20,8 +20,14 @@ export function Magnetic({
   ...rest
 }: MagneticProps) {
   const ref = useRef<HTMLElement | null>(null);
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    setEnabled(window.matchMedia("(pointer: fine)").matches);
+  }, []);
 
   const onMove = (e: MouseEvent) => {
+    if (!enabled) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -38,9 +44,9 @@ export function Magnetic({
   return (
     <Tag
       ref={ref as never}
-      className={`magnetic ${className}`}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
+      className={enabled ? `magnetic ${className}` : className}
+      onMouseMove={enabled ? onMove : undefined}
+      onMouseLeave={enabled ? onLeave : undefined}
       {...rest}
     >
       {children}

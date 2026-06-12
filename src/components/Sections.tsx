@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
-import { Plus, Minus, Sparkles, Leaf, Award, Clock3, MapPin, ArrowRight, Home, Building2, Briefcase, Hotel, Store, GraduationCap, Wrench, Quote } from "lucide-react";
+import {
+  House, Buildings, Briefcase, Bed, Storefront, GraduationCap, Wrench, Sparkle,
+  Quotes, Plus, Minus, ArrowRight, ArrowUpRight as PhArrowUpRight,
+} from "@phosphor-icons/react";
 import { Reveal } from "@/components/Reveal";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Spotlight } from "@/components/Spotlight";
+import { unsplash } from "@/lib/assets";
 import {
   Carousel,
   CarouselContent,
@@ -8,142 +14,61 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 
-/* ─────────────────────────────────────────────────────────── DECOR */
-
-export function Asterisk({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
-      <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
-        <line x1="20" y1="4" x2="20" y2="36" />
-        <line x1="4" y1="20" x2="36" y2="20" />
-        <line x1="8.5" y1="8.5" x2="31.5" y2="31.5" />
-        <line x1="31.5" y1="8.5" x2="8.5" y2="31.5" />
-      </g>
-    </svg>
-  );
-}
-
-export function Scribble({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 220 24" className={className} fill="none" aria-hidden="true">
-      <path
-        d="M2 14 C 30 2, 60 26, 90 14 S 150 2, 180 14 S 215 22, 218 12"
-        stroke="currentColor"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────── TRUST BAR */
-
-export function TrustBar() {
-  const items = [
-    { icon: Award, label: "Inhabergeführt", sub: "Persönlich" },
-    { icon: Leaf, label: "5,0 ★ Google", sub: "2 Bewertungen" },
-    { icon: Clock3, label: "24h Antwort", sub: "Mo–Fr" },
-    { icon: MapPin, label: "Wuppertal", sub: "Bergisches Land" },
-  ];
-  return (
-    <section className="px-4 sm:px-10 py-6 sm:py-10 border-b border-border">
-      <div className="mx-auto max-w-[1400px] grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
-        {items.map((it, i) => (
-          <Reveal
-            key={it.label}
-            delay={i * 80}
-            className="bg-background px-3 sm:px-5 py-4 sm:py-5 flex items-center gap-3 sm:gap-4"
-          >
-            <it.icon className="h-5 w-5 text-primary shrink-0" strokeWidth={1.6} />
-            <div className="min-w-0">
-              <div className="text-xs sm:text-sm font-medium tracking-tight leading-tight">{it.label}</div>
-              <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-muted-foreground mt-0.5">
-                {it.sub}
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 /* ─────────────────────────────────────────────────────────── GALLERY (Bento) */
 
-type Tile = { src: string; alt: string; tag: string; span: string };
+type Tile = { src: string; alt: string; span: string };
 
 const TILES: Tile[] = [
   {
-    src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop",
-    alt: "Helle, aufgeräumte Küche nach Reinigung",
-    tag: "Privat · Küche",
+    src: unsplash("photo-1581578017093-cd30fce4eeb7", 640),
+    alt: "Reinigungskraft bei der Küchenreinigung",
     span: "md:col-span-7 md:row-span-2 aspect-[4/5] md:aspect-auto",
   },
   {
-    src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80&auto=format&fit=crop",
-    alt: "Modernes Badezimmer, streifenfrei gereinigt",
-    tag: "Privat · Bad",
+    src: unsplash("photo-1604014237800-1c9102c219da", 640),
+    alt: "Fensterreinigung im Einsatz",
     span: "md:col-span-5 aspect-[4/3]",
   },
   {
-    src: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=900&q=80&auto=format&fit=crop",
-    alt: "Fensterreinigung mit Abzieher",
-    tag: "Service · Fenster",
+    src: unsplash("photo-1581578731548-c64695cc6952", 720),
+    alt: "Reinigungsprofi mit professionellen Arbeitsmitteln",
     span: "md:col-span-5 aspect-[4/3]",
   },
   {
-    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop",
-    alt: "Aufgeräumter, heller Büroraum",
-    tag: "Gewerbe · Büro",
+    src: unsplash("photo-1527515637462-cff94eecc1ac", 800),
+    alt: "Reinigungskraft bei der Arbeit im Wohnbereich",
     span: "md:col-span-7 aspect-[16/9]",
   },
   {
-    src: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=80&auto=format&fit=crop",
-    alt: "Profi-Reinigungsmittel und Tücher",
-    tag: "Material · Eco",
+    src: unsplash("photo-1563453392212-326f5e854473", 640),
+    alt: "Badreinigung mit professioneller Ausrüstung",
     span: "md:col-span-4 aspect-[4/5]",
   },
   {
-    src: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80&auto=format&fit=crop",
-    alt: "Frisch gewischter Holzboden im Wohnzimmer",
-    tag: "Privat · Boden",
+    src: unsplash("photo-1584473457409-ce43d0b01cab", 640),
+    alt: "Bodenreinigung mit Wischsystem",
     span: "md:col-span-4 aspect-[4/5]",
   },
   {
-    src: "https://images.unsplash.com/photo-1560448204-e86f66e5bbde?w=800&q=80&auto=format&fit=crop",
-    alt: "Treppenhaus nach Grundreinigung",
-    tag: "Gemeinschaft · Treppe",
+    src: unsplash("photo-1584473457493-17c5f6c79b7b", 640),
+    alt: "Treppenhausreinigung im Mehrfamilienhaus",
     span: "md:col-span-4 aspect-[4/5]",
   },
   {
-    src: "https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=1400&q=80&auto=format&fit=crop",
-    alt: "Reinigungskraft bei der Arbeit",
-    tag: "Team · Im Einsatz",
+    src: unsplash("photo-1581578017420-1f3f4f4aa5e9", 960),
+    alt: "Reinigungsteam im Arbeitseinsatz",
     span: "md:col-span-12 aspect-[21/9]",
   },
 ];
 
 export function Gallery() {
   return (
-    <section className="py-16 sm:py-24 md:py-36 px-4 sm:px-10 bg-background">
+    <section className="py-16 sm:py-24 px-4 sm:px-10 bg-background">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex flex-col items-center text-center mb-14 sm:mb-20">
-          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-            <span>Arbeitsproben</span>
-          </div>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
-            Räume, die
-            <br />
-            <span className="relative inline-block italic text-primary">
-              wieder atmen.
-              <Scribble className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-full h-3 text-primary/60" />
-            </span>
-          </h2>
-          <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-2xl">
-            Eine kleine Auswahl aus den letzten Aufträgen: Privatwohnungen,
-            Büros und Spezialeinsätze. Jede Reinigung übergeben wir persönlich.
-          </p>
-        </div>
+        <SectionHeading
+          title="Ergebnisse unserer Reinigungsarbeiten in Wuppertal"
+          lead="Eine Auswahl aus Privatwohnungen, Büros und Spezialeinsätzen im Bergischen Land. Jedes Objekt übergeben wir persönlich nach der Abnahme."
+        />
 
         <GalleryCarousel />
       </div>
@@ -180,21 +105,18 @@ function GalleryCarousel() {
               key={t.src}
               className="pl-4 sm:pl-5 basis-[85%] sm:basis-1/2 lg:basis-1/3"
             >
-              <figure className="group relative overflow-hidden rounded-2xl bg-muted aspect-[4/5]">
+              <figure className="group relative overflow-hidden rounded-md bg-muted aspect-[4/5]">
                 <img
                   src={t.src}
                   alt={t.alt}
                   loading="lazy"
                   decoding="async"
-                  width={900}
-                  height={1125}
+                  width={640}
+                  height={800}
+                  sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 33vw"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/0 to-transparent" />
-                <figcaption className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-background/85 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  {t.tag}
-                </figcaption>
                 <div className="absolute bottom-4 left-4 right-4 font-serif text-white text-base sm:text-xl leading-tight tracking-tight drop-shadow-sm">
                   {t.alt}
                 </div>
@@ -225,7 +147,7 @@ function GalleryCarousel() {
             aria-label="Vorheriges Bild"
             className="h-11 w-11 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
           >
-            <ArrowRight className="h-4 w-4 rotate-180" />
+            <ArrowRight className="h-4 w-4 rotate-180" weight="regular" />
           </button>
           <button
             type="button"
@@ -233,7 +155,7 @@ function GalleryCarousel() {
             aria-label="Nächstes Bild"
             className="h-11 w-11 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
           >
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" weight="regular" />
           </button>
         </div>
       </div>
@@ -245,73 +167,71 @@ function GalleryCarousel() {
 
 const FAQS = [
   {
+    q: "Was kostet eine Gebäudereinigung in Wuppertal?",
+    a: "Die Kosten hängen von Objekt, Umfang und Häufigkeit ab. Wir erstellen Ihnen nach einer kurzen Beschreibung oder einem kostenlosen Vor Ort Termin ein transparentes Festpreisangebot ohne versteckte Kosten.",
+  },
+  {
     q: "Wie schnell bekomme ich ein Angebot?",
-    a: "Innerhalb von 24 Stunden, meist deutlich schneller. Eine kurze Beschreibung per Anruf oder WhatsApp reicht.",
+    a: "Innerhalb von 24 Stunden, meist deutlich schneller. Ein kurzer Anruf oder eine WhatsApp-Nachricht mit einer Beschreibung des Objekts reicht vollkommen aus.",
+  },
+  {
+    q: "In welchen Orten in Wuppertal und Umgebung sind Sie tätig?",
+    a: "Wir reinigen im gesamten Stadtgebiet Wuppertal einschließlich Vohwinkel, Barmen, Elberfeld und Cronenberg. Zusätzlich sind wir in Solingen, Remscheid, Velbert und im gesamten Bergischen Land tätig.",
   },
   {
     q: "Gibt es eine Vertragsbindung?",
-    a: "Nein. Sie buchen einmalig oder regelmäßig, kündbar jederzeit, ohne Frist. Kein Kleingedrucktes.",
+    a: "Nein. Sie können einmalig oder regelmäßig buchen und jederzeit kündigen, ohne Kündigungsfrist. Kein Kleingedrucktes und keine versteckten Klauseln.",
   },
   {
     q: "Welche Reinigungsmittel werden eingesetzt?",
-    a: "Wir verwenden pflanzenbasierte, biologisch abbaubare Produkte. Auf Wunsch komplett duftneutral oder allergikergeeignet.",
+    a: "Wir verwenden pflanzenbasierte, biologisch abbaubare Reinigungsprodukte. Auf Wunsch arbeiten wir komplett duftneutral oder mit allergikergeeigneten Mitteln.",
   },
   {
     q: "Sind Sie versichert?",
-    a: "Ja, vollumfänglich haftpflichtversichert. Auf Anfrage senden wir Ihnen den Versicherungsnachweis.",
-  },
-  {
-    q: "In welchen Orten sind Sie tätig?",
-    a: "Wuppertal, Wuppertal-Vohwinkel, Solingen, Remscheid, Velbert und das gesamte Bergische Land.",
+    a: "Ja, wir sind vollumfänglich haftpflichtversichert. Den Versicherungsnachweis senden wir Ihnen auf Anfrage gerne zu.",
   },
   {
     q: "Bringen Sie Material und Geräte mit?",
-    a: "Selbstverständlich, wir kommen komplett ausgestattet. Sie müssen nichts bereitstellen.",
+    a: "Selbstverständlich. Wir kommen komplett ausgestattet mit professionellem Equipment und Reinigungsmitteln. Sie müssen nichts vorbereiten oder bereitstellen.",
+  },
+  {
+    q: "Bieten Sie auch Grundreinigung und Bauendreinigung an?",
+    a: "Ja. Neben der regelmäßigen Unterhaltsreinigung führen wir Grundreinigungen bei Umzügen und Übergaben sowie Bauendreinigungen nach Renovierungen in Wuppertal und Umgebung durch.",
   },
 ];
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="py-16 sm:py-24 md:py-36 px-4 sm:px-10 bg-[#EFEBE4]">
+    <section id="faq" className="py-14 sm:py-24 px-4 sm:px-10 bg-[#EFEBE4]/80">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
-          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-            <span>Häufige Fragen</span>
-          </div>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
-            Antworten,
-            <br />
-            <span className="italic text-primary">bevor Sie fragen.</span>
-          </h2>
-          <div className="inline-flex items-center gap-3 text-sm text-foreground/70">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span>Noch eine Frage offen? Einfach anrufen.</span>
-          </div>
-        </div>
+        <SectionHeading
+          title="Fragen zur Gebäudereinigung in Wuppertal"
+          lead="Noch Fragen offen? Rufen Sie uns an. Wir beraten Sie kostenlos und persönlich."
+        />
 
         <div className="max-w-3xl mx-auto">
-          <ul className="border-t border-foreground/15">
+          <ul className="space-y-2.5 sm:space-y-0 sm:border-t sm:border-foreground/15">
           {FAQS.map((item, i) => {
             const active = open === i;
             return (
-              <li key={item.q} className="border-b border-foreground/15">
+              <li key={item.q} className="rounded-xl border border-foreground/12 bg-background/75 sm:rounded-none sm:border-x-0 sm:border-t-0 sm:bg-transparent sm:border-b sm:border-foreground/15">
                 <button
                   type="button"
                   onClick={() => setOpen(active ? null : i)}
-                  className="group w-full flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-7 text-left"
+                  className="group w-full flex items-start justify-between gap-3.5 sm:gap-6 px-4 sm:px-0 py-4 sm:py-7 text-left"
                   aria-expanded={active}
                 >
-                  <span className="flex items-baseline gap-5 sm:gap-7 flex-1">
+                  <span className="flex items-baseline gap-3.5 sm:gap-7 flex-1">
                     <span className="font-mono text-xs tabular-nums text-muted-foreground pt-1">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-serif text-lg sm:text-2xl md:text-3xl tracking-tight leading-snug">
+                    <span className="font-serif text-[1.02rem] sm:text-xl tracking-tight leading-snug">
                       {item.q}
                     </span>
                   </span>
-                  <span className="shrink-0 mt-1.5 h-9 w-9 rounded-full border border-foreground/25 flex items-center justify-center transition-all duration-300 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground">
-                    {active ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                  <span className="shrink-0 mt-1 h-8.5 w-8.5 sm:h-9 sm:w-9 rounded-full border border-foreground/25 flex items-center justify-center transition-all duration-300 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground">
+                    {active ? <Minus className="h-4 w-4" weight="bold" /> : <Plus className="h-4 w-4" weight="bold" />}
                   </span>
                 </button>
                 <div
@@ -319,7 +239,7 @@ export function FAQ() {
                   style={{ gridTemplateRows: active ? "1fr" : "0fr" }}
                 >
                   <div className="overflow-hidden">
-                    <p className="pl-[2.75rem] sm:pl-[4.4rem] pb-5 sm:pb-7 pr-4 sm:pr-12 text-sm sm:text-base text-foreground/75 leading-relaxed max-w-xl">
+                    <p className="pl-4 sm:pl-[4.4rem] pb-4 sm:pb-7 pr-4 sm:pr-12 text-[0.95rem] sm:text-base text-foreground/75 leading-relaxed max-w-xl">
                       {item.a}
                     </p>
                   </div>
@@ -338,41 +258,29 @@ export function FAQ() {
 
 export function CtaStrip({ phone, phoneHref, waHref }: { phone: string; phoneHref: string; waHref: string }) {
   return (
-    <section className="px-4 sm:px-10">
-      <div className="mx-auto max-w-[1400px] relative overflow-hidden rounded-2xl sm:rounded-3xl bg-[var(--color-deep-navy)] text-white px-5 sm:px-14 py-10 sm:py-20">
-        <div className="pointer-events-none absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full bg-primary/25 blur-[100px] animate-aurora" />
-        <div className="pointer-events-none absolute -bottom-32 -left-24 h-[420px] w-[420px] rounded-full bg-[var(--color-deep-navy-soft)] blur-[100px] animate-aurora" style={{ animationDelay: "-9s" }} />
-        <Asterisk className="absolute top-6 right-6 h-20 w-20 sm:h-32 sm:w-32 text-primary/30 animate-[spin_20s_linear_infinite]" />
-        <Asterisk className="absolute -bottom-12 -left-6 h-40 w-40 sm:h-56 sm:w-56 text-white/5 animate-float-y" />
-        <div className="relative grid md:grid-cols-12 gap-8 items-end">
-          <div className="md:col-span-8">
-            <div className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-4">
-              Bereit für saubere Räume?
-            </div>
-            <h3 className="font-serif text-3xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] max-w-2xl">
-              Ein Anruf, und der
-              <br />
-              <span className="italic text-primary">Rest ist erledigt.</span>
+    <section className="px-4 sm:px-10 py-8 sm:py-12">
+      <div className="cta-panel relative overflow-hidden mx-auto max-w-[1400px] rounded-xl border border-white/15 text-white px-5 sm:px-10 py-10 sm:py-14 shadow-[0_30px_70px_-30px_rgb(0_0_0/0.55)]">
+        <div className="aurora-blob -top-24 -right-20 h-[320px] w-[320px] bg-[oklch(0.55_0.11_252/0.4)] animate-drift" aria-hidden="true" />
+        <div className="relative grid md:grid-cols-12 gap-8 items-center">
+          <div className="md:col-span-7">
+            <p className="section-eyebrow text-white/55 mb-3">Kostenlose Anfrage</p>
+            <h3 className="section-title text-white max-w-xl">
+              Gebäudereinigung in Wuppertal anfragen. Ein kurzer Anruf genügt.
             </h3>
           </div>
-          <div className="md:col-span-4 flex flex-col gap-3">
-            <a
-              href={phoneHref}
-              className="group inline-flex items-center justify-between gap-3 rounded-full bg-primary px-6 py-4 text-base font-medium text-white hover:bg-white hover:text-foreground transition-colors min-h-[56px]"
-            >
+          <div className="md:col-span-5 flex flex-col gap-3">
+            <a href={phoneHref} className="btn-primary w-full justify-between">
               <span>{phone}</span>
-              <span className="text-xs uppercase tracking-[0.2em] opacity-80 group-hover:opacity-100">
-                Anrufen →
-              </span>
+              <PhArrowUpRight className="h-4 w-4 opacity-80" weight="regular" />
             </a>
             <a
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-between gap-3 rounded-full border border-white/25 px-6 py-4 text-base font-medium hover:border-white transition-colors min-h-[56px]"
+              className="inline-flex w-full items-center justify-between gap-3 rounded-md border border-white/30 px-6 py-3.5 text-sm font-semibold hover:bg-white/10 transition-colors min-h-[3rem]"
             >
               <span>WhatsApp schreiben</span>
-              <span className="text-xs uppercase tracking-[0.2em] opacity-70">→</span>
+              <span className="text-xs uppercase tracking-wide opacity-80">→</span>
             </a>
           </div>
         </div>
@@ -384,58 +292,45 @@ export function CtaStrip({ phone, phoneHref, waHref }: { phone: string; phoneHre
 /* ─────────────────────────────────────────────────────────── ARBEITSBEREICHE */
 
 const AREAS = [
-  { icon: Home, title: "Privathaushalte", desc: "Wohnungen, Einfamilien­häuser, Ferienwohnungen." },
-  { icon: Building2, title: "Wohnanlagen", desc: "Treppenhäuser, Eingänge, Tief­garagen, Aufzüge." },
+  { icon: House, title: "Privathaushalte", desc: "Wohnungen, Einfamilien­häuser, Ferienwohnungen." },
+  { icon: Buildings, title: "Wohnanlagen", desc: "Treppenhäuser, Eingänge, Tief­garagen, Aufzüge." },
   { icon: Briefcase, title: "Büros & Kanzleien", desc: "Tägliche oder wöchentliche Unterhaltsreinigung." },
-  { icon: Store, title: "Einzelhandel", desc: "Verkaufs­flächen, Schaufenster, Lager­bereiche." },
-  { icon: Hotel, title: "Hotel & Gastronomie", desc: "Zimmer, Sanitär, Küchen­bereiche nach HACCP." },
+  { icon: Storefront, title: "Einzelhandel", desc: "Verkaufs­flächen, Schaufenster, Lager­bereiche." },
+  { icon: Bed, title: "Hotel & Gastronomie", desc: "Zimmer, Sanitär, Küchen­bereiche nach HACCP." },
   { icon: GraduationCap, title: "Schulen & Praxen", desc: "Hygiene­sensible Räume mit zertifizierten Mitteln." },
   { icon: Wrench, title: "Bau & Handwerk", desc: "Bauend- und Bauzwischen­reinigung schlüsselfertig." },
-  { icon: Sparkles, title: "Sonderaufträge", desc: "Veranstaltungen, Brand- & Wasserschäden, Spezial­fälle." },
+  { icon: Sparkle, title: "Sonderaufträge", desc: "Veranstaltungen, Brand- & Wasserschäden, Spezial­fälle." },
 ];
 
 export function WorkAreas() {
   return (
-    <section className="relative py-16 sm:py-24 md:py-36 px-4 sm:px-10 bg-[var(--color-deep-navy)] text-white overflow-hidden">
-      <div className="pointer-events-none absolute -top-32 right-1/4 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[140px] animate-aurora" />
-      <div className="pointer-events-none absolute -bottom-40 -left-32 h-[460px] w-[460px] rounded-full bg-[var(--color-deep-navy-soft)] blur-[120px] animate-aurora" style={{ animationDelay: "-7s" }} />
-      <Asterisk className="hidden md:block absolute top-20 left-10 h-12 w-12 text-primary/30 animate-[spin_30s_linear_infinite]" />
-      <Asterisk className="hidden lg:block absolute bottom-24 right-20 h-20 w-20 text-white/10 animate-float-y" />
+    <section className="dark-panel py-16 sm:py-28 px-4 sm:px-10 text-white">
+      <div className="aurora-blob -top-40 right-[12%] h-[460px] w-[460px] bg-[oklch(0.5_0.11_252/0.35)] animate-aurora" aria-hidden="true" />
+      <div className="aurora-blob -bottom-48 -left-32 h-[420px] w-[420px] bg-[oklch(0.45_0.1_215/0.3)] animate-aurora" style={{ animationDelay: "-9s" }} aria-hidden="true" />
 
       <div className="relative mx-auto max-w-[1400px]">
-        <div className="flex flex-col items-center text-center mb-14 sm:mb-20">
-          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
-            <span>Arbeitsbereiche</span>
-          </div>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
-            Vom Treppenhaus
-            <br />
-            bis zum <span className="italic text-white">Großauftrag.</span>
-          </h2>
-          <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl">
-            Egal ob Privat, Gewerbe oder Spezialeinsatz — wir bringen das passende
-            Team, das richtige Material und die nötige Erfahrung mit.
-          </p>
-        </div>
+        <SectionHeading
+          title="Gebäudereinigung für jeden Bedarf in Wuppertal"
+          lead="Von der Privatwohnung bis zum Gewerbeobjekt im Bergischen Land reinigen wir zuverlässig mit eigenem Equipment und langjähriger Erfahrung."
+          onDark
+        />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
           {AREAS.map((a, idx) => (
-            <Reveal
-              key={a.title}
-              delay={idx * 70}
-              className="group relative bg-[var(--color-deep-navy)] p-5 sm:p-8 min-h-[180px] sm:min-h-[200px] flex flex-col transition-colors duration-500 hover:bg-[var(--color-deep-navy-soft)]"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition-all duration-500 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:rotate-6">
-                  <a.icon className="h-5 w-5" strokeWidth={1.8} />
-                </span>
-                <span className="font-mono text-[10px] tabular-nums text-white/35">
-                  {String(idx + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <h3 className="font-serif text-xl sm:text-2xl mb-2 tracking-tight">{a.title}</h3>
-              <p className="text-sm text-white/65 leading-relaxed">{a.desc}</p>
-              <ArrowRight className="absolute bottom-6 right-6 h-4 w-4 text-primary opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0" />
+            <Reveal key={a.title} delay={idx * 70} className="h-full">
+              <Spotlight className="card-dark group relative h-full p-4 sm:p-6 min-h-[165px] sm:min-h-[180px] flex flex-col">
+                <div className="flex items-center justify-between mb-5">
+                  <span className="icon-tile">
+                    <a.icon className="h-5 w-5" weight="light" />
+                  </span>
+                  <span className="font-mono text-[10px] tabular-nums text-white/35 transition-colors duration-300 group-hover:text-white/60">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="font-serif text-lg sm:text-2xl mb-2 tracking-tight">{a.title}</h3>
+                <p className="text-sm text-white/65 leading-relaxed">{a.desc}</p>
+                <ArrowRight className="absolute bottom-5 right-5 h-4 w-4 text-primary/0 -translate-x-2 transition-all duration-500 group-hover:text-white/80 group-hover:translate-x-0" weight="regular" />
+              </Spotlight>
             </Reveal>
           ))}
         </div>
@@ -477,48 +372,35 @@ const HIGHLIGHTS = [
 
 export function References() {
   return (
-    <section className="relative py-16 sm:py-24 md:py-36 px-4 sm:px-10 bg-[var(--color-deep-navy)] text-white overflow-hidden border-t border-white/5">
-      <div className="pointer-events-none absolute -top-40 -left-32 h-[520px] w-[520px] rounded-full bg-primary/15 blur-[140px] animate-aurora" style={{ animationDelay: "-4s" }} />
-      <div className="pointer-events-none absolute -bottom-32 right-1/4 h-[460px] w-[460px] rounded-full bg-[var(--color-deep-navy-soft)] blur-[130px] animate-aurora" style={{ animationDelay: "-12s" }} />
-      <Scribble className="hidden md:block absolute top-24 right-10 w-40 text-primary/30 animate-float-x" />
+    <section className="dark-panel py-16 sm:py-28 px-4 sm:px-10 text-white border-t border-white/10">
+      <div className="aurora-blob -top-48 -left-36 h-[480px] w-[480px] bg-[oklch(0.48_0.1_252/0.32)] animate-aurora" style={{ animationDelay: "-5s" }} aria-hidden="true" />
+      <div className="aurora-blob -bottom-40 right-[18%] h-[420px] w-[420px] bg-[oklch(0.44_0.1_230/0.3)] animate-aurora" style={{ animationDelay: "-13s" }} aria-hidden="true" />
 
       <div className="relative mx-auto max-w-[1400px]">
-        <div className="flex flex-col items-center text-center mb-14 sm:mb-20">
-          <div className="flex items-center gap-3 mb-6 text-[10px] uppercase tracking-[0.25em] text-white/40">
-            <span>Referenzen</span>
-          </div>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-6">
-            Wem wir täglich
-            <br />
-            <span className="italic text-primary">den Rücken freihalten.</span>
-          </h2>
-          <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl">
-            Eine kleine Auswahl von Häusern, Praxen und Betrieben, die uns
-            seit Jahren vertrauen. Auf Wunsch nennen wir gerne weitere.
-          </p>
-        </div>
+        <SectionHeading
+          title="Kunden und Betriebe, die uns weiterempfehlen"
+          lead="Eine Auswahl unserer Auftraggeber aus Wuppertal, Solingen und dem Bergischen Land. Auf Wunsch nennen wir Ihnen gerne weitere Referenzen."
+          onDark
+        />
 
-        {/* Logo-Wall */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden mb-16 sm:mb-20">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 mb-12 sm:mb-16">
           {REFERENCES.map((r, idx) => (
-            <Reveal
-              key={r}
-              delay={idx * 60}
-              className="bg-[var(--color-deep-navy)] px-6 py-8 sm:py-10 flex items-center justify-center text-center transition-colors duration-500 hover:bg-[var(--color-deep-navy-soft)]"
-            >
-              <span className="font-serif text-base sm:text-xl text-white/75 tracking-tight italic leading-snug">
-                {r}
-              </span>
+            <Reveal key={r} delay={idx * 60} className="h-full">
+              <Spotlight className="card-dark h-full min-h-[108px] sm:min-h-0 px-3.5 sm:px-5 py-5 sm:py-9 flex items-center justify-center text-center">
+                <span className="text-[0.82rem] sm:text-base text-white/80 leading-snug font-medium">
+                  {r}
+                </span>
+              </Spotlight>
             </Reveal>
           ))}
         </div>
 
         {/* Highlight stats + Pull-quote */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          <div className="lg:col-span-7 grid sm:grid-cols-3 gap-8 sm:gap-10">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-7 grid sm:grid-cols-3 gap-6 sm:gap-10">
             {HIGHLIGHTS.map((h, idx) => (
-              <Reveal key={h.label} delay={idx * 120} className="border-t border-white/15 pt-5">
-                <div className="font-serif text-5xl sm:text-6xl tracking-tight text-primary">
+              <Reveal key={h.label} delay={idx * 120} className="group border-t border-white/15 pt-5 transition-colors duration-500 hover:border-white/40">
+                <div className="metric-gradient font-serif text-5xl sm:text-6xl tracking-tight transition-transform duration-500 group-hover:-translate-y-1">
                   {h.metric}
                 </div>
                 <div className="mt-2 text-[11px] uppercase tracking-[0.2em] text-white/50">
@@ -532,9 +414,9 @@ export function References() {
           </div>
 
           <Reveal delay={300} className="lg:col-span-5">
-            <figure className="relative rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-sm p-8 sm:p-10">
-              <Quote className="absolute -top-4 left-8 h-9 w-9 text-primary fill-primary bg-[var(--color-deep-navy)] p-1.5 rounded-full" />
-              <blockquote className="font-serif italic text-xl sm:text-2xl leading-snug text-white/95">
+            <Spotlight className="card-dark relative p-6 sm:p-8">
+              <Quotes className="h-9 w-9 text-primary mb-4 drop-shadow-[0_0_12px_oklch(0.55_0.11_252/0.7)]" weight="fill" />
+              <blockquote className="text-lg sm:text-xl leading-relaxed text-white/95">
                 „Zuverlässig und professionell. Gerne wieder! Pünktlich,
                 gründlich und immer erreichbar."
               </blockquote>
@@ -542,7 +424,7 @@ export function References() {
                 <span className="h-px w-8 bg-white/30" />
                 Google Bewertung · Wuppertal
               </figcaption>
-            </figure>
+            </Spotlight>
           </Reveal>
         </div>
       </div>

@@ -15,4 +15,20 @@ export default defineConfig({
   // NITRO_PRESET activates nitro with the given preset (e.g. vercel-edge for Vercel deploys).
   // Undefined outside of Lovable sandbox = nitro skipped (default behaviour).
   nitro: process.env.NITRO_PRESET ? { preset: process.env.NITRO_PRESET as string } : undefined,
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes("embla-carousel")) return "carousel";
+            if (id.includes("lucide-react") || id.includes("@phosphor-icons/react")) return "icons";
+            if (id.includes("motion")) return "motion";
+            if (id.includes("@tanstack/react-router") || id.includes("@tanstack/router-core")) {
+              return "router";
+            }
+          },
+        },
+      },
+    },
+  },
 });
